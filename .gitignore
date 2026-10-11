@@ -1,0 +1,36 @@
+# Backend Build Artifacts
+backend/target/
+tools/apache-maven*/
+*.class
+*.jar
+*.war
+*.ear
+
+# Frontend Build Artifacts & Dependencies
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Temp Files
+.env
+.env.local
+.env.*.local
+*.tmp
+*.bak
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
