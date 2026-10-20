@@ -99,6 +99,14 @@ const MUSCLE_METADATA: Record<
     borderAccent: 'group-hover:border-purple-500/50',
     badgeColor: 'text-purple-400 bg-purple-950/60 border-purple-800/60',
   },
+  QUADS: {
+    label: 'Quads',
+    sublabel: 'Vastus Lateralis & Medialis',
+    icon: Footprints,
+    accentGradient: 'from-yellow-500/20 via-yellow-500/5 to-transparent',
+    borderAccent: 'group-hover:border-yellow-500/50',
+    badgeColor: 'text-yellow-400 bg-yellow-950/60 border-yellow-800/60',
+  },
   QUADRICEPS: {
     label: 'Quads',
     sublabel: 'Vastus Lateralis & Medialis',
@@ -138,6 +146,14 @@ const MUSCLE_METADATA: Record<
     accentGradient: 'from-pink-500/20 via-pink-500/5 to-transparent',
     borderAccent: 'group-hover:border-pink-500/50',
     badgeColor: 'text-pink-400 bg-pink-950/60 border-pink-800/60',
+  },
+  FULL_BODY: {
+    label: 'Full Body',
+    sublabel: 'Compound Functional Movement',
+    icon: Zap,
+    accentGradient: 'from-emerald-500/20 via-emerald-500/5 to-transparent',
+    borderAccent: 'group-hover:border-emerald-500/50',
+    badgeColor: 'text-emerald-400 bg-emerald-950/60 border-emerald-800/60',
   },
 };
 
@@ -215,7 +231,7 @@ export const MuscleGrid: React.FC<MuscleGridProps> = ({
               <div className="mt-3 relative z-10 flex items-end justify-between">
                 <div>
                   <h3 className="text-sm font-black text-white group-hover:text-orange-400 transition-colors">
-                    {meta.label}
+                    {meta.label} - {summary.exerciseCount}
                   </h3>
                   <p className="text-[10px] text-slate-400 line-clamp-1">
                     {meta.sublabel}

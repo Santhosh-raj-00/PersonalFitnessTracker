@@ -1,50 +1,143 @@
 import fs from 'fs';
 import path from 'path';
 
-// Free Exercise DB open dataset URL
-const DATASET_URL = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json';
+/**
+ * FitTrack Full Exercise Library Import & Normalization Engine
+ * 
+ * Sources & Licenses:
+ * 1. Free Exercise DB (https://github.com/yuhonas/free-exercise-db) - The Unlicense (Public Domain)
+ * 2. wger Exercise Database (https://wger.de) - CC-BY-SA 4.0
+ * 3. FitTrack Curated Core Biomechanical Library - CC0 / Public Domain
+ * 
+ * Equipment Taxonomy:
+ * Barbell, Dumbbell, Kettlebell, Machine, Cable, Smith Machine, Bodyweight, Band, Other
+ */
 
-// Configurable media base URLs
 const RAW_MEDIA_BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';
 const CDN_MEDIA_BASE = 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/';
+const DATASET_URL = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json';
 
-// Target 11 muscle groups + Traps + Cardio
-// CHEST, BACK, SHOULDERS, BICEPS, TRICEPS, FOREARMS, ABS, GLUTES, QUADS, HAMSTRINGS, CALVES, TRAPS
-function normalizeMuscle(raw) {
+// Controlled Muscle Names:
+// CHEST, BACK, SHOULDERS, TRAPS, BICEPS, TRICEPS, FOREARMS, ABS, GLUTES, QUADS, HAMSTRINGS, CALVES, CARDIO, FULL_BODY
+export function normalizeMuscle(raw) {
   if (!raw) return 'CHEST';
-  const m = raw.toLowerCase().trim();
+  const m = raw.toLowerCase().trim().replace(/[_-]/g, ' ');
+
   if (m.includes('chest') || m.includes('pec')) return 'CHEST';
-  if (m.includes('lat') || m.includes('middle back') || m.includes('lower back') || m.includes('lats') || m.includes('back')) return 'BACK';
+  if (m.includes('trap')) return 'TRAPS';
+  if (m.includes('lat') || m.includes('middle back') || m.includes('lower back') || m.includes('upper back') || m.includes('back')) return 'BACK';
   if (m.includes('shoulder') || m.includes('delt')) return 'SHOULDERS';
-  if (m.includes('bicep')) return 'BICEPS';
+  if (m.includes('bicep') || m.includes('brachialis')) return 'BICEPS';
   if (m.includes('tricep')) return 'TRICEPS';
-  if (m.includes('forearm') || m.includes('wrist')) return 'FOREARMS';
+  if (m.includes('forearm') || m.includes('wrist') || m.includes('brachioradialis')) return 'FOREARMS';
   if (m.includes('abdom') || m.includes('ab') || m.includes('core') || m.includes('oblique')) return 'ABS';
   if (m.includes('glute')) return 'GLUTES';
-  if (m.includes('quad') || m.includes('quadriceps')) return 'QUADRICEPS';
+  if (m.includes('quad') || m.includes('quadriceps') || m.includes('adductor') || m.includes('abductor')) return 'QUADS';
   if (m.includes('hamstring')) return 'HAMSTRINGS';
-  if (m.includes('calve') || m.includes('calf')) return 'CALVES';
-  if (m.includes('trap')) return 'TRAPS';
-  if (m.includes('adductor') || m.includes('abductor')) return 'QUADRICEPS'; // inner/outer thigh
-  if (m.includes('cardio')) return 'CARDIO';
-  return 'BACK';
+  if (m.includes('calve') || m.includes('calf') || m.includes('soleus') || m.includes('gastrocnemius')) return 'CALVES';
+  if (m.includes('cardio') || m.includes('aerobic') || m.includes('endurance')) return 'CARDIO';
+  if (m.includes('full body') || m.includes('compound') || m.includes('total body')) return 'FULL_BODY';
+
+  return 'CHEST';
 }
 
-function normalizeEquipment(raw) {
-  if (!raw) return 'BODYWEIGHT';
-  const eq = raw.toLowerCase().trim();
-  if (eq.includes('barbell')) return 'BARBELL';
-  if (eq.includes('dumbbell')) return 'DUMBBELL';
-  if (eq.includes('cable')) return 'CABLE';
-  if (eq.includes('machine')) return 'MACHINE';
-  if (eq.includes('body') || eq.includes('none')) return 'BODYWEIGHT';
-  if (eq.includes('kettlebell')) return 'KETTLEBELL';
-  if (eq.includes('e-z') || eq.includes('ez')) return 'EZ_BAR';
-  if (eq.includes('smith')) return 'SMITH_MACHINE';
-  return 'MACHINE';
+/**
+ * Strict Equipment Taxonomy Normalization
+ * Values: BARBELL, DUMBBELL, KETTLEBELL, MACHINE, CABLE, SMITH_MACHINE, BODYWEIGHT, BAND, OTHER
+ */
+export function normalizeEquipment(raw, name = '') {
+  const n = (name || '').toLowerCase();
+  const eq = (raw || '').toLowerCase().trim();
+
+  // 1. Smith Machine
+  if (n.includes('smith machine') || n.includes('smith ') || eq.includes('smith')) {
+    return 'SMITH_MACHINE';
+  }
+
+  // 2. Cable
+  if (
+    n.includes('cable') || n.includes('rope pushdown') || n.includes('cable pushdown') ||
+    n.includes('lat pulldown (cable') || n.includes('seated cable row') || n.includes('face pull') ||
+    n.includes('cable crossover') || n.includes('cable fly') || eq.includes('cable')
+  ) {
+    if (n.includes('plate-loaded') || n.includes('leverage') || n.includes('lat pulldown machine')) {
+      return 'MACHINE';
+    }
+    return 'CABLE';
+  }
+
+  // 3. Bands
+  if (
+    n.includes('resistance band') || n.includes('band ') || n.includes('bands ') ||
+    n.includes('band-assisted') || n.includes('band assisted') ||
+    eq.includes('band') || eq === 'bands'
+  ) {
+    // If it's a machine like Assisted Pull-Up Machine, keep machine
+    if (n.includes('machine')) return 'MACHINE';
+    return 'BAND';
+  }
+
+  // 4. Barbell (and EZ-bar)
+  if (
+    n.includes('barbell') || n.includes('ez-bar') || n.includes('ez bar') ||
+    n.includes('e-z curl') || eq.includes('barbell') || eq.includes('e-z') || eq.includes('ez')
+  ) {
+    return 'BARBELL';
+  }
+
+  // 5. Dumbbell
+  if (n.includes('dumbbell') || eq.includes('dumbbell')) {
+    return 'DUMBBELL';
+  }
+
+  // 6. Kettlebell
+  if (n.includes('kettlebell') || eq.includes('kettlebell')) {
+    return 'KETTLEBELL';
+  }
+
+  // 7. Other (Strongman, sleds, ropes, tires, chains, foam rolls, medicine ball, exercise ball, cardio machines)
+  if (
+    n.includes('atlas stone') || n.includes('axle') || n.includes('sled') ||
+    n.includes('drag') || n.includes('prowler') || n.includes('tire') ||
+    n.includes('battling rope') || n.includes('battle rope') || n.includes('chain') ||
+    n.includes('farmer') || n.includes('yoke') || n.includes('log press') ||
+    n.includes('medicine ball') || n.includes('exercise ball') || n.includes('foam roll') ||
+    n.includes('-smr') || n.includes('balance board') || n.includes('treadmill') ||
+    n.includes('stationary bike') || n.includes('bicycling') || n.includes('elliptical') ||
+    n.includes('stairmaster') || n.includes('step mill') || n.includes('rowing, stationary') ||
+    eq === 'other' || eq === 'medicine ball' || eq === 'exercise ball' || eq === 'foam roll'
+  ) {
+    return 'OTHER';
+  }
+
+  // 8. Machine (Fixed-path, selectorized, plate-loaded machines)
+  if (
+    n.includes('machine') || n.includes('pec deck') || n.includes('butterfly') ||
+    n.includes('hack squat') || n.includes('leg press') || n.includes('leg extension') ||
+    n.includes('leg curl') || n.includes('chest press') || n.includes('shoulder press') ||
+    n.includes('ab crunch machine') || n.includes('rotary torso') || n.includes('torso rotation') ||
+    n.includes('abductor') || n.includes('adductor') || n.includes('calf press') ||
+    n.includes('dip machine') || n.includes('assisted pull-up') || n.includes('assisted dip') ||
+    n.includes('back extension machine') || n.includes('glute kickback') ||
+    n.includes('hip thrust machine') || n.includes('leverage') || eq === 'machine'
+  ) {
+    return 'MACHINE';
+  }
+
+  // 9. Bodyweight (Body only, calisthenics, suspension/TRX)
+  if (
+    eq === 'body only' || eq === 'none' || eq === '' || !raw ||
+    n.includes('push-up') || n.includes('pull-up') || n.includes('chin-up') ||
+    n.includes('dip') || n.includes('plank') || n.includes('crunch') ||
+    n.includes('burpee') || n.includes('bodyweight') || n.includes('trx')
+  ) {
+    return 'BODYWEIGHT';
+  }
+
+  return 'OTHER';
 }
 
-function normalizeDifficulty(raw) {
+export function normalizeDifficulty(raw) {
   if (!raw) return 'INTERMEDIATE';
   const d = raw.toLowerCase().trim();
   if (d.includes('begin')) return 'BEGINNER';
@@ -52,622 +145,1029 @@ function normalizeDifficulty(raw) {
   return 'INTERMEDIATE';
 }
 
-function deriveMistakes(exercise) {
+export function deriveMovementType(name, primaryMuscle, equipment) {
+  const n = name.toLowerCase();
+  // Compounds: multi-joint movements
+  if (
+    n.includes('press') || n.includes('squat') || n.includes('deadlift') ||
+    n.includes('row') || n.includes('pull-up') || n.includes('chin-up') ||
+    n.includes('pulldown') || n.includes('dip') || n.includes('lunge') ||
+    n.includes('clean') || n.includes('snatch') || n.includes('thruster') ||
+    n.includes('push-up') || n.includes('push up') || n.includes('pushup') ||
+    n.includes('step-up') || n.includes('burpee') || n.includes('carry') ||
+    n.includes('hip thrust') || n.includes('hack squat') || n.includes('leg press')
+  ) {
+    // Exceptions: Skull crusher, French press, leg press calf raise
+    if (n.includes('french press') || n.includes('skull crusher') || n.includes('calf press')) {
+      return 'ISOLATION';
+    }
+    return 'COMPOUND';
+  }
+
+  // Isolations: single joint
+  if (
+    n.includes('curl') || n.includes('extension') || n.includes('raise') ||
+    n.includes('fly') || n.includes('flye') || n.includes('crossover') ||
+    n.includes('shrug') || n.includes('crunch') || n.includes('rollout') ||
+    n.includes('pullover') || n.includes('kickback') || n.includes('abductor') ||
+    n.includes('adductor') || n.includes('pec deck') || n.includes('butterfly') ||
+    n.includes('torso rotation')
+  ) {
+    return 'ISOLATION';
+  }
+
+  return 'COMPOUND';
+}
+
+export function deriveChestRegion(name, primaryMuscle) {
+  if (primaryMuscle !== 'CHEST') return null;
+  const n = name.toLowerCase();
+
+  // Inner
+  if (
+    n.includes('close-grip') || n.includes('close grip') || n.includes('diamond') ||
+    n.includes('svend') || n.includes('hex press') || n.includes('pinch press')
+  ) {
+    return 'Inner';
+  }
+
+  // Upper (Clavicular Head)
+  if (
+    n.includes('incline') || n.includes('low cable') || n.includes('low-to-high') ||
+    n.includes('guillotine') || n.includes('reverse-grip bench') ||
+    (n.includes('push-up') && n.includes('decline'))
+  ) {
+    return 'Upper';
+  }
+
+  // Lower (Abdominal Head)
+  if (
+    n.includes('decline') || n.includes('dip') || n.includes('high cable') ||
+    n.includes('high-to-low') || (n.includes('push-up') && n.includes('incline'))
+  ) {
+    return 'Lower';
+  }
+
+  // Mid (Sternal Head)
+  return 'Mid';
+}
+
+export function deriveMistakes(exercise) {
   const name = exercise.name.toLowerCase();
-  const muscle = exercise.primaryMuscles[0] || '';
   const mistakes = [];
 
   if (name.includes('press') || name.includes('bench')) {
-    mistakes.push('Flaring elbows outward beyond 75 degrees, placing excess strain on the rotator cuff.');
-    mistakes.push('Arching the lower back excessively or lifting hips completely off the bench.');
-    mistakes.push('Bouncing the barbell or dumbbells off the ribcage instead of controlling the turnaround.');
+    mistakes.push('Flaring elbows outward at a 90-degree angle, causing shoulder impingement and anterior rotator cuff stress.');
+    mistakes.push('Bouncing the resistance violently off the chest instead of utilizing a controlled eccentric stretch.');
+    mistakes.push('Over-arching the lumbar spine and lifting glutes completely off the bench.');
   } else if (name.includes('squat')) {
-    mistakes.push('Allowing knees to cave inward (valgus collapse) during the upward drive phase.');
-    mistakes.push('Lifting heels off the ground and shifting weight excessively onto toes.');
-    mistakes.push('Rounding the lumbar spine at the bottom instead of maintaining neutral spinal bracing.');
+    mistakes.push('Allowing knees to cave inward (valgus collapse) during the concentric drive phase.');
+    mistakes.push('Shifting weight forward onto the toes and lifting heels off the floor.');
+    mistakes.push('Rounding the lumbar spine in the hole instead of maintaining rigid abdominal bracing.');
   } else if (name.includes('deadlift')) {
-    mistakes.push('Rounding the lower back when breaking the bar off the floor.');
-    mistakes.push('Letting the barbell drift far away from shins during the pull.');
-    mistakes.push('Hyperextending the lower back at lockout rather than squeezing glutes through.');
+    mistakes.push('Rounding the lumbar spine when breaking the bar off the floor.');
+    mistakes.push('Letting the barbell drift away from the shins, drastically lengthening the moment arm.');
+    mistakes.push('Hyperextending the spine at lockout instead of squeezing the glutes.');
   } else if (name.includes('curl')) {
-    mistakes.push('Swinging the hips and torso backward to generate momentum.');
-    mistakes.push('Letting elbows flare forward rather than staying pinned close to ribs.');
-    mistakes.push('Short-changing the stretch at the bottom without full elbow extension.');
+    mistakes.push('Swinging the torso backward and using hip momentum to throw weights up.');
+    mistakes.push('Allowing elbows to drift forward excessively, shifting tension away from the biceps to front delts.');
   } else if (name.includes('row')) {
-    mistakes.push('Yanking with lower back momentum rather than initiating with scapular retraction.');
-    mistakes.push('Shrugging shoulders into the neck instead of driving elbows back towards hip pocket.');
+    mistakes.push('Yanking with lower back momentum rather than initiating with active scapular retraction.');
+    mistakes.push('Shrugging shoulders into the neck rather than pulling elbows down toward the hip pockets.');
   } else if (name.includes('raise') || name.includes('lateral')) {
-    mistakes.push('Using overly heavy resistance and swinging the upper body.');
-    mistakes.push('Raising hands higher than elbows, shifting tension to the upper traps.');
-  } else if (name.includes('extension') || name.includes('pushdown')) {
-    mistakes.push('Allowing upper arms to drift forward and backward during reps.');
-    mistakes.push('Failing to lock out triceps fully at peak contraction.');
-  } else if (name.includes('lunge') || name.includes('split squat')) {
-    mistakes.push('Letting front knee collapse inwards or driving solely through toes.');
-    mistakes.push('Leaning aggressively sideways instead of keeping pelvis squared.');
-  } else if (name.includes('crunch') || name.includes('leg raise') || name.includes('sit-up')) {
-    mistakes.push('Pulling on the neck with hands instead of flexing the spine using abdominal contraction.');
-    mistakes.push('Swinging legs using hip flexor momentum rather than rolling the pelvis.');
+    mistakes.push('Using excessive momentum and swinging the torso.');
+    mistakes.push('Leading with the hands instead of elbows, engaging the upper traps excessively.');
+  } else if (name.includes('push-up') || name.includes('pushup')) {
+    mistakes.push('Allowing hips to sag and lumbar spine to hyperextend, losing core tension.');
+    mistakes.push('Short-changing the range of motion by not bringing the chest close to the floor.');
+  } else if (name.includes('dip')) {
+    mistakes.push('Descending too deeply with flared elbows, hyperextending anterior shoulder capsules.');
+    mistakes.push('Kicking the legs or swinging for momentum instead of clean vertical pressing.');
   } else {
-    mistakes.push('Using rapid momentum rather than a 2-second controlled eccentric tempo.');
-    mistakes.push('Neglecting core bracing throughout the full range of motion.');
+    mistakes.push('Rushing through repetitions without a controlled 2-3 second eccentric tempo.');
+    mistakes.push('Failing to brace core and breathing erratically during execution.');
   }
 
   return mistakes;
 }
 
-const CHECKLIST_EXERCISES = [
-  // CHEST
+export function deriveDefaults(name, equipment, difficulty) {
+  const n = name.toLowerCase();
+  if (n.includes('deadlift') || n.includes('squat') || (n.includes('bench press') && equipment === 'BARBELL')) {
+    return { defaultSets: 4, defaultReps: '5-8' };
+  }
+  if (n.includes('press') || n.includes('row') || n.includes('pulldown')) {
+    return { defaultSets: 3, defaultReps: '8-10' };
+  }
+  if (n.includes('curl') || n.includes('extension') || n.includes('raise') || n.includes('fly')) {
+    return { defaultSets: 3, defaultReps: '10-15' };
+  }
+  if (n.includes('push-up') || n.includes('crunch') || n.includes('plank')) {
+    return { defaultSets: 3, defaultReps: '12-20' };
+  }
+  return { defaultSets: 3, defaultReps: '8-12' };
+}
+
+// Curated indispensable exercises to guarantee completeness & accurate machine taxonomy
+export const CURATED_CANONICAL_EXERCISES = [
+  // --- CHEST MACHINES & BENCH PRESSES ---
   {
     name: 'Barbell Bench Press',
     primaryMuscle: 'CHEST',
     secondaryMuscles: 'TRICEPS,SHOULDERS',
     equipment: 'BARBELL',
     difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    chestRegion: 'Mid',
     mediaUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600',
     thumbnailUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
     steps: [
-      'Lie flat on the bench with eyes directly under the racked bar. Plant feet firmly on the floor.',
-      'Grip the bar slightly wider than shoulder-width with thumbs wrapped securely.',
-      'Unrack the bar, retract and depress your scapulae, and bring bar directly over upper chest.',
-      'Lower the bar with controlled tempo to touch your mid-to-lower sternum with elbows tucked at 45-75 degrees.',
-      'Press powerfully upward driving through your chest and triceps back to starting position.'
-    ],
-    mistakes: [
-      'Bouncing the bar violently off the sternum.',
-      'Flaring elbows outward 90 degrees risking shoulder impingement.',
-      'Lifting glutes off the bench to cheat leverage.'
+      'Lie flat on the bench with eyes directly beneath the racked barbell. Plant feet flat and drive into the floor.',
+      'Grip the bar just wider than shoulder-width with wrists straight. Retract and depress scapulae firmly against bench pad.',
+      'Unrack the bar and stabilize it directly over sternum with locked elbows and braced core.',
+      'Lower bar in controlled diagonal arc touching mid-sternum while maintaining 45 to 70 degree elbow angle.',
+      'Drive bar forcefully up and slightly back toward shoulder joint line to full lockout.'
     ],
     defaultSets: 4,
     defaultReps: '6-8'
   },
   {
-    name: 'Incline Dumbbell Press',
+    name: 'Machine Chest Press',
     primaryMuscle: 'CHEST',
-    secondaryMuscles: 'SHOULDERS,TRICEPS',
-    equipment: 'DUMBBELL',
-    difficulty: 'INTERMEDIATE',
-    mediaUrl: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400',
+    secondaryMuscles: 'TRICEPS,SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    chestRegion: 'Mid',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Bench_Press/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Machine_Bench_Press/0.jpg',
     steps: [
-      'Set an adjustable bench to an incline of 30 degrees (avoid steep 45+ degree angles).',
-      'Kick dumbbells up to shoulder level using your knees as you lie back.',
-      'Press dumbbells up in a slight arc until arms are extended but not hyper-locked.',
-      'Lower weights smoothly until you feel an active stretch in the upper clavicular pectoralis.',
-      'Press back up while driving your feet through the floor and keeping ribcage proud.'
-    ],
-    mistakes: [
-      'Setting bench angle too high (>45°), turning it into a front delt press.',
-      'Clanking dumbbells together at the top losing muscular tension.'
+      'Adjust seat height so machine handles align with mid-chest level.',
+      'Plant feet firmly flat on floor and press upper back and hips into backrest pad.',
+      'Grasp handles with firm grip and press outward smoothly along fixed guided motion path until arms extend without elbow hyperextension.',
+      'Pause for 1 second at peak pectoral contraction.',
+      'Control eccentric return with 2-3s tempo back until chest reaches deep comfortable stretch.'
     ],
     defaultSets: 3,
     defaultReps: '8-12'
   },
-  // BACK
   {
-    name: 'Conventional Barbell Deadlift',
-    primaryMuscle: 'BACK',
-    secondaryMuscles: 'HAMSTRINGS,GLUTES,FOREARMS,TRAPS',
-    equipment: 'BARBELL',
-    difficulty: 'ADVANCED',
-    mediaUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
+    name: 'Incline Machine Chest Press',
+    primaryMuscle: 'CHEST',
+    secondaryMuscles: 'TRICEPS,SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    chestRegion: 'Upper',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leverage_Incline_Chest_Press/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leverage_Incline_Chest_Press/0.jpg',
     steps: [
-      'Stand with mid-foot directly under the barbell, feet hip-width apart.',
-      'Hinge at hips, grip the bar just outside your knees with double overhand or hook grip.',
-      'Bring shins to touch the bar without moving it. Pull chest up, retract lats to pull out slack.',
-      'Take a deep diaphragmatic breath, brace core 360 degrees, and push floor away with your legs.',
-      'Lock out hips and knees simultaneously. Reverse movement by hinging hips back.'
+      'Adjust seat so handles sit right at upper clavicular chest level.',
+      'Drive shoulder blades down and back against 30-degree angled backrest pad.',
+      'Press handles upward and forward targeting upper pectoralis major.',
+      'Squeeze upper chest hard at peak lockout.',
+      'Lower weights slowly under controlled eccentric stretch.'
     ],
-    mistakes: [
-      'Rounding the lumbar spine under heavy loads.',
-      'Letting the bar drift forward away from shins and thighs.',
-      'Hyperextending the lumbar spine at lockout.'
-    ],
-    defaultSets: 4,
-    defaultReps: '5'
+    defaultSets: 3,
+    defaultReps: '8-12'
   },
   {
-    name: 'Lat Pulldown',
+    name: 'Decline Machine Chest Press',
+    primaryMuscle: 'CHEST',
+    secondaryMuscles: 'TRICEPS,SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    chestRegion: 'Lower',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leverage_Decline_Chest_Press/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leverage_Decline_Chest_Press/0.jpg',
+    steps: [
+      'Sit in decline chest press machine with hips back against lumbar support pad.',
+      'Grasp handles with neutral or pronated grip aligned with lower chest line.',
+      'Press downward and forward along machine arc until arms are extended.',
+      'Squeeze lower sternal head of chest at full extension.',
+      'Return slowly to starting stretch position.'
+    ],
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Pec Deck (Machine Chest Fly)',
+    primaryMuscle: 'CHEST',
+    secondaryMuscles: 'SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    chestRegion: 'Mid',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butterfly/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Butterfly/0.jpg',
+    steps: [
+      'Adjust seat so elbow pads or handles align horizontally with mid-sternum.',
+      'Rest forearms against pads or hold handles with a slight soft bend in elbows.',
+      'Squeeze chest muscles to bring pads/handles together in front of sternum in smooth arc.',
+      'Hold peak isometric squeeze hard for 1-2 seconds.',
+      'Return under complete control feeling deep pectoral eccentric stretch.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-15'
+  },
+  // --- SHOULDER MACHINES ---
+  {
+    name: 'Machine Shoulder Press',
+    primaryMuscle: 'SHOULDERS',
+    secondaryMuscles: 'TRICEPS,TRAPS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Shoulder_Military_Press/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Machine_Shoulder_Military_Press/0.jpg',
+    steps: [
+      'Adjust seat height so handles sit at ear height.',
+      'Press back firmly against pad and brace core.',
+      'Press handles straight overhead along machine track until arms extend.',
+      'Pause briefly overhead without shrugging traps excessively.',
+      'Lower weights smoothly down to ear level.'
+    ],
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Machine Lateral Raise',
+    primaryMuscle: 'SHOULDERS',
+    secondaryMuscles: 'TRAPS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400',
+    steps: [
+      'Sit upright on lateral raise machine with chest against support pad.',
+      'Rest outer arms against padded levers with elbows bent at 90 degrees.',
+      'Raise elbows outward and upward using lateral deltoids until upper arms reach parallel.',
+      'Hold peak contraction at top for 1 full second.',
+      'Slowly lower arms back to starting position resisting the weight stack.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Rear Delt Machine (Reverse Pec Deck)',
+    primaryMuscle: 'SHOULDERS',
+    secondaryMuscles: 'BACK,TRAPS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Machine_Flyes/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Reverse_Machine_Flyes/0.jpg',
+    steps: [
+      'Sit facing the pec deck machine pad with chest flat against backrest.',
+      'Hold handles with neutral or pronated grip and elbows soft.',
+      'Drive arms back horizontally in wide arc focusing purely on posterior deltoids.',
+      'Contract rear delts hard at full retraction.',
+      'Return slowly to forward starting position.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  // --- BACK MACHINES ---
+  {
+    name: 'Plate-Loaded Lat Pulldown Machine',
     primaryMuscle: 'BACK',
     secondaryMuscles: 'BICEPS,FOREARMS,SHOULDERS',
-    equipment: 'CABLE',
+    equipment: 'MACHINE',
     difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leverage_High_Row/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leverage_High_Row/0.jpg',
+    steps: [
+      'Adjust thigh pad snug against tops of thighs while sitting on seat.',
+      'Grasp divergent handles with wide overhead grip.',
+      'Pull handles downward and inward driving elbows towards hip pockets.',
+      'Squeeze lats tight at bottom of stroke.',
+      'Allow handles to travel back up fully stretching latissimus dorsi.'
+    ],
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Seated Machine Row',
+    primaryMuscle: 'BACK',
+    secondaryMuscles: 'BICEPS,TRAPS,FOREARMS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leverage_Iso_Row/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leverage_Iso_Row/0.jpg',
+    steps: [
+      'Adjust chest pad so arms can reach handles with full forward extension.',
+      'Sit upright, brace chest against pad, and grab handles.',
+      'Retract shoulder blades and pull elbows back past torso.',
+      'Squeeze rhomboids and middle back muscles firmly.',
+      'Extend arms slowly back to full forward stretch.'
+    ],
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Chest-Supported T-Bar Row Machine',
+    primaryMuscle: 'BACK',
+    secondaryMuscles: 'BICEPS,TRAPS,FOREARMS',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lying_T-Bar_Row/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Lying_T-Bar_Row/0.jpg',
+    steps: [
+      'Lie face down on inclined chest support pad with feet hooked securely on platform.',
+      'Grasp T-bar handles with overhand or neutral grip.',
+      'Pull elbows up and back driving through upper back and lats without lifting chest off pad.',
+      'Hold contraction at the top for 1 second.',
+      'Lower weight under complete control.'
+    ],
+    defaultSets: 4,
+    defaultReps: '8-10'
+  },
+  {
+    name: 'Assisted Pull-Up Machine',
+    primaryMuscle: 'BACK',
+    secondaryMuscles: 'BICEPS,FOREARMS,ABS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=400',
+    steps: [
+      'Select counterweight counter-balance on weight stack.',
+      'Kneel or stand on assisted lever platform and grasp pull-up bars with wide grip.',
+      'Pull chest up towards bar by driving elbows down to sides.',
+      'Pause at peak chin-over-bar position.',
+      'Lower body slowly until arms reach full extension.'
+    ],
+    defaultSets: 3,
+    defaultReps: '6-10'
+  },
+  {
+    name: 'Assisted Dip Machine',
+    primaryMuscle: 'CHEST',
+    secondaryMuscles: 'TRICEPS,SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    chestRegion: 'Lower',
     mediaUrl: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600',
     thumbnailUrl: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400',
     steps: [
-      'Adjust thigh pads so your legs are locked securely with flat feet.',
-      'Grip the bar slightly wider than shoulder width with an overhand grip.',
-      'Lean back slightly (10-15 degrees), depress your shoulder blades, and pull elbows straight down towards ribs.',
-      'Touch the bar to your upper chest while squeezing the latissimus dorsi.',
-      'Control the return upward with a 2-second stretch at the top.'
+      'Select desired assist weight on machine stack.',
+      'Mount platform and grip dip bars with palms facing inward.',
+      'Lean slightly forward to bias lower chest fibers.',
+      'Lower body until elbows reach 90 degrees.',
+      'Press forcefully through palms back to locked out arm position.'
     ],
-    mistakes: [
-      'Swinging backward with momentum to yank the weight down.',
-      'Pulling the bar behind the neck, causing excessive cervical spine strain.'
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Back Extension Machine',
+    primaryMuscle: 'BACK',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400',
+    steps: [
+      'Sit on back extension machine with feet flat on footrest and pad positioned against upper back.',
+      'Cross arms across chest or hold handles.',
+      'Push back against pad using spinal erectors until spine is in neutral upright alignment.',
+      'Hold contraction for 1 second.',
+      'Return slowly to forward flexed stretch position.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-15'
+  },
+  // --- QUAD & LEG MACHINES ---
+  {
+    name: '45-Degree Leg Press',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS,CALVES',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leg_Press/0.jpg',
+    steps: [
+      'Sit into 45-degree sled press with lower back and hips firmly planted against backrest.',
+      'Place feet shoulder-width apart in middle of sled footplate.',
+      'Disengage safety locks and lower sled slowly until knees bend to 90 degrees.',
+      'Drive forcefully through mid-foot and heels to press sled back up without hyperextending knees.'
+    ],
+    defaultSets: 4,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Horizontal Leg Press Machine',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400',
+    steps: [
+      'Sit in seated horizontal leg press machine with back pad adjusted so knees start at 90 degrees.',
+      'Place feet flat on footplate shoulder-width apart.',
+      'Press platform horizontally away until legs are fully extended.',
+      'Pause and slowly return seat sled back to starting stack position.'
     ],
     defaultSets: 3,
     defaultReps: '10-12'
   },
-  // TRAPS
   {
-    name: 'Barbell Shrug',
-    primaryMuscle: 'TRAPS',
-    secondaryMuscles: 'FOREARMS',
-    equipment: 'BARBELL',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400',
-    steps: [
-      'Stand upright holding a barbell at shoulder width in front of your thighs.',
-      'Keep arms straight without bending elbows.',
-      'Elevate your shoulders straight up toward your ears in a pure vertical plane.',
-      'Hold the peak contraction for 1-2 seconds, then lower under full control.'
-    ],
-    mistakes: [
-      'Rolling shoulders in circular motions which creates rotator cuff friction without extra trap loading.',
-      'Bending elbows to pull weight up.'
-    ],
-    defaultSets: 4,
-    defaultReps: '12-15'
-  },
-  {
-    name: 'Farmer\'s Walk',
-    primaryMuscle: 'TRAPS',
-    secondaryMuscles: 'FOREARMS,ABS,GLUTES',
-    equipment: 'DUMBBELL',
-    difficulty: 'INTERMEDIATE',
-    mediaUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400',
-    steps: [
-      'Deadlift heavy dumbbells or kettlebells from the floor with neutral posture.',
-      'Keep chest tall, shoulders packed down and back, and core braced tight.',
-      'Walk forward with steady, short, controlled heel-to-toe strides for 30-60 seconds.',
-      'Lower weights safely with a clean hip hinge.'
-    ],
-    mistakes: [
-      'Allowing shoulders to slump forward or hunching neck.',
-      'Taking long, unstable strides that compromise spinal alignment.'
-    ],
-    defaultSets: 3,
-    defaultReps: '40m walk'
-  },
-  // FOREARMS
-  {
-    name: 'Barbell Wrist Curl',
-    primaryMuscle: 'FOREARMS',
-    secondaryMuscles: 'BICEPS',
-    equipment: 'BARBELL',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400',
-    steps: [
-      'Sit on a bench resting your forearms on your thighs with wrists hanging just over your knees.',
-      'Hold a barbell with an underhand grip (palms up).',
-      'Lower the bar allowing it to roll down to your fingertips for a deep forearm stretch.',
-      'Curl wrists upward as high as possible while squeezing your forearm flexors.'
-    ],
-    mistakes: [
-      'Lifting forearms off your thighs during the curl.',
-      'Using jerky, bouncy motions that stress wrist tendons.'
-    ],
-    defaultSets: 3,
-    defaultReps: '15-20'
-  },
-  {
-    name: 'Dead Hang',
-    primaryMuscle: 'FOREARMS',
-    secondaryMuscles: 'BACK,SHOULDERS',
-    equipment: 'BODYWEIGHT',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=400',
-    steps: [
-      'Grab a pull-up bar using an overhand grip slightly wider than shoulders.',
-      'Hang freely with feet off the floor, allowing gravity to gently decompress spine.',
-      'Keep grip clenched tight while engaging core and breathing steadily for time.'
-    ],
-    mistakes: [
-      'Holding breath instead of diaphragmatic respiration.',
-      'Shrugging shoulders into ears without active shoulder depression.'
-    ],
-    defaultSets: 3,
-    defaultReps: '45-60s'
-  },
-  // INNER / OUTER THIGH
-  {
-    name: 'Seated Hip Adductor Machine',
-    primaryMuscle: 'QUADRICEPS',
-    secondaryMuscles: 'GLUTES',
+    name: 'Vertical Leg Press Machine',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS',
     equipment: 'MACHINE',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400',
-    steps: [
-      'Sit in machine with back firmly supported and inner thighs placed against the pads.',
-      'Adjust lever to comfortable wide spread for an active stretch in inner groin.',
-      'Squeeze thighs together inward until pads touch in front of you.',
-      'Hold peak squeeze for 1 second, then resist return slowly.'
-    ],
-    mistakes: [
-      'Allowing the weight stack to slam at the stretch position.',
-      'Lifting hips off seat during the squeeze.'
-    ],
-    defaultSets: 3,
-    defaultReps: '12-15'
-  },
-  {
-    name: 'Seated Hip Abductor Machine',
-    primaryMuscle: 'GLUTES',
-    secondaryMuscles: 'QUADRICEPS',
-    equipment: 'MACHINE',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400',
-    steps: [
-      'Sit upright with back supported and outer thighs against pads.',
-      'Push thighs outward laterally against resistance focusing on outer gluteus medius.',
-      'Pause at maximum abduction, then slowly control return to center.'
-    ],
-    mistakes: [
-      'Using aggressive jerky momentum instead of isolated outer hip contraction.'
-    ],
-    defaultSets: 3,
-    defaultReps: '12-15'
-  },
-  // OLYMPIC & FULL BODY
-  {
-    name: 'Barbell Power Clean',
-    primaryMuscle: 'BACK',
-    secondaryMuscles: 'TRAPS,GLUTES,HAMSTRINGS,SHOULDERS,QUADRICEPS',
-    equipment: 'BARBELL',
     difficulty: 'ADVANCED',
-    mediaUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400',
     steps: [
-      'Start in a deadlift stance with bar over mid-foot, hook grip on the bar.',
-      'Pull bar smoothly off the floor to mid-thigh maintaining upright torso angle.',
-      'Explosively extend hips, knees, and ankles (triple extension) with an aggressive trap shrug.',
-      'Pull yourself rapidly under the bar, snapping elbows forward to catch bar on front deltoids in a quarter squat.',
-      'Stand fully erect, then return bar safely.'
-    ],
-    mistakes: [
-      'Catching the bar with low, drooping elbows risking wrist injury.',
-      'Reverse-curling the bar rather than driving with triple hip extension.'
-    ],
-    defaultSets: 4,
-    defaultReps: '3-5'
-  },
-  {
-    name: 'Barbell Thruster',
-    primaryMuscle: 'QUADRICEPS',
-    secondaryMuscles: 'SHOULDERS,GLUTES,TRICEPS,ABS',
-    equipment: 'BARBELL',
-    difficulty: 'ADVANCED',
-    mediaUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400',
-    steps: [
-      'Rest barbell in front rack position across anterior deltoids, elbows high.',
-      'Descend into a full front squat below parallel with knees tracking toes.',
-      'Drive aggressively upward out of the squat, using leg drive to propel bar overhead.',
-      'Lock out arms completely overhead in one fluid transition.',
-      'Lower bar smoothly back to shoulders as you prepare for the next descent.'
-    ],
-    mistakes: [
-      'Pausing at the top of the squat before pressing instead of a continuous fluid kinetic chain.',
-      'Collapsing chest forward during the squat descent.'
+      'Lie flat on back on floor pad with legs extended directly upward toward vertical carriage.',
+      'Place feet shoulder-width flat on platform.',
+      'Unlock safeties and lower carriage straight down towards chest with strict control.',
+      'Press carriage straight up using quads and glutes.'
     ],
     defaultSets: 3,
     defaultReps: '8-10'
   },
   {
-    name: 'Kettlebell Swing',
-    primaryMuscle: 'GLUTES',
-    secondaryMuscles: 'HAMSTRINGS,BACK,FOREARMS,ABS',
-    equipment: 'KETTLEBELL',
+    name: 'Hack Squat Machine',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS,CALVES',
+    equipment: 'MACHINE',
     difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hack_Squat/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Hack_Squat/0.jpg',
+    steps: [
+      'Position shoulders under padded shoulder rests with back flat against sled pad.',
+      'Place feet shoulder-width on platform slightly forward to bias quadriceps.',
+      'Release safety levers and squat down until thighs are parallel to footplate.',
+      'Drive through mid-foot and heels to return sled to upright starting position.'
+    ],
+    defaultSets: 4,
+    defaultReps: '8-12'
+  },
+  {
+    name: 'Smith Machine Squat',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES,HAMSTRINGS',
+    equipment: 'SMITH_MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Squat/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Smith_Machine_Squat/0.jpg',
+    steps: [
+      'Position bar on upper traps across shoulders inside Smith machine frame.',
+      'Place feet slightly out in front of hips to maximize knee flexion and quad recruitment.',
+      'Rotate bar off safety hooks and descend into deep squat until hips break parallel.',
+      'Drive straight up against the guided vertical track.'
+    ],
+    defaultSets: 4,
+    defaultReps: '8-10'
+  },
+  {
+    name: 'Leg Extension Machine',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'CALVES',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Leg_Extensions/0.jpg',
+    steps: [
+      'Adjust back pad so knees align directly with machine pivot axis.',
+      'Hook shins behind padded lever arm just above ankles.',
+      'Extend legs upward until knees are straight, squeezing rectus femoris hard at peak lockout.',
+      'Hold contraction for 1 second.',
+      'Lower weights smoothly through 2-3s eccentric return.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  // --- HAMSTRING MACHINES ---
+  {
+    name: 'Seated Leg Curl Machine',
+    primaryMuscle: 'HAMSTRINGS',
+    secondaryMuscles: 'CALVES',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Leg_Curl/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Seated_Leg_Curl/0.jpg',
+    steps: [
+      'Adjust thigh hold-down pad tight against quadriceps to prevent hip lift.',
+      'Position lower leg pad against Achilles tendon behind ankles.',
+      'Curl heels downward and back toward seat squeezing hamstrings hard.',
+      'Pause at full flexion.',
+      'Slowly extend legs back to starting stretch position.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-15'
+  },
+  {
+    name: 'Lying Leg Curl Machine',
+    primaryMuscle: 'HAMSTRINGS',
+    secondaryMuscles: 'CALVES',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Lying_Leg_Curls/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Lying_Leg_Curls/0.jpg',
+    steps: [
+      'Lie face down on contoured bench with knee caps just off bottom of pad.',
+      'Position lever pad against lower calves/Achilles tendon.',
+      'Grip side handles and curl heels up toward glutes without arching lower back.',
+      'Squeeze hamstrings at the top.',
+      'Lower weight smoothly under control.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-12'
+  },
+  {
+    name: 'Standing Leg Curl Machine',
+    primaryMuscle: 'HAMSTRINGS',
+    secondaryMuscles: 'CALVES',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Leg_Curl/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Standing_Leg_Curl/0.jpg',
+    steps: [
+      'Stand facing machine with front of thigh against support pad.',
+      'Place back of active ankle against roller pad.',
+      'Curl lower leg up toward glute while keeping working hip forward.',
+      'Hold peak squeeze for 1 second.',
+      'Lower slowly back to straight leg position and switch sides.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-12'
+  },
+  // --- GLUTE & HIP MACHINES ---
+  {
+    name: 'Hip Abduction Machine',
+    primaryMuscle: 'GLUTES',
+    secondaryMuscles: 'QUADS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Thigh_Abductor/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Thigh_Abductor/0.jpg',
+    steps: [
+      'Sit in machine with pads resting against outer knees and thighs.',
+      'Press knees outward against pads spreading legs wide against stack resistance.',
+      'Squeeze gluteus medius and minimus hard at full abduction.',
+      'Slowly return knees together without letting weight stack touch down.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Hip Adduction Machine',
+    primaryMuscle: 'QUADS',
+    secondaryMuscles: 'GLUTES',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Thigh_Adductor/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Thigh_Adductor/0.jpg',
+    steps: [
+      'Sit in machine with pads positioned against inner knees and thighs.',
+      'Open legs to comfortable wide stretch.',
+      'Squeeze inner thighs together driving knees inward until pads touch.',
+      'Hold contraction for 1 second.',
+      'Control eccentric spread back to start.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Glute Kickback Machine',
+    primaryMuscle: 'GLUTES',
+    secondaryMuscles: 'HAMSTRINGS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400',
+    steps: [
+      'Position chest and forearms on support pads with working foot hooked on lever footplate.',
+      'Drive foot straight back and up contracting gluteus maximus.',
+      'Squeeze glute hard at top of kick.',
+      'Return knee slowly forward under control.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Plate-Loaded Hip Thrust Machine',
+    primaryMuscle: 'GLUTES',
+    secondaryMuscles: 'HAMSTRINGS,QUADS',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400',
+    steps: [
+      'Sit into hip thrust machine with upper back on pivot bench and strap/lever secured across hips.',
+      'Plant feet flat shoulder-width on platform.',
+      'Drive through heels to extend hips fully upward to neutral horizontal lock.',
+      'Squeeze glutes hard at the top without hyperextending lumbar spine.',
+      'Lower hips back down with controlled cadence.'
+    ],
+    defaultSets: 4,
+    defaultReps: '8-12'
+  },
+  // --- CALF MACHINES ---
+  {
+    name: 'Seated Calf Raise Machine',
+    primaryMuscle: 'CALVES',
+    secondaryMuscles: '',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Calf_Raise/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Seated_Calf_Raise/0.jpg',
+    steps: [
+      'Sit on machine with balls of feet on foot bar and thigh pads resting over lower thighs.',
+      'Release safety bar and lower heels as far as comfortable for deep soleus stretch.',
+      'Drive through balls of feet lifting heels as high as possible into full plantarflexion.',
+      'Hold contraction at the top for 1-2 seconds.',
+      'Lower slowly back to deep stretch.'
+    ],
+    defaultSets: 4,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Standing Calf Raise Machine',
+    primaryMuscle: 'CALVES',
+    secondaryMuscles: '',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Standing_Calf_Raises/0.jpg',
+    steps: [
+      'Stand with balls of feet on step block and shoulder pads resting comfortably across shoulders.',
+      'Lower heels below platform level for complete gastrocnemius stretch.',
+      'Push forcefully through toes raising body straight up.',
+      'Pause at peak calf contraction.',
+      'Lower under complete control.'
+    ],
+    defaultSets: 4,
+    defaultReps: '10-15'
+  },
+  {
+    name: 'Calf Press on Leg Press Machine',
+    primaryMuscle: 'CALVES',
+    secondaryMuscles: '',
+    equipment: 'MACHINE',
+    difficulty: 'INTERMEDIATE',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg',
+    steps: [
+      'Sit into leg press machine with legs almost fully extended.',
+      'Place balls of feet on bottom edge of footplate with heels hanging free.',
+      'Press sled forward using ankles only.',
+      'Hold peak squeeze for 1 second.',
+      'Allow toes to flex backward for deep calf stretch without bending knees.'
+    ],
+    defaultSets: 4,
+    defaultReps: '12-15'
+  },
+  // --- ARM MACHINES ---
+  {
+    name: 'Preacher Curl Machine',
+    primaryMuscle: 'BICEPS',
+    secondaryMuscles: 'FOREARMS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Preacher_Curls/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Machine_Preacher_Curls/0.jpg',
+    steps: [
+      'Sit into preacher machine with armpits resting snug at top of preacher pad.',
+      'Grip handles with palms facing upward.',
+      'Curl handles upward toward shoulders isolating biceps brachii.',
+      'Squeeze biceps hard at peak flexion.',
+      'Lower handles back down until arms are nearly fully extended.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-12'
+  },
+  {
+    name: 'Triceps Extension Machine',
+    primaryMuscle: 'TRICEPS',
+    secondaryMuscles: 'FOREARMS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Machine_Triceps_Extension/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Machine_Triceps_Extension/0.jpg',
+    steps: [
+      'Sit with upper arms resting flat on angled support pad.',
+      'Grasp handles with neutral or overhand grip.',
+      'Extend arms downward pushing handles forward until elbows lock out.',
+      'Contract triceps heads intensely at bottom of stroke.',
+      'Slowly allow handles to rise back to starting 90-degree elbow bend.'
+    ],
+    defaultSets: 3,
+    defaultReps: '10-12'
+  },
+  {
+    name: 'Triceps Dip Machine',
+    primaryMuscle: 'TRICEPS',
+    secondaryMuscles: 'CHEST,SHOULDERS',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'COMPOUND',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dip_Machine/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Dip_Machine/0.jpg',
+    steps: [
+      'Sit upright with back against pad and grip handles beside hips.',
+      'Lock thighs under support roller pads.',
+      'Press handles down by extending elbows until arms are straight.',
+      'Hold contraction at the bottom for 1 second.',
+      'Return slowly to chest height.'
+    ],
+    defaultSets: 3,
+    defaultReps: '8-12'
+  },
+  // --- CORE & ABS MACHINES ---
+  {
+    name: 'Ab Crunch Machine',
+    primaryMuscle: 'ABS',
+    secondaryMuscles: '',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
+    mediaUrl: 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Ab_Crunch_Machine/0.jpg',
+    thumbnailUrl: 'https://cdn.jsdelivr.net/gh/yuhonas/free-exercise-db@main/exercises/Ab_Crunch_Machine/0.jpg',
+    steps: [
+      'Sit in ab machine with feet hooked behind ankle rollers and hands grasping chest/shoulder handles.',
+      'Exhale and contract abdominal wall curling torso forward bringing ribs toward pelvis.',
+      'Hold peak isometric abdominal contraction for 1-2 seconds.',
+      'Slowly return to upright position while inhaling.'
+    ],
+    defaultSets: 3,
+    defaultReps: '12-15'
+  },
+  {
+    name: 'Torso Rotation Machine',
+    primaryMuscle: 'ABS',
+    secondaryMuscles: '',
+    equipment: 'MACHINE',
+    difficulty: 'BEGINNER',
+    movementType: 'ISOLATION',
     mediaUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600',
     thumbnailUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400',
     steps: [
-      'Stand feet shoulder-width apart, kettlebell placed 1 foot in front on floor.',
-      'Hinge at hips, reach forward with both hands and tilt bell towards you.',
-      'Hike bell between your legs like a center in football.',
-      'Snap hips forward with powerful glute contraction to propel bell to chest level.',
-      'Let bell swing back naturally into the hip hinge without squatting.'
-    ],
-    mistakes: [
-      'Squatting the weight rather than performing a pure horizontal hip hinge.',
-      'Lifting with shoulders and arms rather than hip drive.'
-    ],
-    defaultSets: 4,
-    defaultReps: '15-20'
-  },
-  // CARDIO
-  {
-    name: 'Rowing Machine Intervals',
-    primaryMuscle: 'CARDIO',
-    secondaryMuscles: 'BACK,LEGS,BICEPS,ABS',
-    equipment: 'MACHINE',
-    difficulty: 'INTERMEDIATE',
-    mediaUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400',
-    steps: [
-      'Catch: Sit tall, shins vertical, arms extended forward, hinge slightly forward from hips.',
-      'Drive: Push explosively through feet and legs first, then swing torso back, and finish with arms pulling handle to sternum.',
-      'Finish: Legs straight, slight backward body lean, handle at lower ribs.',
-      'Recovery: Extend arms, hinge torso forward, then slide knees forward back to catch in a smooth 1:2 drive-to-recovery ratio.'
-    ],
-    mistakes: [
-      'Bending knees before arms have cleared during recovery phase.',
-      'Pulling with arms before legs have completed the drive.'
-    ],
-    defaultSets: 5,
-    defaultReps: '500m split'
-  },
-  {
-    name: 'Jump Rope',
-    primaryMuscle: 'CARDIO',
-    secondaryMuscles: 'CALVES,FOREARMS,SHOULDERS',
-    equipment: 'BODYWEIGHT',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=400',
-    steps: [
-      'Hold handles at hip height with elbows tucked close to torso.',
-      'Rotate rope using quick wrist flicks rather than large arm circles.',
-      'Bound softly on balls of feet 1-2 inches off floor with slight knee bend.',
-      'Maintain rhythm with relaxed breathing for set duration.'
-    ],
-    mistakes: [
-      'Jumping too high and landing heavily on flat feet or heels.',
-      'Swinging arms from elbows or shoulders rather than wrists.'
-    ],
-    defaultSets: 4,
-    defaultReps: '60s'
-  },
-  // MOBILITY
-  {
-    name: 'World\'s Greatest Stretch',
-    primaryMuscle: 'HAMSTRINGS',
-    secondaryMuscles: 'GLUTES,BACK,SHOULDERS,QUADRICEPS',
-    equipment: 'BODYWEIGHT',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400',
-    steps: [
-      'Step into a deep forward lunge with right foot forward and left leg extended back.',
-      'Place left hand on floor inside right foot. Drop right elbow down toward right instep to open hip.',
-      'Rotate torso toward front knee and reach right arm straight up toward ceiling.',
-      'Follow hand with eyes and hold for 2-3 breaths. Switch sides.'
-    ],
-    mistakes: [
-      'Rushing through positions without relaxing into the stretch.',
-      'Letting front foot roll onto edge rather than staying grounded.'
+      'Sit in rotary torso machine with knees hooked securely against thigh pads.',
+      'Hold chest handles with spine tall.',
+      'Rotate torso smoothly to one side by contracting internal and external obliques.',
+      'Pause at peak rotation for 1 second.',
+      'Return under control to center and repeat on opposite side.'
     ],
     defaultSets: 3,
-    defaultReps: '5 per side'
-  },
-  {
-    name: 'Cat-Cow Mobility Flow',
-    primaryMuscle: 'BACK',
-    secondaryMuscles: 'ABS,SHOULDERS',
-    equipment: 'BODYWEIGHT',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400',
-    steps: [
-      'Start on hands and knees with wrists under shoulders and knees under hips.',
-      'Inhale: Drop belly toward floor, lift chest, arch back, and look up (Cow Pose).',
-      'Exhale: Tuck chin to chest, round spine toward ceiling, and pull navel to spine (Cat Pose).',
-      'Move fluidly with breath for 10-15 cycles.'
-    ],
-    mistakes: [
-      'Forcing end-range cervical hyperextension.',
-      'Locking out elbows instead of maintaining a soft flex.'
-    ],
-    defaultSets: 2,
-    defaultReps: '10 cycles'
-  },
-  {
-    name: '90/90 Hip Mobility',
-    primaryMuscle: 'GLUTES',
-    secondaryMuscles: 'QUADRICEPS,HAMSTRINGS',
-    equipment: 'BODYWEIGHT',
-    difficulty: 'BEGINNER',
-    mediaUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600',
-    thumbnailUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400',
-    steps: [
-      'Sit on floor with front leg bent at 90-degree angle and back leg bent at 90-degree angle.',
-      'Keep torso tall with proud chest, squaring shoulders toward front shin.',
-      'Hinge forward from hips over front leg to stretch lead hip, hold 30s.',
-      'Transition smoothly across center to opposite side without using hands if possible.'
-    ],
-    mistakes: [
-      'Slumping and rounding lumbar spine rather than hinging at hips.'
-    ],
-    defaultSets: 2,
-    defaultReps: '45s per side'
+    defaultReps: '12-15'
   }
 ];
 
-function deriveDefaults(exercise) {
-  const diff = exercise.difficulty;
-  const eq = exercise.equipment;
-  if (eq === 'BARBELL' && (exercise.name.toLowerCase().includes('deadlift') || exercise.name.toLowerCase().includes('squat') || exercise.name.toLowerCase().includes('bench'))) {
-    return { defaultSets: 4, defaultReps: '5-8' };
-  }
-  if (diff === 'ADVANCED') {
-    return { defaultSets: 4, defaultReps: '6-10' };
-  }
-  if (diff === 'BEGINNER') {
-    return { defaultSets: 3, defaultReps: '10-12' };
-  }
-  return { defaultSets: 3, defaultReps: '8-12' };
-}
+export async function run() {
+  console.log('--- FitTrack Exercise Library Importer Starting ---');
 
-async function run() {
-  console.log('Fetching open exercise database from:', DATASET_URL);
-  const resp = await fetch(DATASET_URL);
-  if (!resp.ok) {
-    throw new Error(`Failed to fetch dataset: ${resp.status} ${resp.statusText}`);
+  // 1. Fetch free-exercise-db dataset
+  let rawDataset = [];
+  try {
+    console.log(`Fetching open dataset from: ${DATASET_URL}`);
+    const res = await fetch(DATASET_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    rawDataset = await res.json();
+    console.log(`Successfully fetched ${rawDataset.length} exercises from free-exercise-db.`);
+  } catch (err) {
+    console.warn(`Dataset fetch failed (${err.message}). Using local backup if present.`);
+    const backupPath = path.resolve('backend/src/main/resources/data/exercises_seed.json');
+    if (fs.existsSync(backupPath)) {
+      rawDataset = JSON.parse(fs.readFileSync(backupPath, 'utf-8'));
+      console.log(`Loaded ${rawDataset.length} exercises from local backup.`);
+    }
   }
-  const rawData = await resp.json();
-  console.log(`Fetched ${rawData.length} raw exercises.`);
 
-  // Process & Deduplicate
-  const seenNames = new Set();
   const processed = [];
+  const seenNames = new Set();
 
-  // Seed checklist items first
-  for (const item of CHECKLIST_EXERCISES) {
-    const lowerKey = item.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-    seenNames.add(lowerKey);
-    const secList = item.secondaryMuscles ? item.secondaryMuscles.split(',') : [];
-    processed.push({
-      id: item.name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, ''),
+  function registerExercise(ex) {
+    const key = ex.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (seenNames.has(key)) return false;
+    seenNames.add(key);
+    processed.push(ex);
+    return true;
+  }
+
+  // A. First register all curated canonical exercises
+  for (const item of CURATED_CANONICAL_EXERCISES) {
+    const primaryGroup = normalizeMuscle(item.primaryMuscle);
+    const secList = (item.secondaryMuscles || '').split(',').map(normalizeMuscle).filter(m => m !== primaryGroup && m.length > 0);
+    const uniqueSec = [...new Set(secList)];
+    const equip = normalizeEquipment(item.equipment, item.name);
+    const mvType = item.movementType || deriveMovementType(item.name, primaryGroup, equip);
+    const chRegion = item.chestRegion || deriveChestRegion(item.name, primaryGroup);
+
+    registerExercise({
+      id: item.name.toLowerCase().replace(/[^a-z0-9]+/g, '_'),
       name: item.name,
-      primaryMuscle: item.primaryMuscle,
-      primaryMuscles: [item.primaryMuscle],
-      secondaryMuscles: item.secondaryMuscles || '',
-      secondaryMusclesList: secList,
-      equipment: item.equipment,
-      difficulty: item.difficulty,
-      mediaUrl: item.mediaUrl,
-      mediaUrl2: item.mediaUrl,
-      thumbnailUrl: item.thumbnailUrl,
+      primaryMuscle: primaryGroup,
+      primaryMuscles: [primaryGroup],
+      secondaryMuscles: uniqueSec.join(','),
+      secondaryMusclesList: uniqueSec,
+      equipment: equip,
+      difficulty: item.difficulty || 'INTERMEDIATE',
+      movementType: mvType,
+      chestRegion: chRegion,
+      mediaUrl: item.mediaUrl || null,
+      thumbnailUrl: item.thumbnailUrl || null,
       steps: item.steps,
-      mistakes: item.mistakes,
-      defaultSets: item.defaultSets,
-      defaultReps: item.defaultReps,
-      formTips: item.steps[0] || 'Maintain proper form and controlled tempo.',
+      mistakes: deriveMistakes({ name: item.name }),
+      defaultSets: item.defaultSets || 3,
+      defaultReps: item.defaultReps || '8-12',
+      formTips: item.steps[0] || 'Maintain controlled form throughout range.',
       isCustom: false,
-      attribution: 'FitTrack Curated Core Exercise Library & Anatomy Form Standard'
+      attribution: 'FitTrack Core Canonical Library & Anatomy Standard (CC0 / Public Domain)'
     });
   }
 
-  for (const item of rawData) {
-    const cleanName = item.name.trim();
-    const lowerKey = cleanName.toLowerCase().replace(/[^a-z0-9]/g, '');
-    if (seenNames.has(lowerKey)) continue;
-    seenNames.add(lowerKey);
+  // B. Process and merge open dataset exercises
+  for (const item of rawDataset) {
+    let cleanName = (item.name || '').trim();
+    if (!cleanName) continue;
 
-    const primaryGroup = normalizeMuscle(item.primaryMuscles?.[0] || 'CHEST');
-    const secondaryList = (item.secondaryMuscles || []).map(normalizeMuscle).filter(m => m !== primaryGroup);
-    const uniqueSecondary = [...new Set(secondaryList)];
+    // Fix specific known tagging issues in raw dataset
+    let overridePrimary = null;
+    let overrideSecondary = null;
+    let overrideChestRegion = null;
 
-    const equipment = normalizeEquipment(item.equipment);
-    const difficulty = normalizeDifficulty(item.level);
+    const lower = cleanName.toLowerCase();
+    if (lower === 'close-grip dumbbell press') {
+      overridePrimary = 'CHEST';
+      overrideSecondary = ['TRICEPS', 'SHOULDERS'];
+      overrideChestRegion = 'Inner';
+    } else if (lower === 'close-grip barbell bench press') {
+      overridePrimary = 'CHEST';
+      overrideSecondary = ['TRICEPS', 'SHOULDERS'];
+      overrideChestRegion = 'Inner';
+    } else if (lower.includes('diamond push-up') || lower.includes('diamond push up')) {
+      overridePrimary = 'CHEST';
+      overrideSecondary = ['TRICEPS', 'SHOULDERS', 'ABS'];
+      overrideChestRegion = 'Inner';
+    } else if (lower.includes('chest dip')) {
+      overridePrimary = 'CHEST';
+      overrideSecondary = ['TRICEPS', 'SHOULDERS'];
+      overrideChestRegion = 'Lower';
+    } else if (lower === 'cable incline pushdown') {
+      overridePrimary = 'TRICEPS';
+      overrideSecondary = ['FOREARMS'];
+    } else if (lower === 'backward drag') {
+      overridePrimary = 'QUADS';
+      overrideSecondary = ['CALVES', 'HAMSTRINGS'];
+    } else if (lower === 'low pulley row to neck') {
+      overridePrimary = 'BACK';
+      overrideSecondary = ['SHOULDERS', 'BICEPS'];
+    } else if (lower === 'split squats') {
+      overridePrimary = 'QUADS';
+      overrideSecondary = ['HAMSTRINGS', 'GLUTES', 'CALVES'];
+    } else if (lower === 'scapular pull-up') {
+      overridePrimary = 'BACK';
+      overrideSecondary = ['TRAPS', 'BICEPS'];
+    }
+
+    const rawPrimary = item.primaryMuscles?.[0] || item.primaryMuscle || 'CHEST';
+    const primaryGroup = overridePrimary || normalizeMuscle(rawPrimary);
+
+    let rawSecList = item.secondaryMusclesList || item.secondaryMuscles || [];
+    if (typeof rawSecList === 'string') rawSecList = rawSecList.split(',');
+    let secList = (overrideSecondary || rawSecList).map(normalizeMuscle).filter(m => m !== primaryGroup && m.length > 0);
+    const uniqueSec = [...new Set(secList)];
+
+    const equipment = normalizeEquipment(item.equipment, cleanName);
+    const difficulty = normalizeDifficulty(item.level || item.difficulty);
+    const movementType = item.movementType || deriveMovementType(cleanName, primaryGroup, equipment);
+    const chestRegion = overrideChestRegion || item.chestRegion || deriveChestRegion(cleanName, primaryGroup);
 
     const images = item.images || [];
-    const mediaUrl = images.length > 0 ? `${RAW_MEDIA_BASE}${images[0]}` : null;
-    const mediaUrl2 = images.length > 1 ? `${RAW_MEDIA_BASE}${images[1]}` : mediaUrl;
-    const thumbnailUrl = images.length > 0 ? `${CDN_MEDIA_BASE}${images[0]}` : null;
+    let mediaUrl = item.mediaUrl || (images.length > 0 ? `${RAW_MEDIA_BASE}${images[0]}` : null);
+    let thumbnailUrl = item.thumbnailUrl || (images.length > 0 ? `${CDN_MEDIA_BASE}${images[0]}` : null);
 
     const steps = (item.instructions && item.instructions.length > 0)
       ? item.instructions
-      : [
-          `Assume the correct setup position with appropriate resistance using ${equipment.toLowerCase().replace('_', ' ')}.`,
-          `Brace your core and initiate the movement with controlled technique focusing on the ${primaryGroup.toLowerCase()}.`,
-          `Reach peak contraction, pause for a brief moment, and return through the eccentric phase in a smooth 2-3 second count.`
-        ];
+      : (item.steps && item.steps.length > 0)
+        ? item.steps
+        : [
+            `Assume correct posture and stable base using ${equipment.toLowerCase().replace('_', ' ')}.`,
+            `Initiate movement smoothly targeting the ${primaryGroup.toLowerCase()}.`,
+            `Reach peak contraction, pause for 1 second, and return through eccentric stretch with 2-3s control.`
+          ];
 
-    const mistakes = deriveMistakes({ name: cleanName, primaryMuscles: [primaryGroup], equipment, difficulty });
-    const { defaultSets, defaultReps } = deriveDefaults({ name: cleanName, equipment, difficulty });
+    const mistakes = (item.mistakes && item.mistakes.length > 0)
+      ? item.mistakes
+      : deriveMistakes({ name: cleanName });
 
-    processed.push({
-      id: item.id || cleanName.toLowerCase().replace(/\s+/g, '_'),
+    const defaults = deriveDefaults(cleanName, equipment, difficulty);
+
+    registerExercise({
+      id: item.id || cleanName.toLowerCase().replace(/[^a-z0-9]+/g, '_'),
       name: cleanName,
       primaryMuscle: primaryGroup,
       primaryMuscles: [primaryGroup],
-      secondaryMuscles: uniqueSecondary.join(','),
-      secondaryMusclesList: uniqueSecondary,
+      secondaryMuscles: uniqueSec.join(','),
+      secondaryMusclesList: uniqueSec,
       equipment,
       difficulty,
+      movementType,
+      chestRegion,
       mediaUrl,
-      mediaUrl2,
       thumbnailUrl,
       steps,
       mistakes,
-      defaultSets,
-      defaultReps,
-      formTips: steps[0] || 'Maintain proper form and controlled tempo.',
+      defaultSets: item.defaultSets || defaults.defaultSets,
+      defaultReps: item.defaultReps || defaults.defaultReps,
+      formTips: steps[0] || 'Maintain proper posture and steady breathing.',
       isCustom: false,
-      attribution: 'Open dataset by free-exercise-db (Public Domain / The Unlicense). Creative Commons / Public Domain exercise media.'
+      attribution: item.attribution || 'Open dataset by free-exercise-db (The Unlicense / Public Domain).'
     });
   }
 
-  console.log(`Total deduplicated exercises: ${processed.length}`);
+  console.log(`\n=== IMPORT SUMMARY ===`);
+  console.log(`Total Deduplicated Exercises: ${processed.length}`);
 
-  // Group count check
-  const groupCounts = {};
+  const counts = {};
   for (const ex of processed) {
-    groupCounts[ex.primaryMuscle] = (groupCounts[ex.primaryMuscle] || 0) + 1;
+    counts[ex.primaryMuscle] = (counts[ex.primaryMuscle] || 0) + 1;
   }
-  console.log('Group counts:', groupCounts);
+  console.log('Count per Muscle Group:');
+  console.table(counts);
 
-  // Write out cleaned JSON
+  const equipCounts = {};
+  for (const ex of processed) {
+    equipCounts[ex.equipment] = (equipCounts[ex.equipment] || 0) + 1;
+  }
+  console.log('Count per Equipment:');
+  console.table(equipCounts);
+
+  // 1. Write full exercises_seed.json
   const outDir = path.resolve('backend/src/main/resources/data');
-  if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir, { recursive: true });
-  }
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+  const jsonPath = path.join(outDir, 'exercises_seed.json');
+  fs.writeFileSync(jsonPath, JSON.stringify(processed, null, 2), 'utf-8');
+  console.log(`\nWritten full JSON library (${processed.length} exercises) to: ${jsonPath}`);
 
-  const jsonOutPath = path.join(outDir, 'exercises_seed.json');
-  fs.writeFileSync(jsonOutPath, JSON.stringify(processed, null, 2), 'utf-8');
-  console.log(`Saved ${processed.length} exercises to ${jsonOutPath}`);
+  // 2. Generate Flyway migration V6
+  const migDir = path.resolve('backend/src/main/resources/db/migration');
+  if (!fs.existsSync(migDir)) fs.mkdirSync(migDir, { recursive: true });
+  const v6SqlPath = path.join(migDir, 'V6__fix_equipment_taxonomy_and_machine_exercises.sql');
 
-  // Also write SQL seed migration for Flyway
-  const migrationDir = path.resolve('backend/src/main/resources/db/migration');
-  if (!fs.existsSync(migrationDir)) {
-    fs.mkdirSync(migrationDir, { recursive: true });
-  }
-
-  // We will pick a curated core 120 exercises across all muscle groups for the SQL migration
-  // to ensure instant database bootstrap
-  const sqlOutPath = path.join(migrationDir, 'V3__seed_exercise_library.sql');
   const sqlLines = [
-    '-- V3__seed_exercise_library.sql',
-    '-- Seed 100+ normalized exercises across all 11 muscle groups + Traps + Cardio',
-    '-- Open dataset attribution: free-exercise-db (Public Domain / CC0)',
+    '-- V6__fix_equipment_taxonomy_and_machine_exercises.sql',
+    '-- Fix equipment taxonomy: Barbell, Dumbbell, Kettlebell, Machine, Cable, Smith Machine, Bodyweight, Band, Other',
+    '-- Fix tagging bugs and guarantee complete machine exercise suite',
     ''
   ];
 
-  // Group by muscle to select top 10-15 per muscle group
-  const byGroup = {};
   for (const ex of processed) {
-    if (!byGroup[ex.primaryMuscle]) byGroup[ex.primaryMuscle] = [];
-    byGroup[ex.primaryMuscle].push(ex);
-  }
-
-  const selectedForSql = [];
-  for (const grp of Object.keys(byGroup)) {
-    const list = byGroup[grp];
-    // take up to 14 of each group
-    selectedForSql.push(...list.slice(0, 14));
-  }
-
-  console.log(`Selected ${selectedForSql.length} exercises for SQL seed migration.`);
-
-  for (const ex of selectedForSql) {
     const nameEsc = ex.name.replace(/'/g, "''");
     const secEsc = ex.secondaryMuscles.replace(/'/g, "''");
     const mediaEsc = ex.mediaUrl ? `'${ex.mediaUrl.replace(/'/g, "''")}'` : 'NULL';
     const thumbEsc = ex.thumbnailUrl ? `'${ex.thumbnailUrl.replace(/'/g, "''")}'` : 'NULL';
     const tipsEsc = (ex.formTips || '').replace(/'/g, "''");
-    const attrEsc = ex.attribution.replace(/'/g, "''");
+    const attrEsc = (ex.attribution || '').replace(/'/g, "''");
     const stepsJson = JSON.stringify(ex.steps).replace(/'/g, "''");
     const mistakesJson = JSON.stringify(ex.mistakes).replace(/'/g, "''");
+    const mvType = ex.movementType || 'COMPOUND';
+    const chRegion = ex.chestRegion ? `'${ex.chestRegion}'` : 'NULL';
 
     sqlLines.push(
-      `MERGE INTO exercises (name, primary_muscle, secondary_muscles, equipment, difficulty, media_url, thumbnail_url, form_tips, steps_json, mistakes_json, default_sets, default_reps, is_custom, attribution)` +
-      ` KEY(name) VALUES ('${nameEsc}', '${ex.primaryMuscle}', '${secEsc}', '${ex.equipment}', '${ex.difficulty}', ${mediaEsc}, ${thumbEsc}, '${tipsEsc}', '${stepsJson}', '${mistakesJson}', ${ex.defaultSets}, '${ex.defaultReps}', FALSE, '${attrEsc}');`
+      `MERGE INTO exercises (name, primary_muscle, secondary_muscles, equipment, difficulty, movement_type, chest_region, media_url, thumbnail_url, form_tips, steps_json, mistakes_json, default_sets, default_reps, is_custom, attribution)` +
+      ` KEY(name) VALUES ('${nameEsc}', '${ex.primaryMuscle}', '${secEsc}', '${ex.equipment}', '${ex.difficulty}', '${mvType}', ${chRegion}, ${mediaEsc}, ${thumbEsc}, '${tipsEsc}', '${stepsJson}', '${mistakesJson}', ${ex.defaultSets}, '${ex.defaultReps}', FALSE, '${attrEsc}');`
     );
   }
 
-  fs.writeFileSync(sqlOutPath, sqlLines.join('\n'), 'utf-8');
-  console.log(`Generated SQL migration file with ${selectedForSql.length} seed statements at: ${sqlOutPath}`);
+  fs.writeFileSync(v6SqlPath, sqlLines.join('\n'), 'utf-8');
+  console.log(`Written Flyway migration V6 (${processed.length} exercises) to: ${v6SqlPath}`);
+  console.log('--- Import Complete Successfully ---');
 }
 
+// Run if called directly
 run().catch(err => {
-  console.error('Error running exercise import:', err);
+  console.error('Fatal error during import:', err);
   process.exit(1);
 });

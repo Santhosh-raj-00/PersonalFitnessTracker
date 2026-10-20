@@ -6,13 +6,29 @@ export const exerciseService = {
     query?: string,
     muscle?: string,
     equipment?: string,
-    difficulty?: string
+    difficulty?: string,
+    movementTypeOrSecondary?: string | boolean,
+    chestRegion?: string,
+    includeSecondaryParam?: boolean
   ): Promise<Exercise[]> => {
+    let movementType: string | undefined;
+    let includeSecondary: boolean | undefined;
+
+    if (typeof movementTypeOrSecondary === 'boolean') {
+      includeSecondary = movementTypeOrSecondary;
+    } else {
+      movementType = movementTypeOrSecondary;
+      includeSecondary = includeSecondaryParam;
+    }
+
     const params = new URLSearchParams();
     if (query && query.trim()) params.append('q', query.trim());
     if (muscle && muscle !== 'ALL') params.append('muscle', muscle);
     if (equipment && equipment !== 'ALL') params.append('equipment', equipment);
     if (difficulty && difficulty !== 'ALL') params.append('difficulty', difficulty);
+    if (movementType && movementType !== 'ALL') params.append('movementType', movementType);
+    if (chestRegion && chestRegion !== 'ALL') params.append('chestRegion', chestRegion);
+    if (includeSecondary) params.append('includeSecondary', 'true');
 
     const queryString = params.toString() ? `?${params.toString()}` : '';
     return apiFetch<Exercise[]>(`/exercises${queryString}`);
@@ -23,6 +39,8 @@ export const exerciseService = {
     muscle?: string;
     equipment?: string;
     difficulty?: string;
+    movementType?: string;
+    chestRegion?: string;
     page?: number;
     size?: number;
   }): Promise<PageResponse<Exercise>> => {
@@ -31,6 +49,8 @@ export const exerciseService = {
     if (options.muscle && options.muscle !== 'ALL') params.append('muscle', options.muscle);
     if (options.equipment && options.equipment !== 'ALL') params.append('equipment', options.equipment);
     if (options.difficulty && options.difficulty !== 'ALL') params.append('difficulty', options.difficulty);
+    if (options.movementType && options.movementType !== 'ALL') params.append('movementType', options.movementType);
+    if (options.chestRegion && options.chestRegion !== 'ALL') params.append('chestRegion', options.chestRegion);
     params.append('page', String(options.page ?? 0));
     params.append('size', String(options.size ?? 20));
 

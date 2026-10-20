@@ -63,7 +63,7 @@ public class DataSeederService implements CommandLineRunner {
     }
 
     private void seedExercises() {
-        // First try to load the 890+ dataset from data/exercises_seed.json
+        // Load the 900+ dataset from data/exercises_seed.json
         try (InputStream is = getClass().getResourceAsStream("/data/exercises_seed.json")) {
             if (is != null) {
                 ObjectMapper mapper = new ObjectMapper();
@@ -72,7 +72,6 @@ public class DataSeederService implements CommandLineRunner {
                 for (Map<String, Object> map : rawList) {
                     String name = (String) map.get("name");
                     String pMuscleStr = (String) map.get("primaryMuscle");
-                    if ("QUADS".equalsIgnoreCase(pMuscleStr)) pMuscleStr = "QUADRICEPS";
                     MuscleGroup pMuscle;
                     try {
                         pMuscle = MuscleGroup.valueOf(pMuscleStr);
@@ -84,7 +83,7 @@ public class DataSeederService implements CommandLineRunner {
                     try {
                         eq = Equipment.valueOf((String) map.get("equipment"));
                     } catch (Exception e) {
-                        eq = Equipment.MACHINE;
+                        eq = Equipment.OTHER;
                     }
                     Difficulty diff;
                     try {
@@ -102,10 +101,53 @@ public class DataSeederService implements CommandLineRunner {
                     String defaultReps = (String) map.get("defaultReps");
                     String attr = (String) map.get("attribution");
 
-                    Exercise ex = new Exercise(name, pMuscle, secMuscles, eq, diff, mediaUrl, thumbUrl, steps, mistakes, defaultSets, defaultReps, attr);
+                    Exercise ex = exerciseRepository.findByNameIgnoreCase(name).orElse(null);
+                    if (ex == null) {
+                        ex = new Exercise(name, pMuscle, secMuscles, eq, diff, mediaUrl, thumbUrl, steps, mistakes, defaultSets, defaultReps, attr);
+                    } else {
+                        ex.setPrimaryMuscle(pMuscle);
+                        ex.setSecondaryMuscles(secMuscles);
+                        ex.setEquipment(eq);
+                        ex.setDifficulty(diff);
+                        if (mediaUrl != null && !mediaUrl.isBlank()) ex.setMediaUrl(mediaUrl);
+                        if (thumbUrl != null && !thumbUrl.isBlank()) ex.setThumbnailUrl(thumbUrl);
+                        if (steps != null && !steps.isEmpty()) ex.setSteps(steps);
+                        if (mistakes != null && !mistakes.isEmpty()) ex.setMistakes(mistakes);
+                        if (defaultSets != null) ex.setDefaultSets(defaultSets);
+                        if (defaultReps != null) ex.setDefaultReps(defaultReps);
+                        if (attr != null) ex.setAttribution(attr);
+                    }
+
+                    String mvType = (String) map.get("movementType");
+                    if (mvType != null) ex.setMovementType(mvType);
+                    String chReg = (String) map.get("chestRegion");
+                    if (chReg != null) ex.setChestRegion(chReg);
+                    String animPattern = (String) map.get("animationPattern");
+                    if (animPattern != null) ex.setAnimationPattern(animPattern);
+                    String animParams = (String) map.get("animationParams");
+                    if (animParams != null) ex.setAnimationParams(animParams);
+                    String camView = (String) map.get("cameraView");
+                    if (camView != null) ex.setCameraView(camView);
+
+                    String mediaProv = (String) map.get("mediaProvider");
+                    if (mediaProv != null) ex.setMediaProvider(mediaProv);
+                    String mType = (String) map.get("mediaType");
+                    if (mType != null) ex.setMediaType(mType);
+                    String revStatus = (String) map.get("reviewStatus");
+                    if (revStatus != null) ex.setReviewStatus(revStatus);
+                    String postUrl = (String) map.get("posterUrl");
+                    if (postUrl != null) ex.setPosterUrl(postUrl);
+                    String src = (String) map.get("source");
+                    if (src != null) ex.setSource(src);
+                    String extId = (String) map.get("externalId");
+                    if (extId != null) ex.setExternalId(extId);
+
                     exercises.add(ex);
+
                 }
-                exerciseRepository.saveAll(exercises);
+                if (!exercises.isEmpty()) {
+                    exerciseRepository.saveAll(exercises);
+                }
                 return;
             }
         } catch (Exception ex) {
@@ -279,7 +321,7 @@ public class DataSeederService implements CommandLineRunner {
     }
 
     private void addRoutineEx(RoutineDay day, String exerciseName, int order, int sets, String reps, int restSec) {
-        exerciseRepository.searchExercises(exerciseName, null, "", null).stream().findFirst().ifPresent(ex -> {
+        exerciseRepository.findByNameIgnoreCase(exerciseName).ifPresent(ex -> {
             RoutineExercise re = new RoutineExercise(ex, order, sets, reps, restSec);
             re.setRoutineDay(day);
             day.getExercises().add(re);
@@ -316,9 +358,9 @@ public class DataSeederService implements CommandLineRunner {
         bodyMetricRepository.saveAll(metrics);
 
         // Seed Past Workout Sessions & PRs
-        Exercise bench = exerciseRepository.searchExercises("Barbell Bench Press", null, "", null).stream().findFirst().orElse(null);
-        Exercise squat = exerciseRepository.searchExercises("Barbell Back Squat", null, "", null).stream().findFirst().orElse(null);
-        Exercise latPulldown = exerciseRepository.searchExercises("Lat Pulldown", null, "", null).stream().findFirst().orElse(null);
+        Exercise bench = exerciseRepository.findByNameIgnoreCase("Barbell Bench Press").orElse(null);
+        Exercise squat = exerciseRepository.findByNameIgnoreCase("Barbell Back Squat").orElse(null);
+        Exercise latPulldown = exerciseRepository.findByNameIgnoreCase("Lat Pulldown").orElse(null);
 
         if (bench != null && squat != null && latPulldown != null) {
             // Session 1: 5 days ago

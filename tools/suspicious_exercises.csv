@@ -1,0 +1,9 @@
+Name,CurrentPrimary,SecondaryMuscles,Equipment,Reasons
+"Front Raise And Pullover","CHEST","BACK,SHOULDERS,TRICEPS","BARBELL","Overhead press or delt raise but primary is CHEST (expected SHOULDERS)"
+"Kettlebell Turkish Get-Up (Squat style)","SHOULDERS","ABS,CALVES,HAMSTRINGS,QUADS,TRICEPS","KETTLEBELL","Contains 'squat' but primary is SHOULDERS (expected QUADS or GLUTES)"
+"Lower Back Curl","ABS","","BODYWEIGHT","Contains 'curl' but primary is ABS (expected BICEPS or FOREARMS)"
+"Push Up to Side Plank","CHEST","ABS,SHOULDERS,TRICEPS","BODYWEIGHT","Contains crunch/plank but primary is CHEST (expected ABS)"
+"Seated Hamstring and Calf Stretch","HAMSTRINGS","CALVES","OTHER","Contains calf/calves but primary is HAMSTRINGS (expected CALVES)"
+"Standing Hamstring and Calf Stretch","HAMSTRINGS","","OTHER","Contains calf/calves but primary is HAMSTRINGS (expected CALVES)"
+"Upright Barbell Row","SHOULDERS","TRAPS","BARBELL","Contains 'row' but primary is SHOULDERS (expected BACK)"
+"Upright Cable Row","TRAPS","SHOULDERS","CABLE","Contains 'row' but primary is TRAPS (expected BACK)"

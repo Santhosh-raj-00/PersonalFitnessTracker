@@ -3,10 +3,12 @@ package com.fittrack.model.enums;
 public enum Equipment {
     BARBELL,
     DUMBBELL,
-    CABLE,
-    MACHINE,
-    BODYWEIGHT,
-    SMITH_MACHINE,
     KETTLEBELL,
-    EZ_BAR
+    MACHINE,
+    CABLE,
+    SMITH_MACHINE,
+    BODYWEIGHT,
+    BAND,
+    OTHER,
+    EZ_BAR // Legacy alias mapped to BARBELL
 }

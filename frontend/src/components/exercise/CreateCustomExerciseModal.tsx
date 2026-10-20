@@ -13,26 +13,29 @@ const MUSCLE_OPTIONS: MuscleGroup[] = [
   'CHEST',
   'BACK',
   'SHOULDERS',
+  'TRAPS',
   'BICEPS',
   'TRICEPS',
   'FOREARMS',
   'ABS',
   'GLUTES',
-  'QUADRICEPS',
+  'QUADS',
   'HAMSTRINGS',
   'CALVES',
-  'TRAPS',
   'CARDIO',
+  'FULL_BODY',
 ];
 
 const EQUIPMENT_OPTIONS: Equipment[] = [
   'BARBELL',
   'DUMBBELL',
-  'CABLE',
-  'MACHINE',
-  'BODYWEIGHT',
-  'SMITH_MACHINE',
   'KETTLEBELL',
+  'MACHINE',
+  'CABLE',
+  'SMITH_MACHINE',
+  'BODYWEIGHT',
+  'BAND',
+  'OTHER',
   'EZ_BAR',
 ];
 
@@ -48,6 +51,8 @@ export const CreateCustomExerciseModal: React.FC<CreateCustomExerciseModalProps>
   const [secondaryMuscles, setSecondaryMuscles] = useState<string>('');
   const [equipment, setEquipment] = useState<Equipment>('BARBELL');
   const [difficulty, setDifficulty] = useState<Difficulty>('INTERMEDIATE');
+  const [movementType, setMovementType] = useState<'COMPOUND' | 'ISOLATION'>('COMPOUND');
+  const [chestRegion, setChestRegion] = useState<'Upper' | 'Mid' | 'Lower' | 'Inner'>('Mid');
   const [mediaUrl, setMediaUrl] = useState<string>('');
   const [stepsText, setStepsText] = useState<string>('');
   const [mistakesText, setMistakesText] = useState<string>('');
@@ -90,6 +95,8 @@ export const CreateCustomExerciseModal: React.FC<CreateCustomExerciseModalProps>
         secondaryMuscles: secondaryArray,
         equipment,
         difficulty,
+        movementType,
+        chestRegion: primaryMuscle === 'CHEST' ? chestRegion : undefined,
         mediaUrl: mediaUrl.trim() || undefined,
         thumbnailUrl: mediaUrl.trim() || undefined,
         steps: stepsArray.length > 0 ? stepsArray : undefined,
@@ -190,20 +197,73 @@ export const CreateCustomExerciseModal: React.FC<CreateCustomExerciseModalProps>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs font-semibold text-slate-300 block mb-1">
-                Difficulty
+                Movement Type
               </label>
               <select
-                value={difficulty}
-                onChange={(e) => setDifficulty(e.target.value as Difficulty)}
+                value={movementType}
+                onChange={(e) => setMovementType(e.target.value as 'COMPOUND' | 'ISOLATION')}
                 className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-orange-500 min-h-[44px]"
               >
-                {DIFFICULTY_OPTIONS.map((d) => (
-                  <option key={d} value={d}>
-                    {d}
-                  </option>
-                ))}
+                <option value="COMPOUND">COMPOUND</option>
+                <option value="ISOLATION">ISOLATION</option>
               </select>
             </div>
+
+            {primaryMuscle === 'CHEST' ? (
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  Chest Region
+                </label>
+                <select
+                  value={chestRegion}
+                  onChange={(e) => setChestRegion(e.target.value as any)}
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-orange-500 min-h-[44px]"
+                >
+                  <option value="Upper">Upper Chest</option>
+                  <option value="Mid">Mid Chest</option>
+                  <option value="Lower">Lower Chest</option>
+                  <option value="Inner">Inner Chest</option>
+                </select>
+              </div>
+            ) : (
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  Difficulty
+                </label>
+                <select
+                  value={difficulty}
+                  onChange={(e) => setDifficulty(e.target.value as Difficulty)}
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-orange-500 min-h-[44px]"
+                >
+                  {DIFFICULTY_OPTIONS.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {primaryMuscle === 'CHEST' ? (
+              <div>
+                <label className="text-xs font-semibold text-slate-300 block mb-1">
+                  Difficulty
+                </label>
+                <select
+                  value={difficulty}
+                  onChange={(e) => setDifficulty(e.target.value as Difficulty)}
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-orange-500 min-h-[44px]"
+                >
+                  {DIFFICULTY_OPTIONS.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
 
             <div>
               <label className="text-xs font-semibold text-slate-300 block mb-1">

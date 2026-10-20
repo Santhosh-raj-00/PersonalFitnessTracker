@@ -19,19 +19,26 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
 
     @Query(value = "SELECT e FROM Exercise e WHERE " +
            "(:query IS NULL OR LOWER(e.name) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
-           "(:muscle IS NULL OR e.primaryMuscle = :muscle OR LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%'))) AND " +
-           "(:equipment IS NULL OR e.equipment = :equipment) AND " +
+           "(:muscle IS NULL OR " +
+           "  (e.primaryMuscle = :muscle OR (:muscle = com.fittrack.model.enums.MuscleGroup.QUADS AND e.primaryMuscle = com.fittrack.model.enums.MuscleGroup.QUADRICEPS)) OR " +
+           "  (:includeSecondary = true AND LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%')))" +
+           ") AND " +
+           "(:equipment IS NULL OR e.equipment = :equipment OR (:equipment = com.fittrack.model.enums.Equipment.BARBELL AND e.equipment = com.fittrack.model.enums.Equipment.EZ_BAR)) AND " +
            "(:difficulty IS NULL OR e.difficulty = :difficulty) " +
            "ORDER BY e.isCustom DESC, e.name ASC",
            countQuery = "SELECT count(e) FROM Exercise e WHERE " +
            "(:query IS NULL OR LOWER(e.name) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
-           "(:muscle IS NULL OR e.primaryMuscle = :muscle OR LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%'))) AND " +
-           "(:equipment IS NULL OR e.equipment = :equipment) AND " +
+           "(:muscle IS NULL OR " +
+           "  (e.primaryMuscle = :muscle OR (:muscle = com.fittrack.model.enums.MuscleGroup.QUADS AND e.primaryMuscle = com.fittrack.model.enums.MuscleGroup.QUADRICEPS)) OR " +
+           "  (:includeSecondary = true AND LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%')))" +
+           ") AND " +
+           "(:equipment IS NULL OR e.equipment = :equipment OR (:equipment = com.fittrack.model.enums.Equipment.BARBELL AND e.equipment = com.fittrack.model.enums.Equipment.EZ_BAR)) AND " +
            "(:difficulty IS NULL OR e.difficulty = :difficulty)")
     Page<Exercise> searchExercisesWithFilters(
             @Param("query") String query,
             @Param("muscle") MuscleGroup muscle,
             @Param("muscleStr") String muscleStr,
+            @Param("includeSecondary") boolean includeSecondary,
             @Param("equipment") Equipment equipment,
             @Param("difficulty") Difficulty difficulty,
             Pageable pageable
@@ -39,27 +46,35 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
 
     @Query("SELECT e FROM Exercise e WHERE " +
            "(:query IS NULL OR LOWER(e.name) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
-           "(:muscle IS NULL OR e.primaryMuscle = :muscle OR LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%'))) AND " +
-           "(:equipment IS NULL OR e.equipment = :equipment) AND " +
+           "(:muscle IS NULL OR " +
+           "  (e.primaryMuscle = :muscle OR (:muscle = com.fittrack.model.enums.MuscleGroup.QUADS AND e.primaryMuscle = com.fittrack.model.enums.MuscleGroup.QUADRICEPS)) OR " +
+           "  (:includeSecondary = true AND LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%')))" +
+           ") AND " +
+           "(:equipment IS NULL OR e.equipment = :equipment OR (:equipment = com.fittrack.model.enums.Equipment.BARBELL AND e.equipment = com.fittrack.model.enums.Equipment.EZ_BAR)) AND " +
            "(:difficulty IS NULL OR e.difficulty = :difficulty) " +
            "ORDER BY e.isCustom DESC, e.name ASC")
     List<Exercise> searchExercisesWithFilters(
             @Param("query") String query,
             @Param("muscle") MuscleGroup muscle,
             @Param("muscleStr") String muscleStr,
+            @Param("includeSecondary") boolean includeSecondary,
             @Param("equipment") Equipment equipment,
             @Param("difficulty") Difficulty difficulty
     );
 
-
     @Query("SELECT e FROM Exercise e WHERE " +
            "(:query IS NULL OR LOWER(e.name) LIKE LOWER(CONCAT('%', :query, '%'))) AND " +
-           "(:muscle IS NULL OR e.primaryMuscle = :muscle OR LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%'))) AND " +
-           "(:equipment IS NULL OR e.equipment = :equipment)")
+           "(:muscle IS NULL OR " +
+           "  (e.primaryMuscle = :muscle OR (:muscle = com.fittrack.model.enums.MuscleGroup.QUADS AND e.primaryMuscle = com.fittrack.model.enums.MuscleGroup.QUADRICEPS)) OR " +
+           "  (:includeSecondary = true AND LOWER(e.secondaryMuscles) LIKE LOWER(CONCAT('%', :muscleStr, '%')))" +
+           ") AND " +
+           "(:equipment IS NULL OR e.equipment = :equipment OR (:equipment = com.fittrack.model.enums.Equipment.BARBELL AND e.equipment = com.fittrack.model.enums.Equipment.EZ_BAR)) " +
+           "ORDER BY e.isCustom DESC, e.name ASC")
     List<Exercise> searchExercises(
             @Param("query") String query,
             @Param("muscle") MuscleGroup muscle,
             @Param("muscleStr") String muscleStr,
+            @Param("includeSecondary") boolean includeSecondary,
             @Param("equipment") Equipment equipment
     );
 

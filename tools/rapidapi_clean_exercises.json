@@ -1,0 +1,3372 @@
+[
+  {
+    "externalId": "exr_41n2ha5iPFpN3hEJ",
+    "name": "Bridge - Mountain Climber",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "QUADRICEPS,PECTINEUS,ADDUCTOR BREVIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/bridge_mountain_climber.mp4",
+    "localPoster": "/media/posters/bridge_mountain_climber.jpg",
+    "mediaChecksum": "59dd7bb6d129820449b59d9ca798034ab8415538f3c3fabe85c4d4d55f466b97",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2haAabPyN5t8y",
+    "name": "Side Lunge",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,GLUTEUS MEDIUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/side_lunge.mp4",
+    "localPoster": "/media/posters/side_lunge.jpg",
+    "mediaChecksum": "5d1abeaf8b1f3e4174c107435acc97c2065febecd65658e71597f90863cc02cd",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hadPLLFRGvFk",
+    "name": "Sliding Floor Pulldown on Towel",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "POSTERIOR DELTOID,TRICEPS BRACHII,TERES MINOR",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/sliding_floor_pulldown_on_towel.mp4",
+    "localPoster": "/media/posters/sliding_floor_pulldown_on_towel.jpg",
+    "mediaChecksum": "86d5d44f6540e4cef4f5842f9f23920869d47f4634076b4549fc0c78a9f2cdc3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hndkoGHD1ogh",
+    "name": "Triceps Dip",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "ANTERIOR DELTOID,PECTORALIS MAJOR STERNAL HEAD,LATISSIMUS DORSI",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/triceps_dip.mp4",
+    "localPoster": "/media/posters/triceps_dip.jpg",
+    "mediaChecksum": "29942faf0a28aad7461d4cb31dc0255b9512680d01e07436e9914b41fb16e1f4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2haNJ3NA8yCE2",
+    "name": "Dumbbell Incline One Arm Hammer Press",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "TERES MAJOR,PECTORALIS MAJOR CLAVICULAR HEAD,TRAPEZIUS MIDDLE FIBERS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/dumbbell_incline_one_arm_hammer_press.mp4",
+    "localPoster": "/media/posters/dumbbell_incline_one_arm_hammer_press.jpg",
+    "mediaChecksum": "161fdaa563212782426e53777d3ff88d131488664faccdd6820fe591ea73435c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hnx1hnDdketU",
+    "name": "Feet and Ankles Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/feet_and_ankles_stretch.mp4",
+    "localPoster": "/media/posters/feet_and_ankles_stretch.jpg",
+    "mediaChecksum": "c7ad3ebe6b1d9eae0d7b21dff71450d3ddfc9f135d2d61f0e4087adfea1862a1",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hbdZww1thMKz",
+    "name": "Jump Squat",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SOLEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/jump_squat.mp4",
+    "localPoster": "/media/posters/jump_squat.jpg",
+    "mediaChecksum": "95f7846661e4c45e1e11719d081137b0defecf7e54b0f8c94f22c68f5bad0a70",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hbLX4XH8xgN7",
+    "name": "Dumbbell Single Leg Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/dumbbell_single_leg_calf_raise.mp4",
+    "localPoster": "/media/posters/dumbbell_single_leg_calf_raise.jpg",
+    "mediaChecksum": "8fc3f7d30d8a41d033ab91cb3fe7ebf62c1a47c9e7b6a607310f5334381d1e61",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hbYPY4jLKxW3",
+    "name": "Peroneals Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/peroneals_stretch.mp4",
+    "localPoster": "/media/posters/peroneals_stretch.jpg",
+    "mediaChecksum": "d7ea106c80ca6158f313bde0da637b7f3161b31b88b62a50e59899db14b30404",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hc2VrB8ofxrW",
+    "name": "Lying Double Legs Biceps Curl with Towel",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "BRACHIALIS,BRACHIORADIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lying_double_legs_biceps_curl_with_towel.mp4",
+    "localPoster": "/media/posters/lying_double_legs_biceps_curl_with_towel.jpg",
+    "mediaChecksum": "544e17a2657d243695f0889ce3cadcdd4142b924c6c76576e74d10646e719290",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hcFJpBvAkXCP",
+    "name": "Seated Row with Towel",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "POSTERIOR DELTOID,BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/seated_row_with_towel.mp4",
+    "localPoster": "/media/posters/seated_row_with_towel.jpg",
+    "mediaChecksum": "14c081862249ce163f39dbd698b3e7b3478a5845ecd767d697719458611d9453",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hcm5HH6H684G",
+    "name": "Calf Raise from Deficit with Chair Supported",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/calf_raise_from_deficit_with_chair_supported.mp4",
+    "localPoster": "/media/posters/calf_raise_from_deficit_with_chair_supported.jpg",
+    "mediaChecksum": "5eb8db4c6d58043e072442b63a8c43a7b5c9ced7ce7986904b6e9302f4ebbe1a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQp1pR7heQq9",
+    "name": "Dumbbell Stiff Leg Deadlift",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "HAMSTRINGS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/dumbbell_stiff_leg_deadlift.mp4",
+    "localPoster": "/media/posters/dumbbell_stiff_leg_deadlift.jpg",
+    "mediaChecksum": "8bd320790dff0946412d79276cff0db6333a1b19168bc4854000391bd7fedaed",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hd6SThQhAdnZ",
+    "name": "Chin-ups",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "BRACHIORADIALIS,PECTORALIS MAJOR STERNAL HEAD,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/chin_ups.mp4",
+    "localPoster": "/media/posters/chin_ups.jpg",
+    "mediaChecksum": "2d0ed56f28defb6e8632c957c3f9f17bd2d54aca1e8217ebd830c7c44e13feec",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hd78zujKUEWK",
+    "name": "Single Leg Squat",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SOLEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/single_leg_squat.mp4",
+    "localPoster": "/media/posters/single_leg_squat.jpg",
+    "mediaChecksum": "bd8fee561aca4852ad4f811e98c5e082f97d802fd84f0a322cf52b137a22b02c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hdCBvmbCPaVE",
+    "name": "Diamond Press",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/diamond_press.mp4",
+    "localPoster": "/media/posters/diamond_press.jpg",
+    "mediaChecksum": "fb8a94a6973a361529567e14965c1c04e285895ef8ddcf11d73a3ae925c320cf",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hdHtZrMPkcqY",
+    "name": "Dumbbell Lying Floor Skull Crusher",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/dumbbell_lying_floor_skull_crusher.mp4",
+    "localPoster": "/media/posters/dumbbell_lying_floor_skull_crusher.jpg",
+    "mediaChecksum": "e7ea928d34df0f1426b7f895456b3af56077adfedbdcee6e4424fb9629b09ce2",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hdkBpqwoDmVq",
+    "name": "Suspended Row",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "PECTORALIS MAJOR STERNAL HEAD,BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/suspended_row.mp4",
+    "localPoster": "/media/posters/suspended_row.jpg",
+    "mediaChecksum": "a0bab6e73a2fa7cbdffffba15e57fc9e5b9e31b180cc748553d71f255cec1d03",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hdo2vCtq4F3E",
+    "name": "Right Cross. Boxing",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/right_cross_boxing.mp4",
+    "localPoster": "/media/posters/right_cross_boxing.jpg",
+    "mediaChecksum": "f5b61974c91080b7afcbbf5ef11ba7db8ae3dad5149a020ee8cb5c9b3b35b188",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hdsGcuzs4WrV",
+    "name": "Self Assisted Inverted Pullover",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/self_assisted_inverted_pullover.mp4",
+    "localPoster": "/media/posters/self_assisted_inverted_pullover.jpg",
+    "mediaChecksum": "49c89380ae06716fe73dca8880bb6d463dfdbb28059aeb833ca7e8444292bac4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQtaWxPLNFwX",
+    "name": "Dumbbell Standing Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Place your feet shoulder-width apart and position your toes straight ahead or slightly outwards.",
+      "Slowly raise your heels off the floor by pushing down through the balls of both feet while exhaling, ensuring your abdominal muscles are engaged and your back is straight.",
+      "Pause for a moment when your calves are fully contracted and you're balancing on the balls of your feet.",
+      "Gradually lower your heels back to the ground to the starting position while inhaling, ensuring that you maintain control throughout the movement. Repeat this for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/dumbbell_standing_calf_raise.mp4",
+    "localPoster": "/media/posters/dumbbell_standing_calf_raise.jpg",
+    "mediaChecksum": "54bc60e9adb4fea00c933db32624981d9b4bfbdb6e3fd977adc0db85d735b438",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2he2doZNpmXkX",
+    "name": "Ankle - Plantar Flexion - Articulations",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "GLUTEUS MAXIMUS,TERES MAJOR",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/ankle_plantar_flexion_articulations.mp4",
+    "localPoster": "/media/posters/ankle_plantar_flexion_articulations.jpg",
+    "mediaChecksum": "4972427c4d0cef2382ceef16f1db4541091217eb5e86d83d112c0340830021df",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hek6i3exMARx",
+    "name": "Elbow - Flexion - Articulations",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "TRAPEZIUS MIDDLE FIBERS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/elbow_flexion_articulations.mp4",
+    "localPoster": "/media/posters/elbow_flexion_articulations.jpg",
+    "mediaChecksum": "56553979c5edd90560c3acbbd8e5851f7a72ddf3fa36951ac1fef855941b964c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hezAZ6CdkAcM",
+    "name": "Alternate Punching",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SERRATUS ANTERIOR,ANTERIOR DELTOID,RECTUS ABDOMINIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/alternate_punching.mp4",
+    "localPoster": "/media/posters/alternate_punching.jpg",
+    "mediaChecksum": "5627e71f61cb67118c4ce366212910da4aa4a2f0fd0ed4ece35f136d2c71a239",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpTMDhTxYkvi",
+    "name": "Elliptical Machine Walk",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "GASTROCNEMIUS,GRACILIS,ADDUCTOR MAGNUS",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/elliptical_machine_walk.mp4",
+    "localPoster": "/media/posters/elliptical_machine_walk.jpg",
+    "mediaChecksum": "82c690d47df6edafd1b2dd7e5c6bec1416781de0854c98ff1b7addb79d7aabe7",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpJxS5VQKtBL",
+    "name": "Lying Lower Back Stretch",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lying_lower_back_stretch.mp4",
+    "localPoster": "/media/posters/lying_lower_back_stretch.jpg",
+    "mediaChecksum": "297612d0d12c1fc43da79b140c3e195a0bba5161f3011fd4efed038bdea7408f",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hftBVLiXgtRQ",
+    "name": "Wide Grip Pull-Up",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TERES MAJOR,BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/wide_grip_pull_up.mp4",
+    "localPoster": "/media/posters/wide_grip_pull_up.jpg",
+    "mediaChecksum": "0899230ad74996497fd08a15abbd8bfb6f301d6e0ee7d6d1ddf9a95e074834b4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hfYD2sH4TRCH",
+    "name": "Hyperextension",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "HAMSTRINGS,GLUTEUS MAXIMUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/hyperextension.mp4",
+    "localPoster": "/media/posters/hyperextension.jpg",
+    "mediaChecksum": "f9cf3387dfc857a76db510666e1e2d014d8fc1a1456ca3423d70cf34265738e6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGD4omjWVnbS",
+    "name": "Calves Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/calves_stretch.mp4",
+    "localPoster": "/media/posters/calves_stretch.jpg",
+    "mediaChecksum": "eb0b40ae8a40a5c66f6795509213b0734521e8367aea5dd560084309ce433da9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hvrsUaWWb9Mk",
+    "name": "Neck Side Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/neck_side_stretch.mp4",
+    "localPoster": "/media/posters/neck_side_stretch.jpg",
+    "mediaChecksum": "491fc7bef2764a142b3ec4095aacc83bd65d31c009304047b0060a6b365f952b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hgCHNgtVLHna",
+    "name": "Cross Body Hammer Curl",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "BICEPS BRACHII,BRACHIALIS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/cross_body_hammer_curl.mp4",
+    "localPoster": "/media/posters/cross_body_hammer_curl.jpg",
+    "mediaChecksum": "3f59a9864e77c5da0b8b6dbc39cf999cdf8b436bc1f614969161e12be10e7d27",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGioS8HumEF7",
+    "name": "Hammer Curl",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "BICEPS BRACHII,BRACHIALIS",
+    "equipment": "CABLE",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/hammer_curl.mp4",
+    "localPoster": "/media/posters/hammer_curl.jpg",
+    "mediaChecksum": "7fd9d0cad4cb233fb1c89328ead90880d612d21b399d55116b846b690fd28b6e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGNrmUnF58Yy",
+    "name": "Reverse Lunge",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "HAMSTRINGS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/reverse_lunge.mp4",
+    "localPoster": "/media/posters/reverse_lunge.jpg",
+    "mediaChecksum": "3efb1d27a222bd8d2febce6815454a3329bb7a89df0817b3377e5b8a33f94b09",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGRSg9WCoTYT",
+    "name": "Jumping Pistol Squat",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "GLUTEUS MEDIUS,ILIOPSOAS,HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/jumping_pistol_squat.mp4",
+    "localPoster": "/media/posters/jumping_pistol_squat.jpg",
+    "mediaChecksum": "cbe6eeba907e0e4f853b71715d958f0a5461868be10f637cc5bf546bb25064b9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGUso7JFmuYR",
+    "name": "Decline Push-Up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID,TRICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/decline_push_up.mp4",
+    "localPoster": "/media/posters/decline_push_up.jpg",
+    "mediaChecksum": "29c48b8a40fd32fcd6f8d224c15f0ea87b18e990bd85e97412ec803f1b51c2d6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hGy6zE7fN6v2",
+    "name": "One arm Wrist Curl",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/one_arm_wrist_curl.mp4",
+    "localPoster": "/media/posters/one_arm_wrist_curl.jpg",
+    "mediaChecksum": "42fb5c223966cb945b2f8cdf55567a190ad643c0674add8ede680903280d886e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hH6VGNz6cNtv",
+    "name": "Extension And Inclination Neck Stretch",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/extension_and_inclination_neck_stretch.mp4",
+    "localPoster": "/media/posters/extension_and_inclination_neck_stretch.jpg",
+    "mediaChecksum": "6b4ac877580035234a040e0da5698b5adb93c8bebef686149521a2c8d3926cf1",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hhBHuvSdAeCJ",
+    "name": "Neck Circle Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "LEVATOR SCAPULAE,SPLENIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/neck_circle_stretch.mp4",
+    "localPoster": "/media/posters/neck_circle_stretch.jpg",
+    "mediaChecksum": "458a5105bbc78d114a9f6c2c67c6af1563d7b9d0297b6243a15c14c69d0dc61a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hHCXQpZYhxhc",
+    "name": "Calf Stretch With Hands Against Wall",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/calf_stretch_with_hands_against_wall.mp4",
+    "localPoster": "/media/posters/calf_stretch_with_hands_against_wall.jpg",
+    "mediaChecksum": "ca46a62590de5a87345f0207e28e52b873d7dbe8dd3c7d195f80ad8b4b0fe9ed",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hY9EdwkdGz9a",
+    "name": "Dumbbell One Arm Bent-over Row",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "BRACHIORADIALIS,PECTORALIS MAJOR STERNAL HEAD,POSTERIOR DELTOID",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Bend your knees slightly and lean forward from your waist until your torso is almost parallel to the floor, making sure to keep your back straight.",
+      "Hold onto the bench with your free hand for support, and let the hand holding the dumbbell hang down from your shoulder.",
+      "Pull the dumbbell up towards your waist, keeping your elbow close to your body and squeezing your shoulder blades together at the top of the movement.",
+      "Lower the dumbbell back down in a controlled manner to the starting position, and repeat the exercise for your desired number of reps before switching to the other arm."
+    ],
+    "localVideo": "/media/exercises/dumbbell_one_arm_bent_over_row.mp4",
+    "localPoster": "/media/posters/dumbbell_one_arm_bent_over_row.jpg",
+    "mediaChecksum": "cfcef7131f8b8d0dfaf421980324e9e0e9e1492b186060f37ad135c7a3edf4b8",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hHH9bNfi98YU",
+    "name": "Triceps Dips Floor",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "LEVATOR SCAPULAE,ANTERIOR DELTOID,PECTORALIS MAJOR STERNAL HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/triceps_dips_floor.mp4",
+    "localPoster": "/media/posters/triceps_dips_floor.jpg",
+    "mediaChecksum": "cf72dca8b22ac9c83ac193e2a47d37defd274f7cb0fbb4c509dea3d7d290b085",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hhiWL8njJDZe",
+    "name": "Lever Seated Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "GASTROCNEMIUS",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lever_seated_calf_raise.mp4",
+    "localPoster": "/media/posters/lever_seated_calf_raise.jpg",
+    "mediaChecksum": "f3756dc3a2c7c178356b37ddb6e38fbe87c9ec722473e11791d2b5f1035f2037",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hHLE8aJXaxKR",
+    "name": "Cobra Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "HAMSTRINGS,PECTORALIS MAJOR CLAVICULAR HEAD,TRICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/cobra_push_up.mp4",
+    "localPoster": "/media/posters/cobra_push_up.jpg",
+    "mediaChecksum": "9ffdcf14b218409d37c8ce15632668762f1a64b799d5c80adee4d0621541c5e8",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hHRszDHarrxK",
+    "name": "Split Squats",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SOLEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/split_squats.mp4",
+    "localPoster": "/media/posters/split_squats.jpg",
+    "mediaChecksum": "3a9411054f41d37f68833c2dc61dcc1ecf7e976004bc96b3fa446a2ce5158804",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hhumxqyAFuTb",
+    "name": "One Leg Floor Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/one_leg_floor_calf_raise.mp4",
+    "localPoster": "/media/posters/one_leg_floor_calf_raise.jpg",
+    "mediaChecksum": "be73752dd56e7230a1c02432244d024ae424eb0fcd7f519846fd8f5865ed75c3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hJ5Harig7K7F",
+    "name": "Seated Shoulder Flexor Depresor Retractor Stretch",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "LATISSIMUS DORSI,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/seated_shoulder_flexor_depresor_retractor_stretch.mp4",
+    "localPoster": "/media/posters/seated_shoulder_flexor_depresor_retractor_stretch.jpg",
+    "mediaChecksum": "4aad0eb70bf5f65fe44dd5c8890dd3666720e839eb9e1f0db4cf76cea15500d0",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hJFwC7ocdiNm",
+    "name": "Forward Flexion Neck Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/forward_flexion_neck_stretch.mp4",
+    "localPoster": "/media/posters/forward_flexion_neck_stretch.jpg",
+    "mediaChecksum": "b4d0dd9a438a36715f4986aef50e1776d7642eff6230cf6b9bb3811b567f7ad5",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hjkBReJMbDJk",
+    "name": "Run on Treadmill",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/run_on_treadmill.mp4",
+    "localPoster": "/media/posters/run_on_treadmill.jpg",
+    "mediaChecksum": "b9d5b26d65ac16772e831b6399c8785476b7d688ab288b3e8a36d7a4080caae5",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hjuGpcex14w7",
+    "name": "Lateral Raise",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "SERRATUS ANTERIOR,ANTERIOR DELTOID",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lateral_raise.mp4",
+    "localPoster": "/media/posters/lateral_raise.jpg",
+    "mediaChecksum": "fea36586dfef3974761da470152c640f453bdd0e2b748169d7c81c7ebc9370f6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hrSQZRD4yG7P",
+    "name": "Circles Knee Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "QUADRICEPS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/circles_knee_stretch.mp4",
+    "localPoster": "/media/posters/circles_knee_stretch.jpg",
+    "mediaChecksum": "ec5d11896ccff30fff84007501a4708f221c651c43e97a36047e7405b3d0f8cf",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hkB3FeGM3DEL",
+    "name": "Lying Scissor Kick",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR LONGUS,TENSOR FASCIAE LATAE,QUADRICEPS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lying_scissor_kick.mp4",
+    "localPoster": "/media/posters/lying_scissor_kick.jpg",
+    "mediaChecksum": "ad72d830b8215729f80b55a5bfc1f3b22e7b6f3a98e9de70e9982dab5a07ddcc",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hkCHzg1AXdkV",
+    "name": "Walking on Incline Treadmill",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "HAMSTRINGS,SOLEUS",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/walking_on_incline_treadmill.mp4",
+    "localPoster": "/media/posters/walking_on_incline_treadmill.jpg",
+    "mediaChecksum": "109875a9a14436c25f77efcbc0ed0535597867d66528e2c1f8e5a5f638357fe7",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hKiaWSZQTqgE",
+    "name": "Lever stepper",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "GASTROCNEMIUS,SOLEUS,HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/lever_stepper.mp4",
+    "localPoster": "/media/posters/lever_stepper.jpg",
+    "mediaChecksum": "a838db675ee24c2c31ba9e0c82a8377fcfd786257398f84b230a32b4eb92fdf1",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hkK8hGAcSnW7",
+    "name": "Chest Dip",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID,LATISSIMUS DORSI,TRICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/chest_dip.mp4",
+    "localPoster": "/media/posters/chest_dip.jpg",
+    "mediaChecksum": "e0e52b5860583a75b16685dc21d5c6642bc9f4b243b03ba8ec8af1f60436a595",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hkknYAEEE3tc",
+    "name": "Front Toe Touching",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "OBLIQUES,ILIOPSOAS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/front_toe_touching.mp4",
+    "localPoster": "/media/posters/front_toe_touching.jpg",
+    "mediaChecksum": "114c06c3af9452a49ae6172dcf4b51fca281eb4410e5bf06dc3193bb538d8b69",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hkmMrSwcHkZ8",
+    "name": "Clap Push Up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "TRAPEZIUS UPPER FIBERS,SERRATUS ANTERIOR",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/clap_push_up.mp4",
+    "localPoster": "/media/posters/clap_push_up.jpg",
+    "mediaChecksum": "51318cfe9506c56dcb8e3805fac60e7871a5810eee39f4e08020d2fc1beaf6f7",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hKoQnnSRPZrE",
+    "name": "Front Plank with Leg Lift",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "SARTORIUS,TENSOR FASCIAE LATAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/front_plank_with_leg_lift.mp4",
+    "localPoster": "/media/posters/front_plank_with_leg_lift.jpg",
+    "mediaChecksum": "c7ad7ce66d2ea30b7b2d85832b3e28568d23c6708f0ad6a73e6b00ca937f0d26",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hKZmyYXB2UL4",
+    "name": "Elbows Back Stretch",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/elbows_back_stretch.mp4",
+    "localPoster": "/media/posters/elbows_back_stretch.jpg",
+    "mediaChecksum": "b5eb7e2a4360a483ffe3ddb893e1918037248a9c2c9855a4b37c98506dffca00",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hLA8xydD4dzE",
+    "name": "Triceps Press",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "PECTORALIS MAJOR STERNAL HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/triceps_press.mp4",
+    "localPoster": "/media/posters/triceps_press.jpg",
+    "mediaChecksum": "ebe5af450430f099ac4cdfd6d09e6faf4c3479e8189fc77d84edba88f4e47c52",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hLpyk6MsV85U",
+    "name": "Single Leg Bodyweight Deadlift with Arm and Leg Extended",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TERES MAJOR,HAMSTRINGS,BRACHIORADIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Shift your weight onto your right foot, then slowly lift your left leg behind you while extending your right arm in front of you, keeping both parallel to the floor.",
+      "Keep your back straight and your right knee slightly bent, as you hinge at the hips to lower your torso towards the ground, maintaining balance.",
+      "Pause for a moment when your body forms a T shape, then slowly return to the starting position, keeping your movements controlled and your core engaged.",
+      "Repeat the exercise for the desired number of repetitions, then switch to the other leg and arm and perform the same steps."
+    ],
+    "localVideo": "/media/exercises/single_leg_bodyweight_deadlift_with_arm_and_leg_extended.mp4",
+    "localPoster": "/media/posters/single_leg_bodyweight_deadlift_with_arm_and_leg_extended.jpg",
+    "mediaChecksum": "c3a4f091cbe9fcffa6cb35b1a554742234dee2cd6d321ddad812a014802f52c9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hLUqpev5gSzJ",
+    "name": "Thoracic Bridge",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "TRAPEZIUS UPPER FIBERS,TRAPEZIUS LOWER FIBERS,QUADRICEPS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push your hips up towards the ceiling, arching your back and allowing your head to fall back gently, creating a bridge-like shape with your body.",
+      "At the same time, push your chest up and out, opening up your thoracic spine and stretching your chest and shoulders.",
+      "Hold this position for a few seconds, focusing on deep, steady breathing.",
+      "Slowly lower your body back down to the starting position, sitting back on your heels and relaxing your arms by your sides. Repeat the exercise as many times as desired."
+    ],
+    "localVideo": "/media/exercises/thoracic_bridge.mp4",
+    "localPoster": "/media/posters/thoracic_bridge.jpg",
+    "mediaChecksum": "1668a0d0f67cbf5956669c8c95f8aa488b2db1efc993a74be6b42b25e5c8caf1",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hLx2rvhz95GC",
+    "name": "Feet and Ankles Rotation Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "GASTROCNEMIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift one foot off the ground and keep your leg either straight or slightly bent at the knee, depending on your comfort level.",
+      "Begin to rotate your foot in a circular motion, moving it clockwise for about 10 rotations.",
+      "After completing the clockwise rotations, switch to counter-clockwise rotations for another 10 times.",
+      "Lower your foot back to the ground and repeat the same process with your other foot."
+    ],
+    "localVideo": "/media/exercises/feet_and_ankles_rotation_stretch.mp4",
+    "localPoster": "/media/posters/feet_and_ankles_rotation_stretch.jpg",
+    "mediaChecksum": "acb08a6fef472f9501e415ab2e27f8d970e025c9ae783feff4a320ede975777e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hLZZAH2F2UkS",
+    "name": "Walk Elliptical Cross Trainer",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "GLUTEUS MEDIUS,GLUTEUS MINIMUS,SOLEUS",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Grab the handlebars and start moving your legs in a forward motion, as if you are walking or running, ensuring that your movements are smooth and controlled.",
+      "Engage your upper body by pushing and pulling the handlebars in sync with your leg movements, this will help to increase the intensity of your workout.",
+      "Maintain a straight posture, keeping your core engaged and your back straight throughout the exercise.",
+      "Continue this motion for the desired amount of time or until you've reached your targeted distance. Remember to cool down and stretch after your workout to prevent muscle soreness."
+    ],
+    "localVideo": "/media/exercises/walk_elliptical_cross_trainer.mp4",
+    "localPoster": "/media/posters/walk_elliptical_cross_trainer.jpg",
+    "mediaChecksum": "df47786f58662eadf54c4c22a5bde7185f16b5d7d68db9b876a4b7d2011ae048",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hM8vgMA6MREd",
+    "name": "Left hook. Boxing",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Rotate your torso to the right, pivoting on your left foot, to generate power for the hook. Your right shoulder should come forward slightly and your left shoulder should pull back.",
+      "Swing your left arm in a horizontal arc towards your target, keeping your elbow bent at a 90-degree angle and your palm facing down.",
+      "Connect with your target using the knuckles of your index and middle fingers, keeping your wrist straight and firm.",
+      "After making contact, quickly retract your left hand back to its original position to protect your face. Always remember to maintain your guard and balance throughout the movement."
+    ],
+    "localVideo": "/media/exercises/left_hook_boxing.mp4",
+    "localPoster": "/media/posters/left_hook_boxing.jpg",
+    "mediaChecksum": "7c6b82ebd8f795777422b8ccc8a33100437524ac3b473f91f063f942559147d6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmbfYcYtedgz",
+    "name": "Bridge Pose Setu Bandhasana",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "QUADRICEPS,ERECTOR SPINAE,GASTROCNEMIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend your knees and place your feet flat on the ground, hip-width apart, ensuring your ankles and knees are in a straight line.",
+      "Slowly lift your back off the floor, starting with your tailbone, then your lower back and upper back, pushing your hips up towards the ceiling.",
+      "Keep your thighs parallel to each other and your knees directly above your heels, while pressing your shoulders and arms down to help lift your chest up.",
+      "Hold this position for a few breaths, then slowly lower your body back to the floor, starting with your upper back, then your lower back, and finally your tailbone."
+    ],
+    "localVideo": "/media/exercises/bridge_pose_setu_bandhasana.mp4",
+    "localPoster": "/media/posters/bridge_pose_setu_bandhasana.jpg",
+    "mediaChecksum": "d930658723a79b9cad0bf77370f99f033133aeed9c048d33b389ebf6c222eaf9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmFcGGUCS289",
+    "name": "Walking High Knees Lunge",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "HAMSTRINGS,BICEPS BRACHII,GRACILIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift your right knee as high as you can, then step forward while lowering your body into a lunge position. Your right knee should be bent at a 90-degree angle and your left knee should be hovering just above the ground.",
+      "As you move into the lunge, swing your arms as if you are running, with the opposite arm and leg moving together.",
+      "Push off with your right foot and return to the starting position.",
+      "Repeat the exercise with your left leg, and continue to alternate between legs for the duration of your workout."
+    ],
+    "localVideo": "/media/exercises/walking_high_knees_lunge.mp4",
+    "localPoster": "/media/posters/walking_high_knees_lunge.jpg",
+    "mediaChecksum": "6400d55c8dbebf7ec5b3c6c134a96e06577a254fcd8165df355480067d113fc9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmGR8WuVfe1U",
+    "name": "Squat",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly bend your knees and lower your body as if you're about to sit on a chair, keeping your chest upright and your knees over your toes.",
+      "Continue lowering yourself until your thighs are parallel or almost parallel to the floor, this is the squat position.",
+      "Pause for a moment in the squat position, then push through your heels to rise back up to the starting position.",
+      "Repeat this movement for the desired number of repetitions while maintaining proper form."
+    ],
+    "localVideo": "/media/exercises/squat.mp4",
+    "localPoster": "/media/posters/squat.jpg",
+    "mediaChecksum": "3691e816828585c8c5642075f0d4072e827b5d68b70e2ac5d2ea6653e72a3963",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmhb4jD7H8Qk",
+    "name": "Assault Bike Run",
+    "primaryMuscle": "FULL_BODY",
+    "secondaryMuscles": "",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Grasp the handles firmly, keeping your back straight and your feet flat on the pedals.",
+      "Start pedaling at a moderate pace to warm up, ensuring that your movements are smooth and controlled.",
+      "Gradually increase your speed while also pushing and pulling the handles back and forth in rhythm with your pedaling.",
+      "Continue this for a set duration or until you have reached your desired distance, then gradually reduce your speed for a cool down period."
+    ],
+    "localVideo": "/media/exercises/assault_bike_run.mp4",
+    "localPoster": "/media/posters/assault_bike_run.jpg",
+    "mediaChecksum": "556d8779b40b124182c199507e1fca34235372bc6617be0817484cacf2f54ac3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmhxk35fbHbC",
+    "name": "Push-up on Forearms",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "PECTORALIS MAJOR STERNAL HEAD,ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your body straight and rigid from your head to your heels, forming a straight line. This is your starting position.",
+      "Lower your body towards the floor by bending your elbows, keeping your forearms in contact with the floor and your body straight.",
+      "Push through your forearms to lift your body back up to the starting position, while maintaining the straight line from your head to your heels.",
+      "Repeat these steps for your desired number of repetitions, ensuring to keep your body straight and your movements controlled throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/push_up_on_forearms.mp4",
+    "localPoster": "/media/posters/push_up_on_forearms.jpg",
+    "mediaChecksum": "0cd01021af81596e57adf5c119d7d026ebb6e70d28e3de2238b3841d8237cb48",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hMRXm49mM62z",
+    "name": "Arnold Press",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "TRICEPS BRACHII,LATERAL DELTOID,SERRATUS ANTERIOR",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Raise the dumbbells to shoulder height, then rotate your palms so they are facing forward.",
+      "Push the dumbbells upward until your arms are fully extended above your head.",
+      "Slowly lower the dumbbells back to shoulder height while rotating your palms to face your body again.",
+      "This completes one rep; repeat the process for your desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/arnold_press.mp4",
+    "localPoster": "/media/posters/arnold_press.jpg",
+    "mediaChecksum": "5c1bb2765ced697e4e8b0cef5efa25c137104282d4a07b1992d08a5dce7aa1bc",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hmvGdVRvvnNY",
+    "name": "Pike Push up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "LATERAL DELTOID,SERRATUS ANTERIOR,ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift your hips and push your body back into a downward dog yoga position, where your body forms an inverted V shape, with your head between your shoulders.",
+      "Lower your upper body towards the ground by bending your elbows, keeping your head down and your hips high, until your head nearly touches the floor.",
+      "Push your body back up to the starting position, extending your elbows and using your shoulders and upper body strength.",
+      "Repeat the exercise for your desired number of repetitions, ensuring to maintain the correct form throughout."
+    ],
+    "localVideo": "/media/exercises/pike_push_up.mp4",
+    "localPoster": "/media/posters/pike_push_up.jpg",
+    "mediaChecksum": "f64c845b2fb433fabe5a390d6967cad0d59bb331a9ff4357d0c7e655305c15ba",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hMydkzFvswVX",
+    "name": "Side Two Front Toe Touching",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Shift your weight to your right foot and lift your left leg to the side while keeping your leg straight.",
+      "Lean your torso to the left and reach your right hand down to touch your left foot, keeping your left hand raised.",
+      "Return to the upright position and repeat the movement on the other side, this time lifting your right leg and reaching down with your left hand.",
+      "Continue alternating sides for your desired number of repetitions, ensuring to keep your back straight and your movements controlled throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/side_two_front_toe_touching.mp4",
+    "localPoster": "/media/posters/side_two_front_toe_touching.jpg",
+    "mediaChecksum": "3550e03cb622a2e92e2d823ab0b65d274c90ddaf0bb3a32e725bbff2c5abb987",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hMZCmZBvQApL",
+    "name": "Hanging Straight Leg Raise",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "TENSOR FASCIAE LATAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keeping your legs straight and together, raise them up in front of you until they are parallel to the ground, or as high as you can comfortably go.",
+      "Hold this position for a few seconds, making sure to engage your abdominal muscles.",
+      "Slowly lower your legs back down to the starting position, maintaining control to avoid swinging.",
+      "Repeat this process for your desired number of repetitions, ensuring to keep your core engaged throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/hanging_straight_leg_raise.mp4",
+    "localPoster": "/media/posters/hanging_straight_leg_raise.jpg",
+    "mediaChecksum": "c4e679286bf19ebbab6924279ff1194bdb1549b1fa9b8b361025bfe4a91c8706",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hn2kPMag9WCf",
+    "name": "Cable Seated Neck Extension",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "CABLE",
+    "instructions": [
+      "Sit on a bench with your back to the cable machine, holding the ends of the rope handle in each hand, and position your hands at the base of your neck.",
+      "Keep your back straight and your head facing forward, then slowly extend your neck backward, pulling the rope upward until you feel a stretch in your neck muscles.",
+      "Pause for a moment at the top of the extension, then slowly return to the starting position, making sure to maintain control throughout the movement.",
+      "Repeat this exercise for your desired number of repetitions, ensuring you keep your movements slow and controlled to avoid injury."
+    ],
+    "localVideo": "/media/exercises/cable_seated_neck_extension.mp4",
+    "localPoster": "/media/posters/cable_seated_neck_extension.jpg",
+    "mediaChecksum": "d857adf8509c397d691a682c5962b80b44db3e6988d4a5176222bf9c6f384547",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hN468sP27Sac",
+    "name": "Jump Rope",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "",
+    "equipment": "OTHER",
+    "instructions": [
+      "Start by holding the handles of the jump rope at waist height, with your elbows close to your body and your wrists slightly above your waist.",
+      "Begin to swing the rope over your head, using your wrists and forearms to generate the motion rather than your entire arms.",
+      "As the rope approaches your feet, jump off the ground using both feet at the same time, just high enough to allow the rope to pass underneath.",
+      "Continue the motion, jumping each time the rope comes around, and aim to maintain a steady rhythm for the duration of your workout."
+    ],
+    "localVideo": "/media/exercises/jump_rope.mp4",
+    "localPoster": "/media/posters/jump_rope.jpg",
+    "mediaChecksum": "81e7dccc4298d91585c59498911299a1f51686f3c76b5a1f080eadc1cd30ad2b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hn8rpbYihzEW",
+    "name": "Romanian Deadlift",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "QUADRICEPS,SOLEUS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Keep your back straight and your shoulders back as you begin to bend at the hips, pushing them back while you lower the barbell along the front of your legs.",
+      "Continue lowering the barbell until it reaches mid-shin level, or until you feel a stretch in your hamstrings, making sure to keep the barbell close to your body throughout the movement.",
+      "After reaching this position, pause for a moment, and then slowly reverse the movement by driving your hips forward and standing back up to the starting position, squeezing your glutes at the top.",
+      "Remember to keep your core engaged and your back straight throughout the entire exercise to avoid injury."
+    ],
+    "localVideo": "/media/exercises/romanian_deadlift.mp4",
+    "localPoster": "/media/posters/romanian_deadlift.jpg",
+    "mediaChecksum": "a63115017bd80d82e00dc52a65f3eb6153c6d985d98429ca5ef73dfec029934d",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hnAGfMhp95LQ",
+    "name": "Shoulder Tap Push-up",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "TENSOR FASCIAE LATAE,WRIST FLEXORS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body towards the floor in a controlled manner as if you are performing a regular push-up, keeping your body in a straight line from head to heels.",
+      "As you push your body back up to the plank position, lift your right hand off the ground and tap your left shoulder.",
+      "Place your right hand back on the ground and then lower your body again for another push-up.",
+      "After pushing back up, lift your left hand off the ground and tap your right shoulder, completing one repetition. Repeat these steps for your desired number of reps."
+    ],
+    "localVideo": "/media/exercises/shoulder_tap_push_up.mp4",
+    "localPoster": "/media/posters/shoulder_tap_push_up.jpg",
+    "mediaChecksum": "4c2919f62e0f2b88d5f0bc8268476defe2970527cebb51d25031c81f18addda3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hRZ6fgsLyd77",
+    "name": "Diamond Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "PECTORALIS MAJOR STERNAL HEAD,PECTORALIS MAJOR CLAVICULAR HEAD,ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/diamond_push_up.mp4",
+    "localPoster": "/media/posters/diamond_push_up.jpg",
+    "mediaChecksum": "d48d3a83c337362861d195ccc52767c32b6cafb694ebb20af0b5bb3a014a62c7",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNCTCWtWAqzH",
+    "name": "Cow Stretch",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "LEVATOR SCAPULAE,TRAPEZIUS UPPER FIBERS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly inhale and as you do, drop your belly towards the mat, lifting your chin and chest to gaze up towards the ceiling. This is the 'cow' part of the stretch.",
+      "Hold this position for a few seconds, making sure to keep your shoulders away from your ears to avoid tension.",
+      "As you exhale, return to the neutral, tabletop position.",
+      "Repeat this exercise for several rounds, matching your movements with your breath for a fluid and calming exercise."
+    ],
+    "localVideo": "/media/exercises/cow_stretch.mp4",
+    "localPoster": "/media/posters/cow_stretch.jpg",
+    "mediaChecksum": "d586093b302d021f9267c77de384024f6184f9d74ae4f2a267a1f43da412e572",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNfaYkEKLQHK",
+    "name": "Elevanted Push-Up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your legs behind you, with your toes on the ground, so your body is in a straight line from your head to your heels.",
+      "Lower your body towards the elevated surface by bending your elbows until your chest nearly touches the surface.",
+      "Push your body back up to the starting position by straightening your arms, making sure to keep your body straight and your core engaged throughout the movement.",
+      "Repeat the exercise for your desired number of repetitions, ensuring to maintain proper form throughout."
+    ],
+    "localVideo": "/media/exercises/elevanted_push_up.mp4",
+    "localPoster": "/media/posters/elevanted_push_up.jpg",
+    "mediaChecksum": "9f86aafff8a849017491cc0d7ab4ec1922f415a024ae478c2e8db944627c9843",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hnFD2bT6sruf",
+    "name": "Sliding Floor Bridge Curl on Towel",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push your hips upward into a bridge position, keeping your upper back and shoulders on the ground, and your hands by your sides.",
+      "Slowly slide your feet away from your body using the towel, extending your legs fully while keeping your hips elevated.",
+      "After fully extending your legs, slowly pull your feet back towards your body, using your hamstrings and glutes to pull while maintaining the bridge position.",
+      "Lower your hips back to the floor to complete one repetition, then repeat this process for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/sliding_floor_bridge_curl_on_towel.mp4",
+    "localPoster": "/media/posters/sliding_floor_bridge_curl_on_towel.jpg",
+    "mediaChecksum": "5adaed646aa086b9f670d15c0cee93a7c06eab56bdd27b20a1ae30f3141bdbac",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNifNwh2tbR2",
+    "name": "Ankle - Dorsal Flexion - Articulations",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "GASTROCNEMIUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly lift the front part of your foot off the ground, keeping your heel in place, this movement should come from your ankle.",
+      "Hold this position for a few seconds, feeling the stretch in your calf and the back of your ankle.",
+      "Slowly lower your foot back to the ground, returning to the starting position.",
+      "Repeat this exercise 10-15 times, then switch to the other foot and perform the same number of repetitions."
+    ],
+    "localVideo": "/media/exercises/ankle_dorsal_flexion_articulations.mp4",
+    "localPoster": "/media/posters/ankle_dorsal_flexion_articulations.jpg",
+    "mediaChecksum": "e4b09798fb0d4fbdde687837c23f4ecee684d48967342c5ab4a4f612a453ae8f",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNjcmNgtPJ1H",
+    "name": "Bodyweight Rear Lunge",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Take a step back with your right foot, keeping your left foot in place.",
+      "Lower your body until your left thigh is parallel to the ground and your right knee is hovering just above the floor, ensuring your left knee is directly above your left ankle.",
+      "Push off your right foot and return to the starting position.",
+      "Repeat the process with your left leg stepping back, and continue to alternate legs for the duration of your workout."
+    ],
+    "localVideo": "/media/exercises/bodyweight_rear_lunge.mp4",
+    "localPoster": "/media/posters/bodyweight_rear_lunge.jpg",
+    "mediaChecksum": "3f38e5031168b7ec40d09f56bfbcbef774c9268bb9d6c7a47e4e8485eaeab634",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hnougzKKhhqu",
+    "name": "Butterfly Yoga Pose",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "PECTINEUS,BICEPS BRACHII,ADDUCTOR LONGUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend your knees, bring the soles of your feet together, and draw your heels as close to your body as you can, forming a diamond shape with your legs.",
+      "Hold onto your feet or ankles, keeping your elbows slightly bent and directed towards your knees.",
+      "Inhale deeply, and as you exhale, press your knees down towards the floor, trying to make them touch the ground; this will stretch your inner thighs and hips.",
+      "Hold this pose for 3-5 breaths, or as long as comfortable, then gently release your legs and return to the starting position."
+    ],
+    "localVideo": "/media/exercises/butterfly_yoga_pose.mp4",
+    "localPoster": "/media/posters/butterfly_yoga_pose.jpg",
+    "mediaChecksum": "1ba8935d0a2748bff67008ae58508afb1cc9cb633391222303b2a88418f1beed",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNRM1dGGhGYL",
+    "name": "Seated Flexion And Extension Neck",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "LEVATOR SCAPULAE,SPLENIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly lower your chin towards your chest to create a flexion in the neck, hold for a few seconds.",
+      "Gradually lift your head back up to the starting position, then gently tilt your head backwards to create an extension in the neck, hold for a few seconds.",
+      "Return to the starting position and repeat the exercise for the recommended number of repetitions.",
+      "Remember to keep the movements slow and controlled, and avoid any sudden jerks or twists to prevent injury."
+    ],
+    "localVideo": "/media/exercises/seated_flexion_and_extension_neck.mp4",
+    "localPoster": "/media/posters/seated_flexion_and_extension_neck.jpg",
+    "mediaChecksum": "9430382eca13d572cdcf931010bf1b0d4cec218c63e4ade00327023f7fed1c1e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hNXJadYcfjnd",
+    "name": "Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "TRICEPS BRACHII,ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body until your chest is close to the floor, keeping your back straight and your elbows close to your body.",
+      "Push your body up, extending your arms fully but without locking your elbows, while maintaining your body in a straight line.",
+      "Pause for a moment at the top of the push-up.",
+      "Lower your body back down to the starting position, ensuring you don't drop your body too quickly, and repeat the exercise."
+    ],
+    "localVideo": "/media/exercises/push_up.mp4",
+    "localPoster": "/media/posters/push_up.jpg",
+    "mediaChecksum": "f96f8c455762865dfff4fd512b3167a602fd7ce7fee98319eda09ae041e03865",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hoFGGwZDNFT1",
+    "name": "Bench dip on floor",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "LEVATOR SCAPULAE,PECTORALIS MAJOR STERNAL HEAD,ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push up through your hands to lift your hips off the floor, keeping your chest up and your back straight.",
+      "Slowly lower your body by bending your elbows until they are at about a 90-degree angle, then push your body back up to the starting position.",
+      "Make sure to keep your hips close to your hands during the movement to target the triceps effectively.",
+      "Repeat this motion for the desired number of repetitions, ensuring to maintain proper form throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/bench_dip_on_floor.mp4",
+    "localPoster": "/media/posters/bench_dip_on_floor.jpg",
+    "mediaChecksum": "2777eae27a5e42a57bcd99cc7bc93439701df0c206c91f2aeaeb5c844dc1149b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hoifHqpb7WK9",
+    "name": "Supination Bar Suspension Stretch",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TERES MAJOR,SUBSCAPULARIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your arms forward and grip the bar with your palms facing up, this is the supination position.",
+      "Slowly lean back, keeping your feet flat on the ground, and allow your arms to fully extend while maintaining your grip on the bar.",
+      "Hold this stretching position for about 20 to 30 seconds, ensuring you feel a stretch in your arms and shoulders.",
+      "Return to the starting position by slowly standing back up and releasing your grip on the bar, then repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/supination_bar_suspension_stretch.mp4",
+    "localPoster": "/media/posters/supination_bar_suspension_stretch.jpg",
+    "mediaChecksum": "24e5db213b70aa37b7bd27cfb34e3d4d3287d7f51747eb155e05d88f1d421b1a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2homrPqqs8coG",
+    "name": "Stair Up",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Step up onto the first stair with your right foot, making sure your entire foot is on the stair and not hanging off the edge.",
+      "Push off with your right foot, bringing your left foot up to join it on the same stair.",
+      "Repeat this process, moving steadily up the staircase, one stair at a time.",
+      "Once you reach the top, carefully turn around and walk back down to the bottom to complete one repetition."
+    ],
+    "localVideo": "/media/exercises/stair_up.mp4",
+    "localPoster": "/media/posters/stair_up.jpg",
+    "mediaChecksum": "6309177aaba8ee08621de56f8250a84825fd1ecca3785760d43d170dbe6a4c2c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2howQHvcrcrW6",
+    "name": "Front Raise",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "SERRATUS ANTERIOR,LATERAL DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "While maintaining the torso stationary (no swinging), lift the left dumbbell to the front of your body while slightly bending the elbow and palms facing down. Continue to go up until your arm is slightly above parallel to the floor. Exhale as you execute this portion of the movement and pause for a second at the top.",
+      "Inhale after the second pause and slowly lower the dumbbell back down to the starting position.",
+      "Now perform the same movement for the right hand while the left hand holds the dumbbell at the waist.",
+      "Continue alternating in this manner until all of the recommended repetitions for each arm have been completed."
+    ],
+    "localVideo": "/media/exercises/front_raise.mp4",
+    "localPoster": "/media/posters/front_raise.jpg",
+    "mediaChecksum": "e61d661729fbdb7c15dd9ad7c5074220abcbaa1c8a2c954a098c19731c967214",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hoyHUrhBiEWg",
+    "name": "Walking on Treadmill",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Select the Quick Start or Manual mode on the treadmill's control panel, then gradually increase the speed to a comfortable walking pace.",
+      "Keep your back straight, your head up, and let your arms swing naturally at your sides as you walk.",
+      "Pay attention to your steps, ensuring not to step too close to the front or back of the treadmill to avoid tripping or falling.",
+      "To finish your workout, gradually decrease the speed until you come to a complete stop, then carefully step off the treadmill."
+    ],
+    "localVideo": "/media/exercises/walking_on_treadmill.mp4",
+    "localPoster": "/media/posters/walking_on_treadmill.jpg",
+    "mediaChecksum": "fc3b7e7e8d52b4af09b7bc22e1988f25178b514cfc3122181018dc2427e56037",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hozyXuCmDTdZ",
+    "name": "Wrist Circles",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Make a fist with both hands, keeping your thumbs wrapped around your fingers.",
+      "Begin to slowly rotate your wrists in a circular motion, moving in a clockwise direction.",
+      "Continue this motion for about 30 seconds, then switch and rotate your wrists in a counter-clockwise direction for another 30 seconds.",
+      "Repeat this exercise for a few rounds, taking care to keep your movements smooth and controlled to avoid strain."
+    ],
+    "localVideo": "/media/exercises/wrist_circles.mp4",
+    "localPoster": "/media/posters/wrist_circles.jpg",
+    "mediaChecksum": "a820519f753a3e802df42b6d65452578334966596e89ae8554981b3e4b1fa899",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpDWoTxocW8G",
+    "name": "Scissors",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SARTORIUS,PECTINEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift both legs off the ground about a foot, keeping your lower back pressed into the mat. This is your starting position.",
+      "Keeping your legs straight, lift your right leg up towards the ceiling while keeping your left leg hovering above the ground.",
+      "Lower your right leg while simultaneously lifting your left leg, mimicking a scissor motion.",
+      "Continue alternating legs for your desired number of repetitions, ensuring your core is engaged and your lower back remains in contact with the mat throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/scissors.mp4",
+    "localPoster": "/media/posters/scissors.jpg",
+    "mediaChecksum": "1e541d2fd79a42220142964bb75b52a374e25a8d87f0d8e096c5783e89f7917c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpeHAizgtrEw",
+    "name": "One arm Revers Wrist Curl",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Place your left forearm on your left thigh, with your wrist and the dumbbell hanging over the edge of your knee, palm facing down.",
+      "Slowly curl the dumbbell up by flexing your wrist, keeping your forearm pressed against your thigh for stability.",
+      "Once your wrist is fully flexed, hold the position for a moment to maximize the contraction in the forearm muscles.",
+      "Slowly lower the dumbbell back to the starting position, then repeat the exercise for your desired number of repetitions before switching to your right hand."
+    ],
+    "localVideo": "/media/exercises/one_arm_revers_wrist_curl.mp4",
+    "localPoster": "/media/posters/one_arm_revers_wrist_curl.jpg",
+    "mediaChecksum": "e050a37f1d085c4a200786aa00806afa24c76de1886a2ddacbaf3de257be6fb2",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hPgRbN1KtJuD",
+    "name": "Close-grip Push-up",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "PECTORALIS MAJOR STERNAL HEAD,PECTORALIS MAJOR CLAVICULAR HEAD,ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your legs behind you and balance on the balls of your feet, forming a straight line from your head to your heels.",
+      "Lower your body towards the floor by bending your elbows, keeping your body straight and your elbows close to your sides.",
+      "Push your body back up by extending your arms, keeping your body straight and your core engaged.",
+      "Repeat the exercise for the desired amount of repetitions, making sure to maintain the correct form throughout."
+    ],
+    "localVideo": "/media/exercises/close_grip_push_up.mp4",
+    "localPoster": "/media/posters/close_grip_push_up.jpg",
+    "mediaChecksum": "4ca4cc29f325b37ec5354f575bc45515dbb0b069db7d72e67f5a50e3c75d68c2",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpLLs1uU5atr",
+    "name": "Bulgarian Split Squat",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your chest up and your core engaged as you lower your body down into a lunge position, bending both knees to about a 90-degree angle, while ensuring your right knee doesn't go past your right foot.",
+      "Push through your right heel to lift your body back up to the starting position, keeping your left foot on the bench or box.",
+      "Repeat this movement for the desired number of repetitions, then switch legs and perform the same steps.",
+      "Remember to maintain good posture throughout the exercise, keeping your back straight and your gaze forward."
+    ],
+    "localVideo": "/media/exercises/bulgarian_split_squat.mp4",
+    "localPoster": "/media/posters/bulgarian_split_squat.jpg",
+    "mediaChecksum": "d1cbd29cf33b75c435499fed856b3b80f036a60773f1c3cea0d90e6089762c12",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hpnZ6oASM662",
+    "name": "Kneeling Push up to Child Pose",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "SUBSCAPULARIS,QUADRICEPS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body down towards the floor by bending your elbows, keeping your body in a straight line from head to knees, this is the kneeling push-up part of the exercise.",
+      "Push your body back up using your arms until they are fully extended, returning to the starting position.",
+      "From this position, push your hips back towards your heels, lowering your chest and forehead to the floor, stretching your arms out in front of you into the child's pose.",
+      "Hold this position for a few seconds, feeling the stretch in your back and arms, then return to the start position and repeat the exercise."
+    ],
+    "localVideo": "/media/exercises/kneeling_push_up_to_child_pose.mp4",
+    "localPoster": "/media/posters/kneeling_push_up_to_child_pose.jpg",
+    "mediaChecksum": "a00fe7c2ba71a200468809a33fde0ab672123a72c0407fb463f13c7f9045278b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hPRWorCfCPov",
+    "name": "Flutter Kicks",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "QUADRICEPS,SARTORIUS,ADDUCTOR BREVIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift your legs off the ground about 6 inches, keeping them straight and parallel to each other.",
+      "Begin to move one leg up while the other moves down, alternating them in a 'fluttering' motion.",
+      "Keep your abdominal muscles engaged throughout the exercise and try to keep your lower back flat on the ground.",
+      "Continue the fluttering motion for your desired number of repetitions or time duration."
+    ],
+    "localVideo": "/media/exercises/flutter_kicks.mp4",
+    "localPoster": "/media/posters/flutter_kicks.jpg",
+    "mediaChecksum": "aef7effefc88326300c27cf9436a74bc9ee0977ae2f0a921bc7d5663b7b1e974",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hPvwqp7Pwvks",
+    "name": "Seated Single Leg Hamstring Stretch",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your back straight and slowly lean forward from your hips towards the foot of your extended leg, aiming to grasp it with your hand.",
+      "Hold the stretch for about 20 to 30 seconds, making sure to breathe deeply and relax into the stretch.",
+      "Release the stretch and sit up straight again.",
+      "Repeat the process with the other leg."
+    ],
+    "localVideo": "/media/exercises/seated_single_leg_hamstring_stretch.mp4",
+    "localPoster": "/media/posters/seated_single_leg_hamstring_stretch.jpg",
+    "mediaChecksum": "f8f1fc50894f747a8752aae5be173ec9311b2e0273607baa888cdefb5ed220f9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hPxDaq9kFjiL",
+    "name": "Side Wrist Pull Stretch",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your right arm out in front of you, with your palm facing down.",
+      "With your left hand, gently grasp the fingers of your extended right hand.",
+      "Slowly pull the fingers of your right hand towards your body until you feel a stretch along the top of your wrist and forearm.",
+      "Hold this stretch for about 15 to 30 seconds, then release and switch to the other hand. Repeat this process for both hands as needed."
+    ],
+    "localVideo": "/media/exercises/side_wrist_pull_stretch.mp4",
+    "localPoster": "/media/posters/side_wrist_pull_stretch.jpg",
+    "mediaChecksum": "01735f16ac53d4d4ea06f72a46126a2306ea6ba258354ebc8dac02a9ef6b148d",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hq3Wm6ANkgUz",
+    "name": "Lying Leg Raise and Hold",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "RECTUS ABDOMINIS,QUADRICEPS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly lift your legs off the ground, keeping them straight and together, until they form a 90-degree angle with your body.",
+      "Hold this position for a few seconds, keeping your core engaged and your lower back pressed into the floor to avoid straining.",
+      "Lower your legs back down in a controlled manner, making sure not to let your feet touch the ground.",
+      "Repeat this exercise for the desired number of repetitions, ensuring to maintain proper form throughout."
+    ],
+    "localVideo": "/media/exercises/lying_leg_raise_and_hold.mp4",
+    "localPoster": "/media/posters/lying_leg_raise_and_hold.jpg",
+    "mediaChecksum": "b7c606954d8d89fd074a859159211d7148c427fee98140bf0ef0e849b01601b6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQcqPQ37Dmxj",
+    "name": "Wrist - Flexion - Articulations",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Hold a lightweight dumbbell in your hand, gripping it firmly but not too tightly.",
+      "Slowly bend your wrist upwards, lifting the weight as high as you can while keeping your forearm stationary.",
+      "Hold this position for a few seconds, then slowly lower your hand back to the starting position.",
+      "Repeat this exercise for the desired number of repetitions, then switch to the other hand."
+    ],
+    "localVideo": "/media/exercises/wrist_flexion_articulations.mp4",
+    "localPoster": "/media/posters/wrist_flexion_articulations.jpg",
+    "mediaChecksum": "c8083b3120ed3f391d9e3e4ddf17ae61064d1a9dbd859b06b806da9192f8965f",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQDiSwTZXM4F",
+    "name": "Goblet Squat",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "ERECTOR SPINAE,ADDUCTOR MAGNUS,GASTROCNEMIUS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Engage your core and keep your chest up, then start to lower your body into a squat position by bending your knees and pushing your hips back.",
+      "Continue lowering yourself until your hips are below your knees, making sure your elbows are inside your knees at the bottom of the squat.",
+      "Pause for a moment at the bottom of the squat, then push through your heels to stand back up to the starting position.",
+      "Repeat this movement for the desired number of repetitions, making sure to maintain proper form throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/goblet_squat.mp4",
+    "localPoster": "/media/posters/goblet_squat.jpg",
+    "mediaChecksum": "550ac7786a4313383d0a01ab58a9c66ce017322410efc93c59a90fb81f7f292e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQeNyCnt3uFh",
+    "name": "Back Pec Stretch",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your arms behind your back and interlock your fingers.",
+      "Slowly lift your arms upward while keeping your chest out and your chin up, until you feel a stretch in your shoulders and chest.",
+      "Hold this position for about 20-30 seconds, making sure to breathe deeply and evenly.",
+      "Gently lower your arms back down and relax before repeating the stretch for another set."
+    ],
+    "localVideo": "/media/exercises/back_pec_stretch.mp4",
+    "localPoster": "/media/posters/back_pec_stretch.jpg",
+    "mediaChecksum": "02ed2805b3db573d835f3619264b858bfef8956310307919a3d5f2eeda61643b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQEqKxuAfV1D",
+    "name": "Pull-up with Bent Knee between Chairs",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TRAPEZIUS LOWER FIBERS,TERES MINOR,BRACHIORADIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Stand between the chairs and grip the backs or the seats of the chairs with each hand, ensuring your grip is firm and secure.",
+      "Slowly lift your body off the ground by pulling up with your arms and shoulders, bending your knees at a 90-degree angle as you rise.",
+      "Hold this position for a few seconds, feeling the tension in your upper body and core muscles.",
+      "Gradually lower your body back down to the starting position, keeping your knees bent, then repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/pull_up_with_bent_knee_between_chairs.mp4",
+    "localPoster": "/media/posters/pull_up_with_bent_knee_between_chairs.jpg",
+    "mediaChecksum": "12ce36687a28b3594360b6a837607b055918ba8c0fb6c60f59bca00483023952",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hqfZb8UHBvB9",
+    "name": "Alternate Lying Floor Leg Raise",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "SARTORIUS,ADDUCTOR BREVIS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift one leg off the ground, keeping it straight, until it forms a 90-degree angle with your body.",
+      "Hold this position for a few seconds, then slowly lower your leg back down to the floor.",
+      "Repeat the same movement with your other leg, keeping your lower back pressed against the floor throughout the exercise.",
+      "Continue alternating between both legs for the desired number of repetitions, ensuring your movements are controlled and deliberate."
+    ],
+    "localVideo": "/media/exercises/alternate_lying_floor_leg_raise.mp4",
+    "localPoster": "/media/posters/alternate_lying_floor_leg_raise.jpg",
+    "mediaChecksum": "f4fe7f67645d1319bb1be685bd027b749b933b9bdcffca3baf24d36d7130b578",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hQHmRSoUkk9F",
+    "name": "Walking Lunge",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Take a step forward with your right foot, lowering your body into a lunge position. Your right knee should be directly above your right ankle and your left knee should be hovering just above the ground.",
+      "Push off with your right foot, bringing your left foot forward to step into the next lunge. This completes one rep.",
+      "Repeat this motion, alternating legs as you move forward across the room.",
+      "Remember to keep your upper body straight and your core engaged throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/walking_lunge.mp4",
+    "localPoster": "/media/posters/walking_lunge.jpg",
+    "mediaChecksum": "4e9de4e9018e2c94d3d362e23f5a5193d76c8d47f1820a910f3ba90f7e1e7b8c",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hqjVS3nwBoyr",
+    "name": "Two Legs Hammer Curl with Towel",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "BRACHIALIS,BICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Place a dumbbell or any weighted object in the center of the towel and hold it securely.",
+      "Keeping your elbows close to your body, slowly lift the weighted towel towards your chest by bending your elbows.",
+      "Once your hands reach chest level, pause for a moment, then slowly lower the towel back down to the starting position.",
+      "Repeat this motion for your desired number of repetitions, ensuring to maintain control and proper form throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/two_legs_hammer_curl_with_towel.mp4",
+    "localPoster": "/media/posters/two_legs_hammer_curl_with_towel.jpg",
+    "mediaChecksum": "cbf2291303d0be54057e408ae8adbcfdf4870264a8f0b6f78289ce543159e227",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hqw5LsDpeE2i",
+    "name": "Elbow Flexor Stretch",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "BICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "With your palm facing upwards, gently pull back your fingers using your opposite hand until you feel a stretch in your forearm and bicep.",
+      "Hold this position for about 20-30 seconds, ensuring you feel a gentle stretch but no pain.",
+      "Slowly release your hand and relax your arm.",
+      "Repeat the stretch with the other arm."
+    ],
+    "localVideo": "/media/exercises/elbow_flexor_stretch.mp4",
+    "localPoster": "/media/posters/elbow_flexor_stretch.jpg",
+    "mediaChecksum": "055042be4f6f84fe06a9c12275c6ca50fbe343c3b4e1d93eb5720485af836508",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hqYdxG87hXz1",
+    "name": "Burpee",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Quickly drop into a squat position and place your hands on the floor in front of you.",
+      "Kick or step your feet back into a plank position, while keeping your arms extended.",
+      "Immediately return your feet to the squat position.",
+      "Stand up from the squat position and jump into the air while extending your arms overhead."
+    ],
+    "localVideo": "/media/exercises/burpee.mp4",
+    "localPoster": "/media/posters/burpee.jpg",
+    "mediaChecksum": "a97c7fb570f6432702b676f69aee18165b9c309f75891227e33a0719d1ee26fc",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hR12rPqdpWP8",
+    "name": "Pike-to-Cobra Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "SOLEUS,HAMSTRINGS,GASTROCNEMIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push your hips back and upwards into a downward dog or pike position, keeping your hands firmly planted on the ground.",
+      "Lower your body towards the ground, bending your elbows as you would in a regular push-up, but as you descend, allow your hips and chest to move towards the ground as well, transitioning into a cobra or upward facing dog position.",
+      "Push your body back up by straightening your arms, lifting your chest and hips off the ground, and returning to the pike position.",
+      "Repeat these movements for your desired amount of repetitions, ensuring to maintain proper form throughout."
+    ],
+    "localVideo": "/media/exercises/pike_to_cobra_push_up.mp4",
+    "localPoster": "/media/posters/pike_to_cobra_push_up.jpg",
+    "mediaChecksum": "bc6c33f98dd857211869e40922d285c5ffcd9ebb99b944cc1f6357abc0c2b8d5",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hRaLxY7YfNbg",
+    "name": "Side Lunge Stretch",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "TENSOR FASCIAE LATAE,SOLEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [],
+    "localVideo": "/media/exercises/side_lunge_stretch.mp4",
+    "localPoster": "/media/posters/side_lunge_stretch.jpg",
+    "mediaChecksum": "0fa221467e677edc5c96a4dbd79fd2754cdd28b7acaebdb94d8e198383619278",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hRH4aTB379Tp",
+    "name": "45 degree hyperextension",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your body straight and bend at your waist while keeping your back flat, continue to lower your torso until you feel a mild stretch on the hamstrings.",
+      "Begin to raise your torso by extending through the hips with your back still kept straight, continue this movement until your body is in line with your legs.",
+      "Hold this position for a few seconds, focusing on squeezing your glutes and hamstrings at the top of the movement.",
+      "Slowly lower your body back to the starting position, repeating the movement for the desired amount of repetitions."
+    ],
+    "localVideo": "/media/exercises/45_degree_hyperextension.mp4",
+    "localPoster": "/media/posters/45_degree_hyperextension.jpg",
+    "mediaChecksum": "11cbbd327c440f7e92fb6767f06085608557c520f8f65c4e067ec2fd6c7458f3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hrHSqBnVWRRB",
+    "name": "Bodyweight Single Leg Deadlift",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SOLEUS,ADDUCTOR MAGNUS,ERECTOR SPINAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly bend forward at the hips, keeping your back straight and extending your free leg behind you for balance.",
+      "Continue to bend forward until your torso is parallel to the floor, or as far as your flexibility allows, making sure to keep your standing leg slightly bent.",
+      "Pause for a moment at the bottom of the movement, then slowly return to the starting position, maintaining balance and control throughout the movement.",
+      "Repeat the exercise for your desired number of repetitions, then switch legs and perform the same number of repetitions with the other leg."
+    ],
+    "localVideo": "/media/exercises/bodyweight_single_leg_deadlift.mp4",
+    "localPoster": "/media/posters/bodyweight_single_leg_deadlift.jpg",
+    "mediaChecksum": "e2008cfb1395e7454d27ed4236f4da067a07551bb5ece2e666fed3aa9b765def",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hRicz5MdZEns",
+    "name": "Squat Thrust",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body into a squat position and place your hands on the floor in front of you.",
+      "Kick your feet back quickly, extending your legs behind you and landing in a push-up position.",
+      "Quickly bring your feet back towards your hands, returning to the squat position.",
+      "Stand up straight again, pushing through your heels and extending your hips and knees, completing one squat thrust. Repeat this sequence for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/squat_thrust.mp4",
+    "localPoster": "/media/posters/squat_thrust.jpg",
+    "mediaChecksum": "66a2e42ae79636678ae5c41e4004ae3998ec9e569f273da9942de2aba4335cb3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hrN2RCZBZU9h",
+    "name": "Side Neck Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "LEVATOR SCAPULAE,TRAPEZIUS UPPER FIBERS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly tilt your head to the right, aiming to bring your ear as close to your shoulder as possible, but be sure not to lift your shoulder up to your ear.",
+      "Hold this position for about 15 to 30 seconds, feeling a gentle stretch along the left side of your neck.",
+      "Slowly lift your head back to the upright position, then repeat the process, this time tilting your head to the left and holding for another 15 to 30 seconds.",
+      "Repeat this exercise for several rounds, always moving slowly and gently to avoid injury."
+    ],
+    "localVideo": "/media/exercises/side_neck_stretch.mp4",
+    "localPoster": "/media/posters/side_neck_stretch.jpg",
+    "mediaChecksum": "06b033e3bf5d3de628db2acb6f4c0de26e6ee639d3c9d1e1f6a078f0116acf9e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hS5UrMusVCEE",
+    "name": "Lateral Raise with Towel",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "ANTERIOR DELTOID,SERRATUS ANTERIOR",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your arms straight and slowly lift the towel out to your sides until your arms are parallel to the floor, maintaining tension on the towel throughout the movement.",
+      "Pause for a moment at the top of the movement, making sure to keep your shoulders down and not hunch them up towards your ears.",
+      "Slowly lower the towel back down to the starting position, keeping your arms straight and maintaining the tension on the towel.",
+      "Repeat this movement for your desired number of repetitions, ensuring to keep your core engaged and your movements controlled throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/lateral_raise_with_towel.mp4",
+    "localPoster": "/media/posters/lateral_raise_with_towel.jpg",
+    "mediaChecksum": "ba9737696316e19a5fd5f2314122ce989cec5c415d1681254b16221509d9956b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hs6camM22yBG",
+    "name": "Seated Shoulder Press",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "PECTORALIS MAJOR CLAVICULAR HEAD,TRICEPS BRACHII,SERRATUS ANTERIOR",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Keeping your back pressed firmly against the bench and your feet flat on the floor, push the dumbbells upward until your arms are fully extended, but do not lock your elbows.",
+      "Hold this position for a moment, making sure to keep your core engaged and your shoulders down to avoid straining your neck.",
+      "Slowly lower the dumbbells back to the starting position at shoulder level, ensuring that you control the movement rather than letting the weights drop.",
+      "Repeat this movement for your desired number of repetitions, maintaining proper form throughout."
+    ],
+    "localVideo": "/media/exercises/seated_shoulder_press.mp4",
+    "localPoster": "/media/posters/seated_shoulder_press.jpg",
+    "mediaChecksum": "5e8ae4108f8ee6a20d227780f80c7f42ee9a7aa75b9fb5038714f63758c027c9",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hU4y6EaYXFhr",
+    "name": "Pull up",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TERES MAJOR,BRACHIALIS,BRACHIORADIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Execute movement with controlled cadence through full range of motion."
+    ],
+    "localVideo": "/media/exercises/pull_up.mp4",
+    "localPoster": "/media/posters/pull_up.jpg",
+    "mediaChecksum": "90a2b771b543b7278d67933aae65e3175bdb1ce261471ba568343efb82149ea6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSF5U97sFAr8",
+    "name": "Wrist - Extension - Articulations",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Hold a light weight in your hand, such as a dumbbell or a can of soup, with your palm facing down.",
+      "Slowly lift the weight by extending your wrist upwards, taking care not to move your forearm.",
+      "Hold this position for a few seconds, feeling the tension in your wrist and forearm.",
+      "Gradually lower your hand back to the starting position, completing one repetition. Repeat this exercise for the desired number of sets."
+    ],
+    "localVideo": "/media/exercises/wrist_extension_articulations.mp4",
+    "localPoster": "/media/posters/wrist_extension_articulations.jpg",
+    "mediaChecksum": "2d2b8da22d1ad371b7e7bcac64b9565a75b2779d1a0d3b0a3607ee4e4deda470",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSGs9Q3NVGhs",
+    "name": "Bodyweight Standing Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly raise your heels off the ground until you're standing on your tiptoes.",
+      "Hold this position for a moment, ensuring that the contraction is felt in your calves.",
+      "Gradually lower your heels back to the ground to complete one repetition.",
+      "Repeat this process for your desired number of repetitions, ensuring to maintain control throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/bodyweight_standing_calf_raise.mp4",
+    "localPoster": "/media/posters/bodyweight_standing_calf_raise.jpg",
+    "mediaChecksum": "bf994b2cb34a2f974184e06d044372442081969ac05406cf5a92b9d2ea36539e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSkc2tRLxVVS",
+    "name": "Calf Stretch with Rope",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Loop a rope or a resistance band around the ball of your foot, holding the ends of the rope with each hand.",
+      "Slowly pull on the rope, drawing your toes towards your body to feel a stretch in your calf muscle.",
+      "Hold this position for 20 to 30 seconds, ensuring to keep your knee straight and your foot relaxed.",
+      "Release the pull and repeat the stretch for the desired number of sets."
+    ],
+    "localVideo": "/media/exercises/calf_stretch_with_rope.mp4",
+    "localPoster": "/media/posters/calf_stretch_with_rope.jpg",
+    "mediaChecksum": "c666d235086729517b3dd36f9a580057ca7c41b55c14c84a5672bf24a2ad2942",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hskeb9dXgBoC",
+    "name": "Crunch Floor",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "OBLIQUES",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Place your hands lightly behind your head or across your chest, ensuring not to pull your neck with your hands as you perform the exercise.",
+      "Slowly curl your body up towards your knees, lifting your shoulder blades off the floor and contracting your abdominal muscles.",
+      "Hold this position for a moment, feeling the tension in your abdominal muscles.",
+      "Slowly lower yourself back down to your starting position, keeping your abs engaged even as you return to the floor."
+    ],
+    "localVideo": "/media/exercises/crunch_floor.mp4",
+    "localPoster": "/media/posters/crunch_floor.jpg",
+    "mediaChecksum": "7697b8f237ec3904f82d39668e72e2739ccd097e5e8aa52ad38226f03332941e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSMjcavNjk3c",
+    "name": "Quick Feet",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "BRACHIORADIALIS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Start by jogging in place, lifting your feet only a few inches off the ground and keeping the movement quick and light.",
+      "Gradually increase the speed of your jog, focusing on moving your feet as quickly as possible.",
+      "Engage your core and swing your arms naturally as if you were running to help maintain balance and rhythm.",
+      "Continue this exercise for a set amount of time, such as 30 seconds to a minute, then rest and repeat as desired."
+    ],
+    "localVideo": "/media/exercises/quick_feet.mp4",
+    "localPoster": "/media/posters/quick_feet.jpg",
+    "mediaChecksum": "fed238352afb2411d2530fd0a49aad63cca5fd537a3560d5506cacd84f38fa57",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSq88Ni3KCny",
+    "name": "Standing Alternate Arms Circling",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "SPLENIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Start moving your right arm in a forward circular motion while your left arm moves in a backward circular motion.",
+      "Make sure to keep your arms straight and the circles about a foot in diameter.",
+      "After about 30 seconds, switch directions: your right arm should now move in a backward circular motion and your left arm in a forward circular motion.",
+      "Continue alternating the direction of the arm circles for your desired number of sets or time period."
+    ],
+    "localVideo": "/media/exercises/standing_alternate_arms_circling.mp4",
+    "localPoster": "/media/posters/standing_alternate_arms_circling.jpg",
+    "mediaChecksum": "cfe9e8e80b1d138ade335457629579acefd6c974c247d0dbebf854934053da8f",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hsSnmS946i2k",
+    "name": "Single Leg Squat with Support",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "INFRASPINATUS,TENSOR FASCIAE LATAE,STERNOCLEIDOMASTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Shift your weight onto your left leg, and raise your right leg off the floor, extending it forward slightly.",
+      "Slowly bend your left knee, lowering your body as far as you can without losing balance, ensure your knee doesn't go past your toes.",
+      "Pause for a moment at the bottom of the squat, then push through your left foot to straighten your leg and return to the starting position.",
+      "Repeat this movement for the desired number of reps, then switch legs and do the same on the other side."
+    ],
+    "localVideo": "/media/exercises/single_leg_squat_with_support.mp4",
+    "localPoster": "/media/posters/single_leg_squat_with_support.jpg",
+    "mediaChecksum": "675de9f3342d2741697967a4c0f8e645a0200c5eb54bdfd81b223bbed4b2818e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSvEPVntpxSG",
+    "name": "Kneeling Rotational Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "TRICEPS BRACHII,ANTERIOR DELTOID,RECTUS ABDOMINIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body down towards the floor, bending your elbows and keeping your body straight.",
+      "As you push your body back up, rotate your upper body to the right, extending your right arm towards the ceiling while keeping your left hand on the ground.",
+      "Return to the starting position and repeat the push-up, this time rotating your upper body to the left and extending your left arm towards the ceiling.",
+      "Continue to alternate sides with each push-up, ensuring you maintain proper form and control throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/kneeling_rotational_push_up.mp4",
+    "localPoster": "/media/posters/kneeling_rotational_push_up.jpg",
+    "mediaChecksum": "e4ec0822b6cde72a9a77acc3ec190e7e46a1132f95143fd3c2c3981b60aaae90",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hsVHu7B1MTdr",
+    "name": "Palms In Incline Bench Press",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "BRACHIORADIALIS,ADDUCTOR BREVIS,ANTERIOR DELTOID",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Sit down on the bench with your feet flat on the floor and grip the barbell with your palms facing towards you, ensuring that your hands are shoulder-width apart.",
+      "Lift the barbell off the rack and hold it directly above your chest with your arms fully extended, this is your starting position.",
+      "Slowly lower the barbell towards your chest while keeping your elbows close to your body, pause for a moment when the barbell is just an inch away from your chest.",
+      "Push the barbell back to the starting position while exhaling, fully extending your arms but not locking your elbows. Repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/palms_in_incline_bench_press.mp4",
+    "localPoster": "/media/posters/palms_in_incline_bench_press.jpg",
+    "mediaChecksum": "4a0f8b56707fbe7491da344413f381fcbeb4b64ae815dc1eb2e4e985a1407b5d",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hSxsNAV8tGS6",
+    "name": "Split Squat",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your upper body straight, with your shoulders back and relaxed and chin up, then slowly lower your body as far as you can by bending your knees. Your right knee should be directly above your ankle, and your left knee should not touch the floor.",
+      "Hold this position for a few seconds, making sure to keep your core engaged and your hips square.",
+      "Push back up to the starting position through your right heel, keeping your weight balanced evenly, not leaning forward or backward.",
+      "Repeat the movement with your left leg stepping forward. Remember to do an equal number of repetitions on each side to ensure balanced strength development."
+    ],
+    "localVideo": "/media/exercises/split_squat.mp4",
+    "localPoster": "/media/posters/split_squat.jpg",
+    "mediaChecksum": "28131ab1c6f82833ba05c2c2d296e1633abb0fc596d0074d28b1bd170a780927",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hsZWJA1ujZUd",
+    "name": "Side Push Neck Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly turn your head to the right until you feel a gentle stretch in the left side of your neck.",
+      "Using your right hand, gently push your head farther to the right, increasing the stretch. Remember to keep the rest of your body stationary.",
+      "Hold this position for about 20 to 30 seconds, breathing deeply and evenly throughout.",
+      "Slowly release your hand and return your head to the center, then repeat the process on the other side for a balanced stretch."
+    ],
+    "localVideo": "/media/exercises/side_push_neck_stretch.mp4",
+    "localPoster": "/media/posters/side_push_neck_stretch.jpg",
+    "mediaChecksum": "35f5cd327264afbcab79024542e34b8736d99ccfd5cd2138b77e8b2ddc4a4afd",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hTaeNKWhMQHH",
+    "name": "Dumbbell burpee",
+    "primaryMuscle": "FULL_BODY",
+    "secondaryMuscles": "",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "In a swift motion, lower your body into a squatting position and place the dumbbells on the floor in front of you.",
+      "Kick your feet back, so you are in a push-up position, while keeping your hands on the dumbbells.",
+      "Quickly return your feet to the squatting position, then stand up, lifting the dumbbells above your head in a swift and controlled motion.",
+      "Lower the dumbbells back down to your sides, returning to the starting position, and repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/dumbbell_burpee.mp4",
+    "localPoster": "/media/posters/dumbbell_burpee.jpg",
+    "mediaChecksum": "c5a0132cdf4c1cd7a70b9e8a8538c9193b7ae63e89e69ef8bfdb261e5fbd0d74",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hTCBiQVsEfZ7",
+    "name": "Dumbbell Side Bend",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Keep your back straight, your head up, and your other hand on your waist.",
+      "Bend only at your waist to the side as far as possible, but make sure to keep your back straight.",
+      "Hold for a moment at the furthest point, then return to the starting position.",
+      "Repeat the exercise for the recommended amount of repetitions, then switch sides to ensure an even workout for both sides of your body."
+    ],
+    "localVideo": "/media/exercises/dumbbell_side_bend.mp4",
+    "localPoster": "/media/posters/dumbbell_side_bend.jpg",
+    "mediaChecksum": "3adaa116e5d5ecbf7cab76f5435885440d1b15c3fe31c79179b5c29e71109671",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hTkfLWpc57BQ",
+    "name": "Body-Up",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "PECTORALIS MAJOR CLAVICULAR HEAD,PECTORALIS MAJOR STERNAL HEAD,ANTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keeping your body straight and core engaged, lower your chest towards the floor as if you are performing a push-up.",
+      "Push your body upwards while simultaneously tucking your knees towards your chest, and roll back onto your sit bones, lifting your hips high into the air and reaching your feet towards the ceiling.",
+      "Slowly roll back down to the starting position, extending your legs back onto the elevated surface and returning to the plank position.",
+      "Repeat the sequence for the desired number of repetitions, remembering to keep your core engaged and maintain control throughout the movement."
+    ],
+    "localVideo": "/media/exercises/body_up.mp4",
+    "localPoster": "/media/posters/body_up.jpg",
+    "mediaChecksum": "221333e267b00074667874455d2ed489b406dc0dcc5dd9423a56c8baf6d3d81b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hTs4q3ihihZs",
+    "name": "Seated Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BARBELL",
+    "instructions": [
+      "Place your toes on the lower portion of the platform with your heels extending off, and adjust the pads so they fit snugly against your lower thigh, just above your knees.",
+      "Slowly raise your heels by pushing up on the balls of both feet, making sure to exhale as you perform this movement.",
+      "Hold the contracted position briefly at the top before slowly lowering your heels back to the original position, inhaling as you do so.",
+      "Repeat this motion for the desired number of repetitions, ensuring to maintain a controlled movement speed throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/seated_calf_raise.mp4",
+    "localPoster": "/media/posters/seated_calf_raise.jpg",
+    "mediaChecksum": "6b025c75fe6612bc33f7a5aefeb9fe4faa5afca67393e9c968bf147ca94b486e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2htTnk4CuspZh",
+    "name": "Rotating Neck Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly turn your head to the right until you feel a slight stretch in the left side of your neck and hold for 15-30 seconds.",
+      "Gradually return your head to the center position, then slowly turn it to the left until you feel a slight stretch in the right side of your neck, holding for another 15-30 seconds.",
+      "Return your head to the center once more, then gently tilt it to the right, bringing your ear towards your shoulder until you feel a stretch in the left side of your neck and hold for 15-30 seconds.",
+      "Finally, bring your head back to the center and repeat the process on the left side, tilting your head to the left and bringing your ear towards your shoulder until you feel a stretch in the right side of your neck, holding for another 15-30 seconds."
+    ],
+    "localVideo": "/media/exercises/rotating_neck_stretch.mp4",
+    "localPoster": "/media/posters/rotating_neck_stretch.jpg",
+    "mediaChecksum": "b5a69b0802934ee2774f58f913f3f77bc244ffa8db19f8ef1b3feffd69709fa0",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2htzPyjcc3Mt2",
+    "name": "Front Plank Toe Tap",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your core engaged and your back flat.",
+      "Then, slowly lift your right foot off the ground and move it out to the side, tapping the toe on the floor.",
+      "Bring your right foot back to the starting position and repeat the same movement with your left foot.",
+      "Continue alternating between your right and left foot for the desired number of repetitions or time."
+    ],
+    "localVideo": "/media/exercises/front_plank_toe_tap.mp4",
+    "localPoster": "/media/posters/front_plank_toe_tap.jpg",
+    "mediaChecksum": "20faccab3907860f6091801b4e3a385c30d931cb5f6852b850040eb52f3f9225",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hU3XPwUFSpkC",
+    "name": "L-Sit on Floor",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "SARTORIUS,TERES MAJOR,RECTUS ABDOMINIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Press your palms down into the floor and push your body upwards, lifting your hips and buttocks off the ground.",
+      "Keeping your legs straight, lift them off the floor so that your body is in an 'L' shape, with your torso and thighs at a 90-degree angle.",
+      "Hold this position for as long as you can, keeping your core tight and your back straight.",
+      "Slowly lower your body back to the floor, ensuring you maintain control throughout the movement to avoid injury."
+    ],
+    "localVideo": "/media/exercises/l_sit_on_floor.mp4",
+    "localPoster": "/media/posters/l_sit_on_floor.jpg",
+    "mediaChecksum": "3c458c722678ec2d52d6ba2c66eb1db9287981908de26e053547cd1f998b374b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hu5r8WMaLUkH",
+    "name": "Seated Straight Leg Calf Stretch",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS,HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Reach out with your hands and try to touch your toes, keeping your legs straight.",
+      "If you can't reach your toes, use a towel or resistance band by placing it around the balls of your feet and holding each end.",
+      "Pull gently on the towel or band, drawing your toes towards your body, until you feel a stretch in your calves.",
+      "Hold this position for about 30 seconds, then release and repeat for several rounds."
+    ],
+    "localVideo": "/media/exercises/seated_straight_leg_calf_stretch.mp4",
+    "localPoster": "/media/posters/seated_straight_leg_calf_stretch.jpg",
+    "mediaChecksum": "93e34f4e3347d9104131740b9614ce7bcc5776a5edde5389e0a9b1447878517a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hUBVSgXaKhau",
+    "name": "Standing Arms Circling",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Start to slowly make circles with your arms, keeping them straight at all times.",
+      "Start with small circles and gradually increase the size of the circles.",
+      "After doing this for about 30 seconds, reverse the direction of your circles.",
+      "Continue this exercise for a desired amount of time or repetitions, then slowly lower your arms to your sides to finish."
+    ],
+    "localVideo": "/media/exercises/standing_arms_circling.mp4",
+    "localPoster": "/media/posters/standing_arms_circling.jpg",
+    "mediaChecksum": "dce52cf07a4ff0264b4a965e3eae22ba042683ebd647f1685dbf99affeda0a38",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2huc12BsuDNYQ",
+    "name": "V-up",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "OBLIQUES,QUADRICEPS,SARTORIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Engage your core and at the same time, lift your legs and upper body off the floor to form a V shape.",
+      "Reach your hands toward your feet, keeping your legs and arms as straight as possible.",
+      "Hold this position for a moment, then slowly lower your arms and legs back to the starting position.",
+      "Repeat the exercise for your desired number of reps, ensuring to keep your movements controlled and your core engaged throughout."
+    ],
+    "localVideo": "/media/exercises/v_up.mp4",
+    "localPoster": "/media/posters/v_up.jpg",
+    "mediaChecksum": "a824bc3452fa8ab82020461f6e018d07a4fbaf1a9b388ed5f55e052709814175",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hUDuvCas2EB3",
+    "name": "Cable Seated Neck Flexion",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "CABLE",
+    "instructions": [
+      "Sit on the bench of the cable machine, facing away from the pulley, and place the rope handle behind your head, holding each end with your hands.",
+      "With your back straight and your eyes looking forward, slowly flex your neck forward, bringing your chin towards your chest while resisting the pull of the cable.",
+      "Pause for a moment when your chin is near your chest, then slowly return to the starting position, maintaining control and resisting the pull of the cable.",
+      "Repeat this motion for the desired number of repetitions, making sure to keep your movements slow and controlled throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/cable_seated_neck_flexion.mp4",
+    "localPoster": "/media/posters/cable_seated_neck_flexion.jpg",
+    "mediaChecksum": "80dce9b09d1f01a28762a3fe5d5ed9e75239c951ff1eb70188e189c34d9efc93",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2huf7mAC2rhfC",
+    "name": "Dumbbell Jumping Squat",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "GRACILIS,SOLEUS,GLUTEUS MAXIMUS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Lower your body into a squat position by bending your knees and pushing your hips back, keeping your chest upright and your knees over your toes.",
+      "Once you're in a deep squat, push through your heels to jump up explosively, swinging the dumbbells upward to shoulder height as you rise.",
+      "As you land, control your body back into the squat position, absorbing the impact with your legs, and immediately prepare for the next jump.",
+      "Repeat this process for the desired number of repetitions, maintaining a smooth and controlled rhythm throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/dumbbell_jumping_squat.mp4",
+    "localPoster": "/media/posters/dumbbell_jumping_squat.jpg",
+    "mediaChecksum": "5f7c09f5247e29b4d9ca1f2f744dc1cc83c5217a0b142fdf7d5abe77e182707d",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hUKc7JPrtJQj",
+    "name": "Dip on Floor with Chair",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "LATISSIMUS DORSI,ANTERIOR DELTOID,LEVATOR SCAPULAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend your knees to sit down and place your hands on the edge of the chair, fingers pointing towards your body.",
+      "Push off your hands and slide your bottom off the chair, lowering your body towards the floor by bending your elbows until they are at about a 90-degree angle.",
+      "Push your body back up using your arms until they are fully extended, ensuring your hips are close to the chair and your chest is lifted.",
+      "Repeat this process for your desired number of repetitions, ensuring to maintain proper form throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/dip_on_floor_with_chair.mp4",
+    "localPoster": "/media/posters/dip_on_floor_with_chair.jpg",
+    "mediaChecksum": "0a6c18ac18dae056f731fcfefbdb571976e68192e633adb677e3f75ebb7827fe",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hupxPcdnktBC",
+    "name": "Jumping Jack",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "In one swift motion, jump your feet out to the sides and raise your arms above your head.",
+      "Quickly reverse the movement, jumping back to your starting position with your feet together and arms at your sides.",
+      "Repeat this action continuously for a set amount of time or repetitions.",
+      "Remember to keep your posture straight and maintain a steady rhythm throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/jumping_jack.mp4",
+    "localPoster": "/media/posters/jumping_jack.jpg",
+    "mediaChecksum": "ca3acec7134583bbaadb3f021ec56cc1c2fb467b459bff0cd142033162ff1f5a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2huQw1pHKH9cw",
+    "name": "Front and Back Neck Stretch",
+    "primaryMuscle": "TRAPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "For the front neck stretch, slowly tilt your head back until you're looking at the ceiling, feeling a stretch in the front part of your neck; hold this position for 15-30 seconds.",
+      "Gently return your head to the neutral position, looking straight forward.",
+      "For the back neck stretch, slowly lower your chin towards your chest, feeling a stretch in the back part of your neck; hold this position for 15-30 seconds.",
+      "Slowly lift your head back to the neutral position, and repeat these steps as needed, ensuring to keep movements smooth and avoid any sudden jerks to prevent injury."
+    ],
+    "localVideo": "/media/exercises/front_and_back_neck_stretch.mp4",
+    "localPoster": "/media/posters/front_and_back_neck_stretch.jpg",
+    "mediaChecksum": "bdc72299cd9318ff286d9027dd009da94402b56f11efb0d243466f0707eafc4f",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hushK9NGVfyK",
+    "name": "Handstand Push-Up",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "LATERAL DELTOID,TERES MAJOR,PECTORALIS MAJOR STERNAL HEAD",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly bend your elbows, lowering your body towards the floor in a controlled manner while keeping your core tight and your body straight.",
+      "Continue to lower yourself until your head lightly touches the ground or as far as your strength allows.",
+      "Then, push back up by straightening your arms, returning to the starting handstand position, while maintaining a rigid body line.",
+      "Repeat these steps for the desired number of reps, always ensuring to keep your movements controlled and your form correct."
+    ],
+    "localVideo": "/media/exercises/handstand_push_up.mp4",
+    "localPoster": "/media/posters/handstand_push_up.jpg",
+    "mediaChecksum": "ca4968f8bbcc1f8d81c7cf63536ea9e5f714678ec93962c5ca3e9edcfe6775e3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hUVNhvcS73Dt",
+    "name": "Jump Split",
+    "primaryMuscle": "FULL_BODY",
+    "secondaryMuscles": "SARTORIUS,GRACILIS,ADDUCTOR BREVIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend your knees slightly and jump up, propelling yourself as high as you can.",
+      "While in the air, spread your legs apart into a split position, making sure to keep your core engaged and your back straight.",
+      "As you land, ensure to do so softly on the balls of your feet with your knees slightly bent to absorb the impact.",
+      "Return to the starting position and repeat the exercise for your desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/jump_split.mp4",
+    "localPoster": "/media/posters/jump_split.jpg",
+    "mediaChecksum": "c8aa9acda89340d8a6cbd13fc4f8427645ead1c04f6b8ea39acafc23d9357dd4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2huXeEFSaqo4G",
+    "name": "Standing One Arm Circling",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TRICEPS BRACHII,LEVATOR SCAPULAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Begin to move your arm in small circles, keeping your arm straight and your fingers extended.",
+      "Gradually increase the size of the circles, ensuring your body remains stationary and only your arm is moving.",
+      "After a few moments, reverse the direction of the circles.",
+      "Repeat this exercise with the other arm."
+    ],
+    "localVideo": "/media/exercises/standing_one_arm_circling.mp4",
+    "localPoster": "/media/posters/standing_one_arm_circling.jpg",
+    "mediaChecksum": "6e212af5263cbb42b03975fd0acfad75a8e50b7bcec662ebd421bee17d412a35",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hVCJfpAvJcdU",
+    "name": "Commando Pull-up",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "BRACHIORADIALIS,POSTERIOR DELTOID,BICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Reach up and grip the bar with one hand closer to you and the other further away, in an overhand grip. Your hands should be shoulder-width apart, forming a line across your body.",
+      "Pull your body up towards the bar while twisting your torso towards the hand that is closer to you. Your aim is to touch your shoulder to the bar.",
+      "Lower your body back down to the starting position in a controlled manner, ensuring to keep your body straight and not to swing.",
+      "Repeat the exercise on the other side by switching your hand positions and twisting your torso in the opposite direction."
+    ],
+    "localVideo": "/media/exercises/commando_pull_up.mp4",
+    "localPoster": "/media/posters/commando_pull_up.jpg",
+    "mediaChecksum": "8bd5977966867dc22c0d9615dfae712dcd97639a6046df8560c4c19cebfe5ad7",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hvg2FRT5XMyJ",
+    "name": "Forearm - Supination - Articulations",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "GASTROCNEMIUS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Hold a lightweight dumbbell vertically in your hand with your palm facing towards your body, which is the pronated position.",
+      "Slowly rotate your forearm outward, turning the palm up, which is the supinated position, while keeping your elbow and upper arm stationary.",
+      "Hold this position for a few seconds to feel the contraction in your forearm.",
+      "Slowly return your forearm to the starting position and repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/forearm_supination_articulations.mp4",
+    "localPoster": "/media/posters/forearm_supination_articulations.jpg",
+    "mediaChecksum": "5e504f7930dfdf3109041ed0a407294df2114aafedd903fc2394f6a4b47eb95e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hvjrFJ2KjzGm",
+    "name": "Sit",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Position your feet flat on the floor, shoulder-width apart, and place your hands on your knees or thighs.",
+      "Slowly lower your body down, bending at the hips and knees, until you're sitting upright with your back straight and shoulders relaxed.",
+      "Keep your feet firmly planted on the floor, and ensure your knees are not extending past your toes.",
+      "Hold this position for a moment, then slowly rise back to a standing position, keeping your back straight and using your legs to lift you. Repeat this process for the desired amount of reps."
+    ],
+    "localVideo": "/media/exercises/sit.mp4",
+    "localPoster": "/media/posters/sit.jpg",
+    "mediaChecksum": "768355d2e0a05b8b3635488ec46798d0c18c053d077c79cf3d22b664efb00e9d",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hvzxocyjoGgL",
+    "name": "Standing Leg Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BARBELL",
+    "instructions": [
+      "Slowly raise your heels off the ground, putting your weight onto the balls of both feet.",
+      "Ensure your abdominal muscles are engaged and your back is straight as you rise to your tiptoes.",
+      "Pause for a moment at the top of the movement, feeling the contraction in your calf muscles.",
+      "Slowly lower your heels back to the ground to complete one repetition, and repeat this process for your desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/standing_leg_calf_raise.mp4",
+    "localPoster": "/media/posters/standing_leg_calf_raise.jpg",
+    "mediaChecksum": "e22d92c9d0a7a3b21f96bd814e2a55151556efaaf306a8d24328f341c0c74f2e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hw1QspZ6uXoW",
+    "name": "Side Toe Touching",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "TRANSVERSUS ABDOMINIS,ILIOPSOAS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend at your waist to the right side, while keeping your back straight, and try to touch your right hand to your right foot, keeping your left hand raised.",
+      "Return to the original position slowly and repeat the same movement on the left side, trying to touch your left foot with your left hand while keeping your right hand raised.",
+      "This completes one repetition. Continue to alternate sides for your desired number of repetitions.",
+      "Remember to keep your movements controlled and smooth, avoiding any jerky motions to prevent injury."
+    ],
+    "localVideo": "/media/exercises/side_toe_touching.mp4",
+    "localPoster": "/media/posters/side_toe_touching.jpg",
+    "mediaChecksum": "53264d447b2cb649a5702ece817bdb002f75b9ac2393778a1c3d751613b1776a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hw4iksLYXESz",
+    "name": "Seated Shoulder Flexor Depresor Retractor Stretch Bent Knee",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "BICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Seated Shoulder Stretch: Sit up straight in a chair. Bring your left arm across your body and hold it with your right arm just above the elbow. Hold for 15-30 seconds, then switch sides.",
+      "Shoulder Depressor (Scapular Depression): Stand tall with your arms by your sides. Without bending your arms, try to lower your shoulders down towards the ground as far as possible, then raise them up as high as possible.",
+      "Shoulder Retraction: Stand or sit with your back straight. Pull your shoulders back as if you're trying to make your shoulder blades"
+    ],
+    "localVideo": "/media/exercises/seated_shoulder_flexor_depresor_retractor_stretch_bent_knee.mp4",
+    "localPoster": "/media/posters/seated_shoulder_flexor_depresor_retractor_stretch_bent_knee.jpg",
+    "mediaChecksum": "b1cde6d08f872e8eeeabb8afc6524d3d3a551a3bae3df8f53ad173e73404ec31",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hw8nSYiaCXW1",
+    "name": "Sissy Squat",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Begin the movement by pushing your hips back and bending your knees, while simultaneously rising onto the balls of your feet. Keep your back straight and your chest up.",
+      "Lower your body as far as you can, ideally until your thighs are parallel to the floor, while keeping your heels off the ground. Your body should form a straight line from your head to your knees.",
+      "Hold the bottom position for a second, then push through the balls of your feet to rise back up to the starting position, keeping your body straight and your core engaged throughout the movement.",
+      "Repeat the exercise for the desired number of reps. Remember to keep a slow and controlled movement pace throughout the exercise to maximize muscle engagement."
+    ],
+    "localVideo": "/media/exercises/sissy_squat.mp4",
+    "localPoster": "/media/posters/sissy_squat.jpg",
+    "mediaChecksum": "bf190736353e5b6ac5a8e5172930be75d300f6a4f93cf1312280c229b904666b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hW9gDXAJJMmH",
+    "name": "Downward Facing Dog",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "ERECTOR SPINAE,DEEP HIP EXTERNAL ROTATORS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift your hips up towards the ceiling, straightening your legs and pushing your heels down towards the floor to form an inverted V shape with your body.",
+      "Spread your fingers wide on the mat and press down through your palms, keeping your head between your arms and looking towards your knees.",
+      "Make sure your back is flat, and your weight is evenly distributed between your hands and feet.",
+      "Hold this position for a few breaths, then gently lower your body back to the starting position."
+    ],
+    "localVideo": "/media/exercises/downward_facing_dog.mp4",
+    "localPoster": "/media/posters/downward_facing_dog.jpg",
+    "mediaChecksum": "7c6164716c8b302c3066967247b39dbb5818f3abee2f16dbb4c7dd4c19f58fa6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hWbP5uF6PQpU",
+    "name": "Donkey Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Position your feet shoulder-width apart on the platform, with your toes facing forward and your heels extending off the edge.",
+      "Slowly lower your heels towards the ground, stretching your calf muscles as much as possible.",
+      "Then, push through the balls of both feet to raise your body upward, ensuring your knees are kept straight and your abdominal muscles are engaged.",
+      "Lower your heels back down slowly to the starting position and repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/donkey_calf_raise.mp4",
+    "localPoster": "/media/posters/donkey_calf_raise.jpg",
+    "mediaChecksum": "950ea041bad120bc5849c6e092fae2857a409ca0ba7e3b34f4e71b881f542d3e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hWgAAtQeA3Lh",
+    "name": "Wide Hand Push up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD,TRICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your body straight and rigid, from your head to your heels, engaging your core.",
+      "Lower your body towards the ground, bending your elbows out to the sides until your chest nearly touches the floor.",
+      "Pause for a moment at the bottom of the movement, ensuring your elbows are at a 90-degree angle.",
+      "Push your body back up to the starting position, extending your arms fully but without locking your elbows. Repeat the process for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/wide_hand_push_up.mp4",
+    "localPoster": "/media/posters/wide_hand_push_up.jpg",
+    "mediaChecksum": "bf4d032df9368eb02b40d1c3e4f67cdb90fe296e5bbbe550e40f91c77cf0e9ea",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hwio5ECAfLuS",
+    "name": "Right Hook. Boxing",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "ANTERIOR DELTOID,TENSOR FASCIAE LATAE,TRAPEZIUS MIDDLE FIBERS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Keep your fists up near your face for protection, with the right fist (or the one you're going to hook with) slightly behind.",
+      "Rotate your body to the right while pivoting on your back foot, this will give your punch power.",
+      "Swing your right fist in a hooking motion towards your target, keeping your elbow bent at a 90-degree angle and your palm facing down.",
+      "After the punch, quickly pull your right fist back to its original position near your face for protection."
+    ],
+    "localVideo": "/media/exercises/right_hook_boxing.mp4",
+    "localPoster": "/media/posters/right_hook_boxing.jpg",
+    "mediaChecksum": "3059e15129f18e98dc47b277580cec2075c3066cd17823a99b86ebfa14318bfe",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hwoc6PkW1UJJ",
+    "name": "Barbell Standing Calf Raise",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "SOLEUS",
+    "equipment": "BARBELL",
+    "instructions": [
+      "Position your feet shoulder-width apart, with your toes pointing straight ahead or slightly outward.",
+      "Slowly raise your heels off the ground, pushing up onto your toes while keeping your core engaged and your back straight.",
+      "Hold the position at the top for a moment, squeezing your calf muscles.",
+      "Slowly lower your heels back down to the ground, returning to the starting position. Repeat the movement for the desired number of reps."
+    ],
+    "localVideo": "/media/exercises/barbell_standing_calf_raise.mp4",
+    "localPoster": "/media/posters/barbell_standing_calf_raise.jpg",
+    "mediaChecksum": "d3450c015bbd7d0b7ba20073307b5eec86b8c1dc293e276dbcdd7553f238554e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hWQVZanCB1d7",
+    "name": "Circles Arm",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Start to slowly make circles with your arms, keeping them straight and maintaining the shoulder height.",
+      "The direction of the circles can be forward or backward, and the size of the circles can vary from small to large.",
+      "Continue this movement for about 30 seconds to a minute, depending on your comfort level.",
+      "Rest and repeat the exercise for the desired number of sets, ensuring to alternate the direction of the circles with each set."
+    ],
+    "localVideo": "/media/exercises/circles_arm.mp4",
+    "localPoster": "/media/posters/circles_arm.jpg",
+    "mediaChecksum": "58bab9c12952e3aec39df955f26130935c899c0d91e72fda6654695919c36612",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hWVVEwU54UtF",
+    "name": "Russian Twist",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "ILIOPSOAS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Hold your hands in front of you and pull your abs to your spine, then slightly lean back until you feel your abs engaged in a balanced position.",
+      "Twist your torso to the right, then to the left to complete one rep, moving your hands from one side to the other.",
+      "Keep your back straight and avoid moving your hips as you twist.",
+      "Repeat this exercise for the desired amount of repetitions or time duration."
+    ],
+    "localVideo": "/media/exercises/russian_twist.mp4",
+    "localPoster": "/media/posters/russian_twist.jpg",
+    "mediaChecksum": "a733e92acd5964b4ac7d10e696401edfec30fccfc13b5ffe217be2fcc2d66eae",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hWxnJoGwbJpa",
+    "name": "Superman Row with Towel",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "BICEPS BRACHII,TERES MINOR,HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Engage your core and lift your arms, chest, and legs off the ground, keeping your neck in a neutral position, this is your Superman pose.",
+      "While maintaining this pose, pull the towel towards your chest by bending your elbows and squeezing your shoulder blades together, this is your Row.",
+      "Extend your arms back out in front of you, still holding the towel, while maintaining your lifted position.",
+      "Lower your arms, chest, and legs back to the ground to complete one repetition, then repeat the sequence for your desired number of reps."
+    ],
+    "localVideo": "/media/exercises/superman_row_with_towel.mp4",
+    "localPoster": "/media/posters/superman_row_with_towel.jpg",
+    "mediaChecksum": "7dcb7e785708c65a4b7c2fcd4eeacd9200f3422476a956884a74cab25ff1b366",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hx6oyEujP1B6",
+    "name": "Two Legs Reverse Biceps Curl with Towel",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend your arms fully in front of you at chest level, making sure the towel is taut between your hands.",
+      "Slowly curl your arms towards your chest while keeping your elbows stationary, pulling the towel as if you were trying to bend it in half, this will engage your biceps.",
+      "Hold this position for a few seconds to maximize muscle contraction, then slowly extend your arms back to the starting position.",
+      "Repeat this movement for the desired amount of repetitions, ensuring to keep the towel taut and your movements controlled throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/two_legs_reverse_biceps_curl_with_towel.mp4",
+    "localPoster": "/media/posters/two_legs_reverse_biceps_curl_with_towel.jpg",
+    "mediaChecksum": "7566cd70cd67a40ad346992ebaded302bbacdeaef1adfa290b4634416be9c5c1",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hx9wyaRGNyvs",
+    "name": "Lying Double Legs Hammer Curl with Towel",
+    "primaryMuscle": "FOREARMS",
+    "secondaryMuscles": "BICEPS BRACHII,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Bend your knees and lift both legs off the floor, then loop the towel under your feet, holding one end of the towel in each hand.",
+      "Keep your elbows close to your body and pull the towel towards your chest, curling your legs up as you do so, similar to a hammer curl with your legs.",
+      "Pause for a moment at the top of the movement, then slowly lower your legs back down to the starting position, keeping tension in the towel.",
+      "Repeat this exercise for the desired number of repetitions, ensuring to maintain proper form throughout."
+    ],
+    "localVideo": "/media/exercises/lying_double_legs_hammer_curl_with_towel.mp4",
+    "localPoster": "/media/posters/lying_double_legs_hammer_curl_with_towel.jpg",
+    "mediaChecksum": "68d238eebbb39711abd806ef0c45c5fc2e40223554fdead2685520c915623325",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXfpvSshoXWG",
+    "name": "Dumbbell Clean and Press",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "SOLEUS,DEEP HIP EXTERNAL ROTATORS,LATERAL DELTOID",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Bend your knees slightly and using your whole body, lift the dumbbells up to your shoulders in a swift, clean motion, rotating your wrists so that your palms face forward.",
+      "Once the dumbbells are at shoulder height, press them upward until your arms are fully extended, keeping your core engaged and your back straight.",
+      "Hold the position for a second, then slowly lower the dumbbells back to your shoulders.",
+      "Finally, bring the dumbbells back down to your sides in a controlled motion, completing one rep. Repeat this for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/dumbbell_clean_and_press.mp4",
+    "localPoster": "/media/posters/dumbbell_clean_and_press.jpg",
+    "mediaChecksum": "ebc1ef274fa96d77e72b9f4219d5cd2be150997d0f7c14803653d4f235b54a6e",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hxg75dFGERdp",
+    "name": "L-Pull-up",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "ERECTOR SPINAE,LEVATOR SCAPULAE,GLUTEUS MEDIUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Next, raise your legs parallel to the ground into an L-shape, keeping your legs straight and together; this is your starting position.",
+      "Using your upper body strength, pull yourself up until your chin is above the bar, while maintaining the L-shape with your legs.",
+      "Hold this position for a moment, ensuring your core is engaged and your body is in a straight line.",
+      "Finally, lower yourself back down in a controlled manner to the starting position, keeping your legs in the L-shape throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/l_pull_up.mp4",
+    "localPoster": "/media/posters/l_pull_up.jpg",
+    "mediaChecksum": "3d512e769c1e57bd62a1bfa0e15f373c024705af9a6452f502d298f10c732475",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hxnFMotsXTj3",
+    "name": "Bench Press",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "TRICEPS BRACHII,ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD",
+    "equipment": "BARBELL",
+    "instructions": [
+      "Grip the barbell with your hands slightly wider than shoulder-width apart, palms facing your feet, and lift it off the rack, holding it straight over your chest with your arms fully extended.",
+      "Slowly lower the barbell down to your chest while keeping your elbows at a 90-degree angle.",
+      "Once the barbell touches your chest, push it back up to the starting position while keeping your back flat on the bench.",
+      "Repeat this process for the desired number of repetitions, always maintaining control of the barbell and ensuring your form is correct."
+    ],
+    "localVideo": "/media/exercises/bench_press.mp4",
+    "localPoster": "/media/posters/bench_press.jpg",
+    "mediaChecksum": "988c730784b7fdba6d0ccb33ae645468bd1e1375755fd89ef20a19febc010868",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hxqpSU5p6DZv",
+    "name": "Biceps Leg Concentration Curl",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Position your elbow on the inside of your thigh, close to your knee, with your arm fully extended.",
+      "Slowly curl the dumbbell up towards your chest, keeping your elbow stable and ensuring the movement is only happening in your forearm.",
+      "Hold the position for a second, feeling the tension in your biceps.",
+      "Lower the dumbbell back down to the starting position, making sure to keep the movement controlled. Repeat the exercise for your desired number of repetitions and then switch to the other arm."
+    ],
+    "localVideo": "/media/exercises/biceps_leg_concentration_curl.mp4",
+    "localPoster": "/media/posters/biceps_leg_concentration_curl.jpg",
+    "mediaChecksum": "6b6acc16e52eda8d22defa3b54cc99f057b8ae02d844a0522f2814260ac51526",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXQw5yAbbXL8",
+    "name": "Front Plank",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "QUADRICEPS,OBLIQUES,TENSOR FASCIAE LATAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push your body up onto your forearms and toes, making sure your elbows are directly under your shoulders and your forearms are facing forward.",
+      "Keep your body in a straight line from your head to your feet, ensuring your back is flat and your hips are not dropping or rising.",
+      "Engage your core muscles and hold this position for as long as you can, ideally aiming for 30 seconds to 1 minute.",
+      "Lower your body back to the starting position in a controlled manner and repeat the exercise as desired."
+    ],
+    "localVideo": "/media/exercises/front_plank.mp4",
+    "localPoster": "/media/posters/front_plank.jpg",
+    "mediaChecksum": "1b24bd4e631309d271bcc05016376510f0e7e6236322e7a70768c0a5bf3955fb",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXszY7TgwKy4",
+    "name": "Chin-Up",
+    "primaryMuscle": "BACK",
+    "secondaryMuscles": "TRAPEZIUS MIDDLE FIBERS,PECTORALIS MAJOR STERNAL HEAD,POSTERIOR DELTOID",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Pull your body upwards towards the bar, keeping your elbows close to your body and your core engaged.",
+      "Continue to pull yourself up until your chin is above the bar, making sure to keep your body straight and not to swing.",
+      "Hold the position for a second, then slowly lower yourself back down until your arms are fully extended.",
+      "Repeat the process for the desired number of repetitions, ensuring to maintain proper form throughout."
+    ],
+    "localVideo": "/media/exercises/chin_up.mp4",
+    "localPoster": "/media/posters/chin_up.jpg",
+    "mediaChecksum": "a7aa13b32518f33d9f6237bea5c5b0434acbf129a0fe60371cfbc7b9c177378b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXvPyEyMBgNR",
+    "name": "Step-up on Chair",
+    "primaryMuscle": "QUADS",
+    "secondaryMuscles": "ADDUCTOR MAGNUS,GASTROCNEMIUS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Stand tall with your feet hip-width apart, facing the chair.",
+      "Step up onto the chair with your right foot, pressing down while bringing your left foot to meet your right so you are standing on the chair.",
+      "Carefully step back down, starting with your right foot, then bringing your left foot down to meet the right, returning to your original standing position.",
+      "Repeat this movement, alternating the leading foot each time to ensure balanced exercise for both sides of your body."
+    ],
+    "localVideo": "/media/exercises/step_up_on_chair.mp4",
+    "localPoster": "/media/posters/step_up_on_chair.jpg",
+    "mediaChecksum": "42d6dcb056dc1b68c90c626fc3b9e7e70a2deb70365aa518df8fb3cf9d1e6048",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hxxePSdr5oN1",
+    "name": "Hip Thrusts",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "QUADRICEPS,HAMSTRINGS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Roll the bar so that it is directly above your hips, and lean back against the bench so that your shoulder blades are near the top of it.",
+      "Begin the movement by driving through your feet, extending your hips vertically through the bar, and ensure your weight is supported by your shoulder blades and your feet.",
+      "Extend as far as possible, then reverse the motion to return to the starting position.",
+      "Repeat the process for the desired amount of repetitions, ensuring to keep your chin tucked and not to hyperextend your back at the top of the movement."
+    ],
+    "localVideo": "/media/exercises/hip_thrusts.mp4",
+    "localPoster": "/media/posters/hip_thrusts.jpg",
+    "mediaChecksum": "d1b89996967c34af63e94d48c9c182d3c01128daf19a8331b42b67ade048e865",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXXpvbykPY3q",
+    "name": "Incline Push-up",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "ANTERIOR DELTOID,PECTORALIS MAJOR CLAVICULAR HEAD,TRICEPS BRACHII",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Step back and extend your legs so your body forms a straight line from your head to your heels, this is your starting position.",
+      "Lower your body towards the bench by bending your elbows, keeping your body straight and your elbows close to your body.",
+      "Push your body back up to the starting position by straightening your arms, ensuring that you maintain a straight body line.",
+      "Repeat this motion for your desired number of repetitions, making sure to keep your core engaged and your body straight throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/incline_push_up.mp4",
+    "localPoster": "/media/posters/incline_push_up.jpg",
+    "mediaChecksum": "0cfc970156ada8c4148d8d6e95792c9cba5c8090ce3fb8475cbb551b8a4a2282",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hXYRxFHnQAD4",
+    "name": "Stationary Bike Run",
+    "primaryMuscle": "CALVES",
+    "secondaryMuscles": "",
+    "equipment": "MACHINE",
+    "instructions": [
+      "Once you're seated, place your feet onto the pedals and hold onto the handles of the bike, maintaining a relaxed grip.",
+      "Set your desired resistance level on the bike's monitor, starting with a lower level if you're a beginner and gradually increasing the resistance as you get more comfortable.",
+      "Begin pedaling at a steady pace, keeping your back straight and your abs engaged, ensuring that you are breathing normally.",
+      "Continue this exercise for a set duration of time or until you've reached your desired distance, then gradually slow down your pedaling to cool down."
+    ],
+    "localVideo": "/media/exercises/stationary_bike_run.mp4",
+    "localPoster": "/media/posters/stationary_bike_run.jpg",
+    "mediaChecksum": "49a85c331bfde0738038653dc198959773a80a4869a4805a695cf5be0e23a429",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hy8pKXtzuBh8",
+    "name": "Elbow Up and Down Dynamic Plank",
+    "primaryMuscle": "ABS",
+    "secondaryMuscles": "SERRATUS ANTE,DEEP HIP EXTERNAL ROTATORS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Push up from the ground one arm at a time into a push-up position, keeping your body as stable and straight as possible.",
+      "Once you're in the push-up position, lower yourself back down one arm at a time to the original plank position.",
+      "Ensure that your core is engaged and your back is straight throughout the exercise to maintain proper form.",
+      "Repeat this movement for a set number of repetitions or for a specific time period, remembering to alternate the arm you start with each time."
+    ],
+    "localVideo": "/media/exercises/elbow_up_and_down_dynamic_plank.mp4",
+    "localPoster": "/media/posters/elbow_up_and_down_dynamic_plank.jpg",
+    "mediaChecksum": "b07b0e18d0479f65cca33f911429d68c25dd06056a7c9a87910f3e797c2af9f4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hYAP9oGEZk2P",
+    "name": "Sumo Squat",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "GASTROCNEMIUS,ADDUCTOR BREVIS,SOLEUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lower your body by bending your knees and hips, keeping your back straight and your chest upright, as if you're trying to sit between your legs.",
+      "Continue to lower yourself until your thighs are parallel to the floor, ensuring your knees are directly above your ankles.",
+      "Pause for a moment at the bottom of the squat, keeping your core engaged.",
+      "Push through your heels to return to the starting position, straightening your legs and squeezing your glutes at the top of the movement."
+    ],
+    "localVideo": "/media/exercises/sumo_squat.mp4",
+    "localPoster": "/media/posters/sumo_squat.jpg",
+    "mediaChecksum": "846f32b76b4f4542c862ddf4aabb2afd7c7327e0ceba5753ba975121677d6b37",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hynD9srC1kY7",
+    "name": "Standing Arms Flinging",
+    "primaryMuscle": "TRICEPS",
+    "secondaryMuscles": "",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Swiftly swing both arms up above your head, keeping them straight and parallel to each other.",
+      "Once your arms reach their highest point, quickly swing them back down to your sides.",
+      "As your arms reach your sides, continue the momentum to swing them behind your body as far as you comfortably can.",
+      "Return to the starting position and repeat the exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/standing_arms_flinging.mp4",
+    "localPoster": "/media/posters/standing_arms_flinging.jpg",
+    "mediaChecksum": "80a919654d64470fafbcc179c6c224b2c5b67ede3ca782acaafd1217356f11e3",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hyNf5GebszTf",
+    "name": "Dumbbell Rear Delt Fly",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "INFRASPINATUS,TRAPEZIUS LOWER FIBERS,TRAPEZIUS MIDDLE FIBERS",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Bend forward at the waist so your chest is leaning forward over your feet. Keep your back straight and let your arms hang straight down, palms facing each other.",
+      "Keep a slight bend in your elbows and raise your arms out to the sides until they're at shoulder level, like you're spreading your wings. This is the fly part of the exercise.",
+      "Pause for a moment at the top of the movement, then slowly lower the dumbbells back to the starting position.",
+      "Repeat this movement for your desired number of repetitions, remembering to keep your core engaged and back straight throughout the exercise."
+    ],
+    "localVideo": "/media/exercises/dumbbell_rear_delt_fly.mp4",
+    "localPoster": "/media/posters/dumbbell_rear_delt_fly.jpg",
+    "mediaChecksum": "28aec5b94669a1125ea7bf2bbc96d5b2c0511576cbbab6c5bd8eb88f3c794aec",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hyWsNxNYWpk3",
+    "name": "Kneeling Toe Up Hamstring Stretch",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "SERRATUS ANTE,GLUTEUS MAXIMUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Slowly extend the front leg straight out in front of you, keeping your foot flat on the ground.",
+      "Carefully lift the toes of the extended leg towards the ceiling, keeping your heel on the ground, until you feel a stretch in the back of your thigh.",
+      "Hold this position, ensuring your back is straight and your hips are square, for 20 to 30 seconds to allow the hamstring muscle to stretch.",
+      "Switch legs and repeat the process."
+    ],
+    "localVideo": "/media/exercises/kneeling_toe_up_hamstring_stretch.mp4",
+    "localPoster": "/media/posters/kneeling_toe_up_hamstring_stretch.jpg",
+    "mediaChecksum": "c27713121cb6ab88c4d9b7b148e908c53d39c1725b717f9ac202adcb75cd82fa",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hYWXejezzLjv",
+    "name": "Two Front Toe Touching",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "ERECTOR SPINAE",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Lift your right leg straight out in front of you while keeping your left foot firmly on the ground.",
+      "As you lift your right leg, bend at the waist and touch your right foot with your left hand, keeping your right hand extended.",
+      "Return to the initial position and repeat the same movement, this time lifting your left leg and touching it with your right hand.",
+      "Continue to alternate between right and left for your desired number of repetitions, maintaining a steady rhythm throughout."
+    ],
+    "localVideo": "/media/exercises/two_front_toe_touching.mp4",
+    "localPoster": "/media/posters/two_front_toe_touching.jpg",
+    "mediaChecksum": "e0794049a71586dc06a771422c35221fa22197b23ef8f34837240510aa02319b",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hYXWwoxiUk57",
+    "name": "Lunge",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "SOLEUS,ADDUCTOR MAGNUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Take a big step forward with your right foot, keeping your left foot in place.",
+      "Lower your body until your right knee forms a 90-degree angle, making sure your right knee is directly above your right ankle and your left knee is hovering just above the floor.",
+      "Push off your right foot to return to the starting position.",
+      "Repeat the movement with your left leg, alternating legs for each repetition."
+    ],
+    "localVideo": "/media/exercises/lunge.mp4",
+    "localPoster": "/media/posters/lunge.jpg",
+    "mediaChecksum": "c8b4342421447bb7d62c07dcd48f636728cb87fbac9e023b82978fd919a42761",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hZ7uoN5JnUJY",
+    "name": "Dumbbell Decline One Arm Hammer Press",
+    "primaryMuscle": "CHEST",
+    "secondaryMuscles": "TRICEPS BRACHII,PECTORALIS MAJOR CLAVICULAR HEAD,ANTERIOR DELTOID",
+    "equipment": "DUMBBELL",
+    "instructions": [
+      "Hold a dumbbell in one hand with a neutral grip (palms facing inward), at chest level, fully extending your arm upward to prepare for the press.",
+      "Slowly lower the dumbbell towards your chest, keeping your elbow close to your body and ensuring that your wrist stays straight.",
+      "Once the dumbbell is near your chest, push it back up to the starting position, fully extending your arm but not locking your elbow.",
+      "Repeat this movement for the desired number of repetitions before switching to the other arm."
+    ],
+    "localVideo": "/media/exercises/dumbbell_decline_one_arm_hammer_press.mp4",
+    "localPoster": "/media/posters/dumbbell_decline_one_arm_hammer_press.jpg",
+    "mediaChecksum": "d6d93b3b6e37cd4204c87d1bae0dbc32400f4ced7eec698b02d166f2d3e3c7d6",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hzAMXkkQQ5T2",
+    "name": "Inverted Chin Curl with Bent Knee between Chairs",
+    "primaryMuscle": "BICEPS",
+    "secondaryMuscles": "BRACHIORADIALIS,BRACHIALIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Sit down on the floor between the chairs and place your hands on the seat edges, fingers pointing towards your feet, and bend your knees so that your feet are flat on the floor.",
+      "Push down on the chairs and lift your body off the ground, keeping your elbows bent and your shoulders down, away from your ears.",
+      "Slowly lower your body by bending your elbows until your upper arms are parallel to the floor, keeping your back straight and your core engaged.",
+      "Push yourself back up to the starting position by straightening your arms, ensuring to keep your body straight and your core engaged throughout the movement. Repeat this exercise for the desired number of repetitions."
+    ],
+    "localVideo": "/media/exercises/inverted_chin_curl_with_bent_knee_between_chairs.mp4",
+    "localPoster": "/media/posters/inverted_chin_curl_with_bent_knee_between_chairs.jpg",
+    "mediaChecksum": "ac20b9966426002f4644446b0d43c60b75512ef9d979b612b44bd45367dc1ce4",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hZqkvM55qJve",
+    "name": "Shoulder Stretch Behind the Back",
+    "primaryMuscle": "SHOULDERS",
+    "secondaryMuscles": "TRAPEZIUS LOWER FIBERS,TERES MAJOR,LATISSIMUS DORSI",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Extend one arm out straight, then bend it at the elbow and reach it behind your head and down your back as far as you can.",
+      "With your other arm, reach behind your back and try to grab the fingers of your extended arm.",
+      "Once you've clasped your fingers, gently pull the top arm downwards to deepen the stretch, holding for 15-30 seconds.",
+      "Release the stretch, switch arms, and repeat the process."
+    ],
+    "localVideo": "/media/exercises/shoulder_stretch_behind_the_back.mp4",
+    "localPoster": "/media/posters/shoulder_stretch_behind_the_back.jpg",
+    "mediaChecksum": "6d6976e5e37d5afea4894ad278d74a6fa2eb5ad5d989b8aa68000bbe97643f4a",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hZqwsLkCVnzr",
+    "name": "Butt Kicks",
+    "primaryMuscle": "HAMSTRINGS",
+    "secondaryMuscles": "GASTROCNEMIUS,GLUTEUS MAXIMUS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Start jogging in place, lifting your heels as high as they can go, aiming to kick your glutes with your heels on each lift.",
+      "Keep your upper body as still as possible and your hands at waist level, swinging them in motion with your legs.",
+      "Make sure your knees are pointing towards the floor as you lift your legs, not out in front.",
+      "Continue this exercise for a set amount of time, usually around 30 seconds to a minute, depending on your fitness level."
+    ],
+    "localVideo": "/media/exercises/butt_kicks.mp4",
+    "localPoster": "/media/posters/butt_kicks.jpg",
+    "mediaChecksum": "4c10f520d6aed3cfa4dab908208375e65ffd697da6808d20121b7c2d7374fe80",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  },
+  {
+    "externalId": "exr_41n2hzZBVbWFoLK3",
+    "name": "Feet and Ankles Side to Side Stretch",
+    "primaryMuscle": "GLUTES",
+    "secondaryMuscles": "GLUTEUS MEDIUS,GRACILIS",
+    "equipment": "BODYWEIGHT",
+    "instructions": [
+      "Then, flex your feet and ankles, pointing your toes towards your body.",
+      "Slowly move your feet and ankles side to side, keeping your legs straight and stationary.",
+      "Ensure you're moving from your ankles, not your hips or knees.",
+      "Continue this motion for about 30 seconds to a minute, then rest and repeat as desired."
+    ],
+    "localVideo": "/media/exercises/feet_and_ankles_side_to_side_stretch.mp4",
+    "localPoster": "/media/posters/feet_and_ankles_side_to_side_stretch.jpg",
+    "mediaChecksum": "eb0577d6808657f16cb6522b66d0d5c441e223ed68f926f87158bd1f597d3414",
+    "reviewStatus": "verified",
+    "source": "exercisedb-ascendapi",
+    "matchMethod": "dataset-record"
+  }
+]

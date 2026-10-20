@@ -25,7 +25,7 @@ export const ActiveWorkout: React.FC = () => {
   const [session, setSession] = useState<WorkoutSession | null>(null);
   const [exerciseStates, setExerciseStates] = useState<ActiveExerciseState[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [activeRestTimer, setActiveRestTimer] = useState<{ seconds: number; exerciseName: string } | null>(null);
+  const [activeRestTimer, setActiveRestTimer] = useState<{ seconds: number; exerciseName: string; mediaUrl?: string } | null>(null);
   const [prBanner, setPrBanner] = useState<{ exerciseName: string; weightKg: number; reps: number; estimated1rm: number } | null>(null);
   const [finishNotes, setFinishNotes] = useState<string>('');
   const [showFinishModal, setShowFinishModal] = useState<boolean>(false);
@@ -137,9 +137,15 @@ export const ActiveWorkout: React.FC = () => {
 
       // Auto-start rest timer
       // Compound lifts get 180s rest, isolation lifts get 90s rest
-      const isCompound = ['CHEST', 'BACK', 'QUADRICEPS', 'HAMSTRINGS', 'SHOULDERS'].includes(exState.exercise.primaryMuscle);
+      const isCompound =
+        exState.exercise.movementType === 'COMPOUND' ||
+        ['CHEST', 'BACK', 'QUADS', 'QUADRICEPS', 'HAMSTRINGS', 'SHOULDERS'].includes(exState.exercise.primaryMuscle);
       const restSec = isCompound ? 180 : 90;
-      setActiveRestTimer({ seconds: restSec, exerciseName: exState.exercise.name });
+      setActiveRestTimer({
+        seconds: restSec,
+        exerciseName: exState.exercise.name,
+        mediaUrl: exState.exercise.mediaUrl || exState.exercise.thumbnailUrl
+      });
     } catch (err: any) {
       alert(err.message || 'Failed to log set');
     }
@@ -231,17 +237,40 @@ export const ActiveWorkout: React.FC = () => {
           >
             {/* Exercise Title Header */}
             <div className="flex items-center justify-between pb-3 border-b border-gray-800">
-              <div>
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
-                  <span>{exState.exercise.name}</span>
-                  {exState.lastStats?.maxWeightKg && (
-                    <span className="text-[10px] font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-800 flex items-center gap-1">
-                      <Trophy className="w-3 h-3" /> PR: {exState.lastStats.maxWeightKg} kg
-                    </span>
-                  )}
-                </h2>
-                <div className="text-xs text-emerald-400 font-semibold mt-0.5">
-                  {exState.exercise.primaryMuscle} • {exState.exercise.equipment}
+              <div className="flex items-center gap-3">
+                {exState.exercise.mediaUrl && (
+                  <div className="w-12 h-12 rounded-xl bg-slate-950 border border-gray-800 overflow-hidden shrink-0 flex items-center justify-center relative shadow">
+                    {exState.exercise.mediaUrl.endsWith('.mp4') || exState.exercise.mediaUrl.endsWith('.webm') ? (
+                      <video
+                        src={exState.exercise.mediaUrl}
+                        muted
+                        loop
+                        autoPlay
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover pointer-events-none"
+                      />
+                    ) : (
+                      <img
+                        src={exState.exercise.mediaUrl}
+                        alt={exState.exercise.name}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                )}
+                <div>
+                  <h2 className="text-base font-bold text-white flex items-center gap-2">
+                    <span>{exState.exercise.name}</span>
+                    {exState.lastStats?.maxWeightKg && (
+                      <span className="text-[10px] font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-800 flex items-center gap-1">
+                        <Trophy className="w-3 h-3" /> PR: {exState.lastStats.maxWeightKg} kg
+                      </span>
+                    )}
+                  </h2>
+                  <div className="text-xs text-emerald-400 font-semibold mt-0.5">
+                    {exState.exercise.primaryMuscle} • {exState.exercise.equipment}
+                  </div>
                 </div>
               </div>
 
@@ -350,11 +379,12 @@ export const ActiveWorkout: React.FC = () => {
         ))}
       </div>
 
-      {/* Floating Rest Timer Bar */}
+      {/* Floating Rest Timer Bar with Exercise Animation */}
       {activeRestTimer && (
         <RestTimer
           initialSeconds={activeRestTimer.seconds}
           exerciseName={activeRestTimer.exerciseName}
+          mediaUrl={activeRestTimer.mediaUrl}
           onCancel={() => setActiveRestTimer(null)}
           onFinish={() => setActiveRestTimer(null)}
         />

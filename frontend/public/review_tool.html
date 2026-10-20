@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitTrack - Exercise Media Review & Validation Tool</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0b0f19; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
+    .badge-verified { background-color: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; }
+    .badge-needs-review { background-color: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24; }
+    .badge-no-media { background-color: rgba(100, 116, 139, 0.15); border: 1px solid rgba(100, 116, 139, 0.4); color: #94a3b8; }
+  </style>
+</head>
+<body class="p-6">
+  <div class="max-w-7xl mx-auto space-y-6">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-500/10 text-orange-400 border border-orange-500/30">
+            Admin Validation
+          </span>
+          <h1 class="text-2xl font-black text-white">Exercise Media Review Tool</h1>
+        </div>
+        <p class="text-xs text-slate-400 mt-1">
+          Strict 1-to-1 ExerciseDB dataset verification. Inspect, approve, reject or swap media.
+        </p>
+      </div>
+      <div id="statsSummary" class="flex items-center gap-3 text-xs">
+        <!-- Dynamically populated stats -->
+      </div>
+    </header>
+
+    <!-- Filters & Search -->
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex flex-wrap gap-3 items-center justify-between">
+      <div class="flex flex-wrap items-center gap-3 flex-1 min-w-[280px]">
+        <!-- Search -->
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Search exercise name or externalId..."
+          class="px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 w-64"
+        />
+
+        <!-- Status Filter -->
+        <select id="statusFilter" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 focus:outline-none">
+          <option value="ALL">All Review Statuses</option>
+          <option value="needs-review" selected>⚠️ Needs Review (Priority)</option>
+          <option value="verified">✓ Verified</option>
+          <option value="no-media">⚪ No Media (Built-in Fallback)</option>
+        </select>
+
+        <!-- Muscle Filter -->
+        <select id="muscleFilter" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 focus:outline-none">
+          <option value="ALL">All Muscles</option>
+          <option value="CHEST">Chest</option>
+          <option value="BACK">Back</option>
+          <option value="SHOULDERS">Shoulders</option>
+          <option value="BICEPS">Biceps</option>
+          <option value="TRICEPS">Triceps</option>
+          <option value="FOREARMS">Forearms</option>
+          <option value="ABS">Abs</option>
+          <option value="GLUTES">Glutes</option>
+          <option value="QUADS">Quads</option>
+          <option value="HAMSTRINGS">Hamstrings</option>
+          <option value="CALVES">Calves</option>
+          <option value="CARDIO">Cardio</option>
+          <option value="FULL_BODY">Full Body</option>
+        </select>
+
+        <!-- Equipment Filter -->
+        <select id="equipmentFilter" class="px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 focus:outline-none">
+          <option value="ALL">All Equipment</option>
+          <option value="BARBELL">Barbell</option>
+          <option value="DUMBBELL">Dumbbell</option>
+          <option value="KETTLEBELL">Kettlebell</option>
+          <option value="MACHINE">Machine</option>
+          <option value="CABLE">Cable</option>
+          <option value="SMITH_MACHINE">Smith Machine</option>
+          <option value="BODYWEIGHT">Bodyweight</option>
+          <option value="BAND">Band</option>
+          <option value="OTHER">Other</option>
+        </select>
+      </div>
+
+      <button id="refreshBtn" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white transition-colors">
+        ↻ Reload Data
+      </button>
+    </div>
+
+    <!-- Exercise Grid -->
+    <div id="exerciseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="col-span-full py-12 text-center text-slate-500">Loading exercises...</div>
+    </div>
+  </div>
+
+  <script>
+    let allExercises = [];
+    let failuresMap = new Map();
+
+    async function loadFailures() {
+      try {
+        const res = await fetch('/tools/dry_run_validation_report.json');
+        if (res.ok) {
+          const report = await res.json();
+          // Map issues by externalId
+          if (report.duplicateMediaGroups) {
+            report.duplicateMediaGroups.forEach(g => {
+              g.exercises.forEach(e => {
+                failuresMap.set(e.externalId, `Shared media (${g.checksum.slice(0, 8)}) with: ` + g.exercises.filter(x => x.externalId !== e.externalId).map(x => x.name).join(', '));
+              });
+            });
+          }
+          if (report.muscleConflicts) {
+            report.muscleConflicts.forEach(c => {
+              failuresMap.set(c.id, c.msg);
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('Could not load validation report:', e);
+      }
+    }
+
+    async function loadExercises() {
+      const grid = document.getElementById('exerciseGrid');
+      grid.innerHTML = '<div class="col-span-full py-12 text-center text-slate-400 animate-pulse">Loading exercises from API...</div>';
+      try {
+        const res = await fetch('http://localhost:8085/api/exercises?size=2000');
+        const data = await res.json();
+        allExercises = data.content || data;
+        renderStats();
+        renderGrid();
+      } catch (err) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-red-400">Failed to load exercises: ${err.message}. Ensure backend is running at http://localhost:8085.</div>`;
+      }
+    }
+
+    function renderStats() {
+      const verified = allExercises.filter(e => e.reviewStatus === 'verified').length;
+      const needsReview = allExercises.filter(e => e.reviewStatus === 'needs-review').length;
+      const noMedia = allExercises.filter(e => !e.reviewStatus || e.reviewStatus === 'no-media').length;
+      
+      const el = document.getElementById('statsSummary');
+      el.innerHTML = `
+        <span class="px-3 py-1 rounded-lg badge-verified font-bold">${verified} Verified</span>
+        <span class="px-3 py-1 rounded-lg badge-needs-review font-bold">${needsReview} Needs Review</span>
+        <span class="px-3 py-1 rounded-lg badge-no-media font-bold">${noMedia} No Media</span>
+      `;
+    }
+
+    function renderGrid() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const statusFilter = document.getElementById('statusFilter').value;
+      const muscleFilter = document.getElementById('muscleFilter').value;
+      const equipmentFilter = document.getElementById('equipmentFilter').value;
+
+      const filtered = allExercises.filter(e => {
+        if (q && !e.name.toLowerCase().includes(q) && !(e.externalId && e.externalId.toLowerCase().includes(q))) {
+          return false;
+        }
+        if (statusFilter !== 'ALL') {
+          const st = e.reviewStatus || 'no-media';
+          if (st !== statusFilter) return false;
+        }
+        if (muscleFilter !== 'ALL' && e.primaryMuscle !== muscleFilter) {
+          return false;
+        }
+        if (equipmentFilter !== 'ALL' && e.equipment !== equipmentFilter) {
+          return false;
+        }
+        return true;
+      });
+
+      const grid = document.getElementById('exerciseGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full py-12 text-center text-slate-500">No exercises match the selected filters.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(e => {
+        const st = e.reviewStatus || 'no-media';
+        const badgeClass = st === 'verified' ? 'badge-verified' : (st === 'needs-review' ? 'badge-needs-review' : 'badge-no-media');
+        const issue = failuresMap.get(e.externalId) || '';
+
+        return `
+          <div class="rounded-2xl bg-slate-900 border border-slate-800 p-4 space-y-3.5 shadow-xl flex flex-col justify-between">
+            <div>
+              <!-- Video / Fallback Animation Box -->
+              <div class="relative w-full aspect-4/3 rounded-xl bg-slate-950 border border-slate-800 overflow-hidden flex items-center justify-center">
+                ${e.mediaUrl ? `
+                  <video src="${e.mediaUrl}" poster="${e.posterUrl || ''}" muted loop playsinline class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"></video>
+                  <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded text-[9px] font-bold bg-slate-900/80 text-slate-300 backdrop-blur-md">Hover to Play</span>
+                ` : `
+                  <div class="text-center p-4">
+                    <span class="text-xs font-bold text-slate-400 block mb-1">Built-in Fallback Figure</span>
+                    <span class="text-[10px] text-slate-500">No external media assigned</span>
+                  </div>
+                `}
+                <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${badgeClass}">
+                  ${st}
+                </span>
+              </div>
+
+              <!-- Exercise Header & Metadata -->
+              <div class="mt-3">
+                <h3 class="text-sm font-black text-white truncate" title="${e.name}">${e.name}</h3>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] font-bold text-slate-300">${e.primaryMuscle}</span>
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] font-bold text-slate-300">${e.equipment}</span>
+                  ${e.externalId ? `<span class="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-500/30 text-[10px] font-mono text-blue-300">${e.externalId}</span>` : ''}
+                </div>
+              </div>
+
+              <!-- Issues Warning if flagged -->
+              ${issue ? `
+                <div class="mt-3 p-2 rounded-lg bg-amber-950/40 border border-amber-500/30 text-[10px] text-amber-300 leading-tight">
+                  <strong>⚠️ Issue:</strong> ${issue}
+                </div>
+              ` : ''}
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button 
+                onclick="updateStatus(${e.id}, 'verified')"
+                class="flex-1 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-[11px] font-bold text-emerald-300 transition-colors"
+              >
+                ✓ Approve
+              </button>
+              <button 
+                onclick="updateStatus(${e.id}, 'no-media')"
+                class="flex-1 py-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 border border-rose-500/40 text-[11px] font-bold text-rose-300 transition-colors"
+              >
+                ✕ Reject
+              </button>
+              <button 
+                onclick="swapMedia(${e.id})"
+                class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-bold text-slate-300 transition-colors"
+                title="Swap Media URL"
+              >
+                ⇄ Swap
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function updateStatus(id, newStatus) {
+      try {
+        const res = await fetch(`http://localhost:8085/api/exercises/${id}/review?status=${newStatus}`, { method: 'PUT' });
+        if (!res.ok) throw new Error('API update failed');
+        const updated = await res.json();
+        const idx = allExercises.findIndex(x => x.id === id);
+        if (idx !== -1) allExercises[idx] = updated;
+        renderStats();
+        renderGrid();
+      } catch (err) {
+        alert('Failed to update status: ' + err.message);
+      }
+    }
+
+    async function swapMedia(id) {
+      const current = allExercises.find(x => x.id === id);
+      const newUrl = prompt(`Enter new video URL for "${current ? current.name : id}":`, current?.mediaUrl || '/media/exercises/');
+      if (!newUrl) return;
+      try {
+        const res = await fetch(`http://localhost:8085/api/exercises/${id}/review?status=verified&mediaUrl=${encodeURIComponent(newUrl)}`, { method: 'PUT' });
+        if (!res.ok) throw new Error('API update failed');
+        const updated = await res.json();
+        const idx = allExercises.findIndex(x => x.id === id);
+        if (idx !== -1) allExercises[idx] = updated;
+        renderStats();
+        renderGrid();
+      } catch (err) {
+        alert('Failed to swap media: ' + err.message);
+      }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderGrid);
+    document.getElementById('statusFilter').addEventListener('change', renderGrid);
+    document.getElementById('muscleFilter').addEventListener('change', renderGrid);
+    document.getElementById('equipmentFilter').addEventListener('change', renderGrid);
+    document.getElementById('refreshBtn').addEventListener('click', loadExercises);
+
+    loadFailures().then(loadExercises);
+  </script>
+</body>
+</html>

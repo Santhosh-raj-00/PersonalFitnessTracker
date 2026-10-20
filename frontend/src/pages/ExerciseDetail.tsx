@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import type { Exercise } from '../types';
 import { exerciseService } from '../services/exerciseService';
-import { MuscleActivationMap } from '../components/muscle/MuscleActivationMap';
+import { MuscleDiagram } from '../components/muscle/MuscleDiagram';
 import { AddToWorkoutModal } from '../components/exercise/AddToWorkoutModal';
 import {
   ArrowLeft,
@@ -25,6 +25,7 @@ export const ExerciseDetail: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [activeFrame, setActiveFrame] = useState<number>(0);
   const [showAddToWorkout, setShowAddToWorkout] = useState<boolean>(false);
+  const videoRef = React.useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (id) {
@@ -160,11 +161,20 @@ export const ExerciseDetail: React.FC = () => {
           </div>
         )}
 
-        {mediaUrl2 && (
+        {(mediaUrl2 || isVideo) && (
           <button
             type="button"
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="absolute bottom-3 right-3 p-2 bg-slate-900/80 hover:bg-slate-900 text-white rounded-xl backdrop-blur-md border border-slate-700/80 shadow-lg min-w-[38px] min-h-[38px] flex items-center justify-center"
+            onClick={() => {
+              if (isVideo && videoRef.current) {
+                if (isPlaying) {
+                  videoRef.current.pause();
+                } else {
+                  videoRef.current.play().catch(() => {});
+                }
+              }
+              setIsPlaying(!isPlaying);
+            }}
+            className="absolute bottom-3 right-3 p-2 bg-slate-900/80 hover:bg-slate-900 text-white rounded-xl backdrop-blur-md border border-slate-700/80 shadow-lg min-w-[38px] min-h-[38px] flex items-center justify-center cursor-pointer transition-transform active:scale-95 z-10"
             aria-label={isPlaying ? 'Pause looping motion' : 'Play motion'}
           >
             {isPlaying ? (
@@ -175,18 +185,20 @@ export const ExerciseDetail: React.FC = () => {
           </button>
         )}
 
-        {mediaUrl2 && (
-          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-slate-900/80 backdrop-blur-md rounded-lg text-[10px] text-slate-300 font-bold border border-slate-700/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+        {(mediaUrl2 || isVideo) && (
+          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-slate-900/80 backdrop-blur-md rounded-lg text-[10px] text-slate-300 font-bold border border-slate-700/60 z-10">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>
-              Frame {activeFrame + 1}/2 {isPlaying ? '(Looping)' : '(Paused)'}
+              {isVideo
+                ? `3D Vital Animation ${isPlaying ? '(Playing)' : '(Paused)'}`
+                : `Frame ${activeFrame + 1}/2 ${isPlaying ? '(Looping)' : '(Paused)'}`}
             </span>
           </div>
         )}
       </div>
 
       {/* Suggested Sets & Reps Bar */}
-      <div className="grid grid-cols-3 gap-2.5 text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
         <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800">
           <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
             Suggested Sets
@@ -211,6 +223,14 @@ export const ExerciseDetail: React.FC = () => {
             {exercise.equipment}
           </div>
         </div>
+        <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800">
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+            Type / Focus
+          </div>
+          <div className="text-xs font-black text-cyan-400 truncate mt-1">
+            {exercise.movementType || 'COMPOUND'} {exercise.chestRegion ? `(${exercise.chestRegion})` : ''}
+          </div>
+        </div>
       </div>
 
       {/* Muscle Activation Diagram */}
@@ -218,22 +238,23 @@ export const ExerciseDetail: React.FC = () => {
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-200 flex items-center gap-1.5">
             <Sparkles className="w-4 h-4 text-orange-400" />
-            <span>Muscle Activation Diagram</span>
+            <span>Holographic Muscle Activation</span>
           </h2>
           <span className="text-xs text-orange-400 font-bold">
-            {exercise.primaryMuscle}
+            {exercise.primaryMuscle} {exercise.chestRegion ? `• ${exercise.chestRegion} Chest` : ''}
           </span>
         </div>
 
         <div className="p-4 bg-slate-900/90 rounded-3xl border border-slate-800 flex flex-col items-center">
-          <MuscleActivationMap
-            primaryMuscles={[exercise.primaryMuscle]}
-            secondaryMuscles={
-              exercise.secondaryMusclesList ||
-              (exercise.secondaryMuscles ? exercise.secondaryMuscles.split(',') : [])
+          <MuscleDiagram
+            primary={exercise.primaryMuscles && exercise.primaryMuscles.length > 0 ? exercise.primaryMuscles : [exercise.primaryMuscle]}
+            secondary={
+              exercise.secondaryMusclesList && exercise.secondaryMusclesList.length > 0
+                ? exercise.secondaryMusclesList
+                : (exercise.secondaryMuscles ? exercise.secondaryMuscles.split(',') : [])
             }
-            showLegend={true}
-            className="w-full"
+            chestRegion={exercise.chestRegion}
+            className="w-full max-w-md mx-auto"
           />
         </div>
       </div>

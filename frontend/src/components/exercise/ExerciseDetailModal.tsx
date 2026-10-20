@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import type { Exercise } from '../../types';
-import { MuscleActivationMap } from '../muscle/MuscleActivationMap';
+import { MuscleDiagram } from '../muscle/MuscleDiagram';
 import { AddToWorkoutModal } from './AddToWorkoutModal';
+import { ExerciseMedia } from './ExerciseMedia';
 import {
   X,
-  Play,
-  Pause,
   AlertTriangle,
   CheckCircle2,
-  Dumbbell,
   Sparkles,
   ChevronRight,
   ShieldCheck,
+  Dumbbell,
 } from 'lucide-react';
 
 interface ExerciseDetailModalProps {
@@ -25,37 +24,8 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  const [activeFrame, setActiveFrame] = useState<number>(0);
   const [showAddToWorkout, setShowAddToWorkout] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<number | null>(null);
-
-  // If exercise has dual frame images, auto-loop between frame 0 and frame 1 like a smooth motion preview
-  const mediaUrl1 = exercise?.mediaUrl || exercise?.demoImageUrl;
-  const mediaUrl2 =
-    mediaUrl1 && mediaUrl1.includes('/0.jpg')
-      ? mediaUrl1.replace('/0.jpg', '/1.jpg')
-      : null;
-
-  useEffect(() => {
-    if (!isOpen) {
-      if (timerRef.current) clearInterval(timerRef.current);
-      return;
-    }
-
-    if (mediaUrl2 && isPlaying) {
-      timerRef.current = window.setInterval(() => {
-        setActiveFrame((prev) => (prev === 0 ? 1 : 0));
-      }, 950);
-    } else {
-      if (timerRef.current) clearInterval(timerRef.current);
-    }
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isOpen, mediaUrl2, isPlaying]);
 
   if (!isOpen || !exercise) return null;
 
@@ -74,11 +44,6 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
         'Losing spinal bracing during heavy loading.',
       ];
 
-  const currentDisplayImage =
-    activeFrame === 1 && mediaUrl2 ? mediaUrl2 : mediaUrl1;
-
-  const isVideo = mediaUrl1 && (mediaUrl1.endsWith('.mp4') || mediaUrl1.endsWith('.webm'));
-
   return (
     <>
       <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-200">
@@ -90,7 +55,7 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
           <div className="sticky top-0 z-20 bg-slate-900/95 backdrop-blur-md px-4 py-3 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2 min-w-0">
               <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/30 shrink-0">
-                Level 3 Guide
+                Exercise Guide
               </span>
               <h2 className="text-sm font-black text-white truncate">
                 {exercise.name}
@@ -107,62 +72,19 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
 
           {/* Scrollable Content Body */}
           <div className="flex-1 overflow-y-auto p-4 space-y-5 pb-24">
-            {/* Movement Media / Video Demo */}
-            <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/90 aspect-video flex items-center justify-center group shadow-inner">
-              {isVideo ? (
-                <video
-                  src={mediaUrl1}
-                  autoPlay={isPlaying}
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              ) : currentDisplayImage ? (
-                <img
-                  src={currentDisplayImage}
-                  alt={`${exercise.name} movement form`}
-                  loading="lazy"
-                  className="w-full h-full object-contain bg-slate-950 transition-opacity duration-300"
-                />
-              ) : (
-                <div className="flex flex-col items-center justify-center text-slate-500">
-                  <Dumbbell className="w-12 h-12 mb-2 stroke-[1.5]" />
-                  <span className="text-xs">No media demonstration available</span>
-                </div>
-              )}
-
-              {/* Play / Pause Fallback Control */}
-              {mediaUrl2 && (
-                <button
-                  type="button"
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="absolute bottom-3 right-3 p-2 bg-slate-900/80 hover:bg-slate-900 text-white rounded-xl backdrop-blur-md border border-slate-700/80 shadow-lg min-w-[36px] min-h-[36px] flex items-center justify-center transition-transform active:scale-95"
-                  aria-label={isPlaying ? 'Pause looping motion' : 'Play motion'}
-                >
-                  {isPlaying ? (
-                    <Pause className="w-3.5 h-3.5 fill-white" />
-                  ) : (
-                    <Play className="w-3.5 h-3.5 fill-white" />
-                  )}
-                </button>
-              )}
-
-              {/* Motion Frame Indicator */}
-              {mediaUrl2 && (
-                <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-slate-900/80 backdrop-blur-md rounded-lg text-[10px] text-slate-300 font-bold border border-slate-700/60">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-                  <span>
-                    Frame {activeFrame + 1}/2 {isPlaying ? '(Looping)' : '(Paused)'}
-                  </span>
-                </div>
-              )}
+            {/* Movement Demonstration (Universal Exercise Media with Builtin Muscular Fallback) */}
+            <div className="w-full">
+              <ExerciseMedia
+                key={exercise.id}
+                exercise={exercise}
+                showControls={true}
+              />
             </div>
 
             {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="grid grid-cols-4 gap-2 text-center">
               <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                   Target Sets
                 </div>
                 <div className="text-sm font-black text-orange-400 mt-0.5">
@@ -170,7 +92,7 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
                 </div>
               </div>
               <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                   Rep Range
                 </div>
                 <div className="text-sm font-black text-white mt-0.5">
@@ -178,34 +100,44 @@ export const ExerciseDetailModal: React.FC<ExerciseDetailModalProps> = ({
                 </div>
               </div>
               <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                   Equipment
                 </div>
                 <div className="text-xs font-black text-slate-300 truncate mt-0.5">
                   {exercise.equipment}
                 </div>
               </div>
+              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+                  Type
+                </div>
+                <div className="text-xs font-black text-emerald-400 truncate mt-0.5">
+                  {exercise.movementType || 'COMPOUND'}
+                </div>
+              </div>
             </div>
 
-            {/* Muscle Activation Diagram (Reusable SVG Human Body) */}
+            {/* Muscle Activation Holographic Diagram */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-                  <span>Muscle Activation Diagram</span>
+                  <span>Holographic Muscle Activation Scan</span>
                 </h3>
                 <span className="text-[10px] text-slate-400">
-                  {exercise.primaryMuscle} primary
+                  {exercise.primaryMuscle} {exercise.chestRegion ? `(${exercise.chestRegion} Pecs)` : 'Primary'}
                 </span>
               </div>
 
-              <div className="p-3 bg-slate-950/80 rounded-2xl border border-slate-800/80 flex flex-col items-center">
-                <MuscleActivationMap
-                  primaryMuscles={[exercise.primaryMuscle]}
-                  secondaryMuscles={
-                    exercise.secondaryMusclesList ||
-                    (exercise.secondaryMuscles ? exercise.secondaryMuscles.split(',') : [])
+              <div className="p-3 bg-slate-950/90 rounded-2xl border border-slate-800/80 flex flex-col items-center shadow-inner">
+                <MuscleDiagram
+                  primary={exercise.primaryMuscles && exercise.primaryMuscles.length > 0 ? exercise.primaryMuscles : [exercise.primaryMuscle]}
+                  secondary={
+                    exercise.secondaryMusclesList && exercise.secondaryMusclesList.length > 0
+                      ? exercise.secondaryMusclesList
+                      : (exercise.secondaryMuscles ? exercise.secondaryMuscles.split(',') : [])
                   }
+                  chestRegion={exercise.chestRegion}
                   showLegend={true}
                   className="w-full"
                 />

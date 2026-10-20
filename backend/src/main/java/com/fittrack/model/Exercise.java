@@ -66,6 +66,51 @@ public class Exercise {
     @Column(length = 500)
     private String attribution;
 
+    @Column(length = 50)
+    private String movementType = "COMPOUND";
+
+    @Column(length = 50)
+    private String chestRegion;
+
+    @Column(length = 100)
+    private String animationPattern;
+
+    @Column(length = 500)
+    private String animationParams;
+
+    @Column(length = 20)
+    private String cameraView;
+
+    @Column(length = 50)
+    private String mediaProvider = "builtin";
+
+    @Column(length = 50)
+    private String mediaType = "animation";
+
+    @Column(length = 1000)
+    private String posterUrl;
+
+    @Column(length = 100)
+    private String source;
+
+    @Column(length = 100, unique = true)
+    private String externalId;
+
+    @Column(length = 64)
+    private String mediaChecksum;
+
+    @Column(length = 50)
+    private String matchMethod;
+
+    @Column(length = 50)
+    private String reviewStatus = "no-media";
+
+    @Column(length = 1000)
+    private String legacyMediaUrl;
+
+    @Column(length = 1000)
+    private String legacyPosterUrl;
+
     private Boolean isCustom = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -223,5 +268,125 @@ public class Exercise {
         } catch (Exception e) {
             this.mistakesJson = "[]";
         }
+    }
+
+    public String getMovementType() {
+        return movementType != null ? movementType : "COMPOUND";
+    }
+
+    public void setMovementType(String movementType) {
+        this.movementType = movementType;
+    }
+
+    public String getChestRegion() {
+        return chestRegion;
+    }
+
+    public void setChestRegion(String chestRegion) {
+        this.chestRegion = chestRegion;
+    }
+
+    public String getAnimationPattern() {
+        return animationPattern;
+    }
+
+    public void setAnimationPattern(String animationPattern) {
+        this.animationPattern = animationPattern;
+    }
+
+    public String getAnimationParams() {
+        return animationParams;
+    }
+
+    public void setAnimationParams(String animationParams) {
+        this.animationParams = animationParams;
+    }
+
+    public String getCameraView() {
+        return cameraView;
+    }
+
+    public void setCameraView(String cameraView) {
+        this.cameraView = cameraView;
+    }
+
+    public String getMediaProvider() {
+        return mediaProvider != null ? mediaProvider : "builtin";
+    }
+
+    public void setMediaProvider(String mediaProvider) {
+        this.mediaProvider = mediaProvider;
+    }
+
+    public String getMediaType() {
+        return mediaType != null ? mediaType : "animation";
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    public String getPosterUrl() {
+        return posterUrl;
+    }
+
+    public void setPosterUrl(String posterUrl) {
+        this.posterUrl = posterUrl;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public String getMediaChecksum() {
+        return mediaChecksum;
+    }
+
+    public void setMediaChecksum(String mediaChecksum) {
+        this.mediaChecksum = mediaChecksum;
+    }
+
+    public String getMatchMethod() {
+        return matchMethod;
+    }
+
+    public void setMatchMethod(String matchMethod) {
+        this.matchMethod = matchMethod;
+    }
+
+    public String getReviewStatus() {
+        return reviewStatus != null ? reviewStatus : "no-media";
+    }
+
+    public void setReviewStatus(String reviewStatus) {
+        this.reviewStatus = reviewStatus;
+    }
+
+    public String getLegacyMediaUrl() {
+        return legacyMediaUrl;
+    }
+
+    public void setLegacyMediaUrl(String legacyMediaUrl) {
+        this.legacyMediaUrl = legacyMediaUrl;
+    }
+
+    public String getLegacyPosterUrl() {
+        return legacyPosterUrl;
+    }
+
+    public void setLegacyPosterUrl(String legacyPosterUrl) {
+        this.legacyPosterUrl = legacyPosterUrl;
     }
 }

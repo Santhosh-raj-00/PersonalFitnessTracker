@@ -30,6 +30,21 @@ public class ExerciseDTOs {
         private String defaultReps;
         private Boolean isCustom;
         private String attribution;
+        private String movementType;
+        private String chestRegion;
+        private String animationPattern;
+        private String animationParams;
+        private String cameraView;
+        private String mediaProvider;
+        private String mediaType;
+        private String posterUrl;
+        private String source;
+        private String externalId;
+        private String mediaChecksum;
+        private String matchMethod;
+        private String reviewStatus;
+        private String legacyMediaUrl;
+        private String legacyPosterUrl;
 
         public ExerciseResponse() {}
 
@@ -44,15 +59,30 @@ public class ExerciseDTOs {
             res.setEquipment(e.getEquipment());
             res.setDifficulty(e.getDifficulty());
             res.setFormTips(e.getFormTips());
-            res.setMediaUrl(e.getMediaUrl() != null ? e.getMediaUrl() : e.getDemoImageUrl());
-            res.setThumbnailUrl(e.getThumbnailUrl() != null ? e.getThumbnailUrl() : e.getDemoImageUrl());
-            res.setDemoImageUrl(e.getDemoImageUrl() != null ? e.getDemoImageUrl() : e.getThumbnailUrl());
+            res.setMediaUrl(e.getMediaUrl());
+            res.setThumbnailUrl(e.getThumbnailUrl());
+            res.setDemoImageUrl(e.getDemoImageUrl());
             res.setSteps(e.getSteps());
             res.setMistakes(e.getMistakes());
             res.setDefaultSets(e.getDefaultSets());
             res.setDefaultReps(e.getDefaultReps());
             res.setIsCustom(e.getIsCustom());
             res.setAttribution(e.getAttribution());
+            res.setMovementType(e.getMovementType());
+            res.setChestRegion(e.getChestRegion());
+            res.setAnimationPattern(e.getAnimationPattern());
+            res.setAnimationParams(e.getAnimationParams());
+            res.setCameraView(e.getCameraView());
+            res.setMediaProvider(e.getMediaProvider());
+            res.setMediaType(e.getMediaType());
+            res.setPosterUrl(e.getPosterUrl());
+            res.setSource(e.getSource());
+            res.setExternalId(e.getExternalId());
+            res.setMediaChecksum(e.getMediaChecksum());
+            res.setMatchMethod(e.getMatchMethod());
+            res.setReviewStatus(e.getReviewStatus());
+            res.setLegacyMediaUrl(e.getLegacyMediaUrl());
+            res.setLegacyPosterUrl(e.getLegacyPosterUrl());
             return res;
         }
 
@@ -109,6 +139,51 @@ public class ExerciseDTOs {
 
         public String getAttribution() { return attribution; }
         public void setAttribution(String attribution) { this.attribution = attribution; }
+
+        public String getMovementType() { return movementType != null ? movementType : "COMPOUND"; }
+        public void setMovementType(String movementType) { this.movementType = movementType; }
+
+        public String getChestRegion() { return chestRegion; }
+        public void setChestRegion(String chestRegion) { this.chestRegion = chestRegion; }
+
+        public String getAnimationPattern() { return animationPattern; }
+        public void setAnimationPattern(String animationPattern) { this.animationPattern = animationPattern; }
+
+        public String getAnimationParams() { return animationParams; }
+        public void setAnimationParams(String animationParams) { this.animationParams = animationParams; }
+
+        public String getCameraView() { return cameraView; }
+        public void setCameraView(String cameraView) { this.cameraView = cameraView; }
+
+        public String getMediaProvider() { return mediaProvider != null ? mediaProvider : "builtin"; }
+        public void setMediaProvider(String mediaProvider) { this.mediaProvider = mediaProvider; }
+
+        public String getMediaType() { return mediaType != null ? mediaType : "animation"; }
+        public void setMediaType(String mediaType) { this.mediaType = mediaType; }
+
+        public String getPosterUrl() { return posterUrl; }
+        public void setPosterUrl(String posterUrl) { this.posterUrl = posterUrl; }
+
+        public String getSource() { return source; }
+        public void setSource(String source) { this.source = source; }
+
+        public String getExternalId() { return externalId; }
+        public void setExternalId(String externalId) { this.externalId = externalId; }
+
+        public String getMediaChecksum() { return mediaChecksum; }
+        public void setMediaChecksum(String mediaChecksum) { this.mediaChecksum = mediaChecksum; }
+
+        public String getMatchMethod() { return matchMethod; }
+        public void setMatchMethod(String matchMethod) { this.matchMethod = matchMethod; }
+
+        public String getReviewStatus() { return reviewStatus != null ? reviewStatus : "no-media"; }
+        public void setReviewStatus(String reviewStatus) { this.reviewStatus = reviewStatus; }
+
+        public String getLegacyMediaUrl() { return legacyMediaUrl; }
+        public void setLegacyMediaUrl(String legacyMediaUrl) { this.legacyMediaUrl = legacyMediaUrl; }
+
+        public String getLegacyPosterUrl() { return legacyPosterUrl; }
+        public void setLegacyPosterUrl(String legacyPosterUrl) { this.legacyPosterUrl = legacyPosterUrl; }
     }
 
     public static class CreateCustomExerciseRequest {
@@ -132,6 +207,14 @@ public class ExerciseDTOs {
         private List<String> mistakes;
         private Integer defaultSets;
         private String defaultReps;
+        private String movementType;
+        private String chestRegion;
+        private String animationPattern;
+        private String animationParams;
+        private String cameraView;
+        private String mediaProvider;
+        private String mediaType;
+        private String posterUrl;
 
         public String getName() { return name; }
         public void setName(String name) { this.name = name; }
@@ -165,6 +248,30 @@ public class ExerciseDTOs {
 
         public String getDefaultReps() { return defaultReps; }
         public void setDefaultReps(String defaultReps) { this.defaultReps = defaultReps; }
+
+        public String getMovementType() { return movementType != null ? movementType : "COMPOUND"; }
+        public void setMovementType(String movementType) { this.movementType = movementType; }
+
+        public String getChestRegion() { return chestRegion; }
+        public void setChestRegion(String chestRegion) { this.chestRegion = chestRegion; }
+
+        public String getAnimationPattern() { return animationPattern; }
+        public void setAnimationPattern(String animationPattern) { this.animationPattern = animationPattern; }
+
+        public String getAnimationParams() { return animationParams; }
+        public void setAnimationParams(String animationParams) { this.animationParams = animationParams; }
+
+        public String getCameraView() { return cameraView; }
+        public void setCameraView(String cameraView) { this.cameraView = cameraView; }
+
+        public String getMediaProvider() { return mediaProvider != null ? mediaProvider : "builtin"; }
+        public void setMediaProvider(String mediaProvider) { this.mediaProvider = mediaProvider; }
+
+        public String getMediaType() { return mediaType != null ? mediaType : "animation"; }
+        public void setMediaType(String mediaType) { this.mediaType = mediaType; }
+
+        public String getPosterUrl() { return posterUrl; }
+        public void setPosterUrl(String posterUrl) { this.posterUrl = posterUrl; }
     }
 
     public static class MuscleGroupSummary {

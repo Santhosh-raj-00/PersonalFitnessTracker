@@ -1,0 +1,284 @@
+{
+  "totalDatasetRecords": 200,
+  "verifiedCount": 166,
+  "needsReviewCount": 34,
+  "noMediaCountInOldDb": 744,
+  "duplicateMediaGroupsCount": 12,
+  "equipmentConflictsCount": 0,
+  "muscleConflictsCount": 10,
+  "countsPerMuscle": {
+    "Abs": 16,
+    "Glutes": 32,
+    "Back": 23,
+    "Triceps": 15,
+    "Calves": 26,
+    "Biceps": 7,
+    "Chest": 16,
+    "Shoulders": 13,
+    "Traps": 13,
+    "Forearms": 12,
+    "Quads": 13,
+    "Hamstrings": 11,
+    "Full Body": 3
+  },
+  "countsPerEquipment": {
+    "Bodyweight": 158,
+    "Dumbbell": 25,
+    "Machine": 9,
+    "Cable": 3,
+    "Other": 1,
+    "Barbell": 4
+  },
+  "duplicateMediaGroups": [
+    {
+      "checksum": "29942faf0a28aad7461d4cb31dc0255b9512680d01e07436e9914b41fb16e1f4",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hadQgEEX8wDN",
+          "name": "Triceps Dip",
+          "file": "/media/exercises/triceps_dip.mp4"
+        },
+        {
+          "externalId": "exr_41n2hndkoGHD1ogh",
+          "name": "Triceps Dip",
+          "file": "/media/exercises/triceps_dip.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "c7ad3ebe6b1d9eae0d7b21dff71450d3ddfc9f135d2d61f0e4087adfea1862a1",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2havo95Y2QpkW",
+          "name": "Feet and Ankles Stretch",
+          "file": "/media/exercises/feet_and_ankles_stretch.mp4"
+        },
+        {
+          "externalId": "exr_41n2hnx1hnDdketU",
+          "name": "Feet and Ankles Stretch",
+          "file": "/media/exercises/feet_and_ankles_stretch.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "8bd320790dff0946412d79276cff0db6333a1b19168bc4854000391bd7fedaed",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hcw2FN534HcA",
+          "name": "Dumbbell Stiff Leg Deadlift",
+          "file": "/media/exercises/dumbbell_stiff_leg_deadlift.mp4"
+        },
+        {
+          "externalId": "exr_41n2hQp1pR7heQq9",
+          "name": "Dumbbell Stiff Leg Deadlift",
+          "file": "/media/exercises/dumbbell_stiff_leg_deadlift.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "54bc60e9adb4fea00c933db32624981d9b4bfbdb6e3fd977adc0db85d735b438",
+      "count": 3,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hdWu3oaCGdWT",
+          "name": "Standing Calf Raise",
+          "file": "/media/exercises/standing_calf_raise.mp4"
+        },
+        {
+          "externalId": "exr_41n2hQtaWxPLNFwX",
+          "name": "Dumbbell Standing Calf Raise",
+          "file": "/media/exercises/dumbbell_standing_calf_raise.mp4"
+        },
+        {
+          "externalId": "exr_41n2hzfRXQDaLYJh",
+          "name": "Standing Calf Raise",
+          "file": "/media/exercises/standing_calf_raise.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "82c690d47df6edafd1b2dd7e5c6bec1416781de0854c98ff1b7addb79d7aabe7",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hfa11fPnk8y9",
+          "name": "Elliptical Machine Walk",
+          "file": "/media/exercises/elliptical_machine_walk.mp4"
+        },
+        {
+          "externalId": "exr_41n2hpTMDhTxYkvi",
+          "name": "Elliptical Machine Walk",
+          "file": "/media/exercises/elliptical_machine_walk.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "297612d0d12c1fc43da79b140c3e195a0bba5161f3011fd4efed038bdea7408f",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hfnnXz9shkBi",
+          "name": "Lying Lower Back Stretch",
+          "file": "/media/exercises/lying_lower_back_stretch.mp4"
+        },
+        {
+          "externalId": "exr_41n2hpJxS5VQKtBL",
+          "name": "Lying Lower Back Stretch",
+          "file": "/media/exercises/lying_lower_back_stretch.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "eb0b40ae8a40a5c66f6795509213b0734521e8367aea5dd560084309ce433da9",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hG9pRT55cGVk",
+          "name": "Calves stretch",
+          "file": "/media/exercises/calves_stretch.mp4"
+        },
+        {
+          "externalId": "exr_41n2hGD4omjWVnbS",
+          "name": "Calves Stretch",
+          "file": "/media/exercises/calves_stretch.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "491fc7bef2764a142b3ec4095aacc83bd65d31c009304047b0060a6b365f952b",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hGbCptD8Nosk",
+          "name": "Neck Side Stretch",
+          "file": "/media/exercises/neck_side_stretch.mp4"
+        },
+        {
+          "externalId": "exr_41n2hvrsUaWWb9Mk",
+          "name": "Neck Side Stretch",
+          "file": "/media/exercises/neck_side_stretch.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "cfcef7131f8b8d0dfaf421980324e9e0e9e1492b186060f37ad135c7a3edf4b8",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hHdjQpnyNdie",
+          "name": "One Arm Bent-over Row",
+          "file": "/media/exercises/one_arm_bent_over_row.mp4"
+        },
+        {
+          "externalId": "exr_41n2hY9EdwkdGz9a",
+          "name": "Dumbbell One Arm Bent-over Row",
+          "file": "/media/exercises/dumbbell_one_arm_bent_over_row.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "ec5d11896ccff30fff84007501a4708f221c651c43e97a36047e7405b3d0f8cf",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hk3YSCjnZ9um",
+          "name": "Circles Knee Stretch",
+          "file": "/media/exercises/circles_knee_stretch.mp4"
+        },
+        {
+          "externalId": "exr_41n2hrSQZRD4yG7P",
+          "name": "Circles Knee Stretch",
+          "file": "/media/exercises/circles_knee_stretch.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "d48d3a83c337362861d195ccc52767c32b6cafb694ebb20af0b5bb3a014a62c7",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hnbt5GwwY7gr",
+          "name": "Diamond Push up",
+          "file": "/media/exercises/diamond_push_up.mp4"
+        },
+        {
+          "externalId": "exr_41n2hRZ6fgsLyd77",
+          "name": "Diamond Push-up",
+          "file": "/media/exercises/diamond_push_up.mp4"
+        }
+      ]
+    },
+    {
+      "checksum": "90a2b771b543b7278d67933aae65e3175bdb1ce261471ba568343efb82149ea6",
+      "count": 2,
+      "exercises": [
+        {
+          "externalId": "exr_41n2hsBtDXapcADg",
+          "name": "Pull-up",
+          "file": "/media/exercises/pull_up.mp4"
+        },
+        {
+          "externalId": "exr_41n2hU4y6EaYXFhr",
+          "name": "Pull up",
+          "file": "/media/exercises/pull_up.mp4"
+        }
+      ]
+    }
+  ],
+  "equipmentConflicts": [],
+  "muscleConflicts": [
+    {
+      "id": "exr_41n2hGRSg9WCoTYT",
+      "name": "Jumping Pistol Squat",
+      "msg": "Name contains squat/leg press but primary muscle is \"Hamstrings\" (expected Quads or Glutes)."
+    },
+    {
+      "id": "exr_41n2hnbt5GwwY7gr",
+      "name": "Diamond Push up ",
+      "msg": "Name contains bench/fly/push-up but primary muscle is \"Abs\" (expected Chest)."
+    },
+    {
+      "id": "exr_41n2hnFD2bT6sruf",
+      "name": "Sliding Floor Bridge Curl on Towel",
+      "msg": "Name contains \"curl\" but primary muscle is \"Glutes\" (expected Biceps or Forearms)."
+    },
+    {
+      "id": "exr_41n2hpnZ6oASM662",
+      "name": "Kneeling Push up to Child Pose ",
+      "msg": "Name contains bench/fly/push-up but primary muscle is \"Abs\" (expected Chest)."
+    },
+    {
+      "id": "exr_41n2hR12rPqdpWP8",
+      "name": "Pike-to-Cobra Push-up",
+      "msg": "Name contains bench/fly/push-up but primary muscle is \"Glutes\" (expected Chest)."
+    },
+    {
+      "id": "exr_41n2hRicz5MdZEns",
+      "name": "Squat Thrust",
+      "msg": "Name contains squat/leg press but primary muscle is \"Forearms\" (expected Quads or Glutes)."
+    },
+    {
+      "id": "exr_41n2htzPyjcc3Mt2",
+      "name": "Front Plank Toe Tap ",
+      "msg": "Name contains crunch/plank but primary muscle is \"Chest\" (expected Abs)."
+    },
+    {
+      "id": "exr_41n2huf7mAC2rhfC",
+      "name": "Dumbbell Jumping Squat",
+      "msg": "Name contains squat/leg press but primary muscle is \"Hamstrings\" (expected Quads or Glutes)."
+    },
+    {
+      "id": "exr_41n2hVCJfpAvJcdU",
+      "name": "Commando Pull-up",
+      "msg": "Name contains row/pulldown/pull-up but primary muscle is \"Traps\" (expected Back)."
+    },
+    {
+      "id": "exr_41n2hWxnJoGwbJpa",
+      "name": "Superman Row with Towel",
+      "msg": "Name contains row/pulldown/pull-up but primary muscle is \"Glutes\" (expected Back)."
+    }
+  ]
+}

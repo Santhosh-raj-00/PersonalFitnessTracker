@@ -4,6 +4,7 @@ import { Timer, Plus, SkipForward, Play, Pause } from 'lucide-react';
 interface RestTimerProps {
   initialSeconds: number;
   exerciseName?: string;
+  mediaUrl?: string;
   onFinish?: () => void;
   onCancel?: () => void;
 }
@@ -11,6 +12,7 @@ interface RestTimerProps {
 export const RestTimer: React.FC<RestTimerProps> = ({
   initialSeconds = 90,
   exerciseName,
+  mediaUrl,
   onFinish,
   onCancel,
 }) => {
@@ -78,9 +80,31 @@ export const RestTimer: React.FC<RestTimerProps> = ({
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 flex items-center justify-center bg-emerald-950/80 text-emerald-400 rounded-xl border border-emerald-500/30">
-            <Timer className={`w-5 h-5 ${isActive ? 'animate-spin' : ''}`} />
-          </div>
+          {mediaUrl ? (
+            <div className="relative w-11 h-11 rounded-xl bg-gray-950 border border-emerald-500/40 overflow-hidden shrink-0 shadow-inner">
+              {mediaUrl.endsWith('.mp4') || mediaUrl.endsWith('.webm') ? (
+                <video
+                  src={mediaUrl}
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              ) : (
+                <img
+                  src={mediaUrl}
+                  alt={exerciseName}
+                  className="w-full h-full object-cover"
+                />
+              )}
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-gray-900" />
+            </div>
+          ) : (
+            <div className="relative w-10 h-10 flex items-center justify-center bg-emerald-950/80 text-emerald-400 rounded-xl border border-emerald-500/30">
+              <Timer className={`w-5 h-5 ${isActive ? 'animate-spin' : ''}`} />
+            </div>
+          )}
           <div>
             <div className="text-[11px] font-semibold tracking-wide uppercase text-emerald-400">
               Resting • {exerciseName || 'Rest Timer'}

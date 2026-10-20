@@ -28,20 +28,38 @@ public class ExerciseService {
         this.userRepository = userRepository;
     }
 
-    public List<ExerciseResponse> searchExercises(String query, String muscle, String equipment, String difficulty) {
-        MuscleGroup muscleGroup = null;
-        String muscleStr = "";
-        if (muscle != null && !muscle.trim().isEmpty() && !muscle.equalsIgnoreCase("ALL")
-                && !muscle.equalsIgnoreCase("FULL_BODY") && !muscle.equalsIgnoreCase("FULL BODY")) {
-            try {
-                String mUpper = muscle.trim().toUpperCase();
-                if (mUpper.equals("QUADS")) mUpper = "QUADRICEPS";
-                muscleGroup = MuscleGroup.valueOf(mUpper);
-                muscleStr = muscleGroup.name();
-            } catch (IllegalArgumentException ignored) {
-                muscleStr = muscle.trim();
-            }
+    public static MuscleGroup normalizeMuscleGroup(String raw) {
+        if (raw == null || raw.trim().isEmpty()) return null;
+        String s = raw.trim().toLowerCase().replaceAll("[_-]", " ");
+        if (s.equals("all")) return null;
+        if (s.contains("chest") || s.contains("pec")) return MuscleGroup.CHEST;
+        if (s.contains("trap")) return MuscleGroup.TRAPS;
+        if (s.contains("lat") || s.contains("back")) return MuscleGroup.BACK;
+        if (s.contains("delt") || s.contains("shoulder")) return MuscleGroup.SHOULDERS;
+        if (s.contains("bicep")) return MuscleGroup.BICEPS;
+        if (s.contains("tricep")) return MuscleGroup.TRICEPS;
+        if (s.contains("forearm") || s.contains("wrist")) return MuscleGroup.FOREARMS;
+        if (s.contains("ab") || s.contains("core") || s.contains("oblique")) return MuscleGroup.ABS;
+        if (s.contains("glute")) return MuscleGroup.GLUTES;
+        if (s.contains("quad")) return MuscleGroup.QUADS;
+        if (s.contains("hamstring")) return MuscleGroup.HAMSTRINGS;
+        if (s.contains("calv") || s.contains("calf") || s.contains("soleus")) return MuscleGroup.CALVES;
+        if (s.contains("cardio")) return MuscleGroup.CARDIO;
+        if (s.contains("full body") || s.contains("compound")) return MuscleGroup.FULL_BODY;
+        try {
+            return MuscleGroup.valueOf(raw.trim().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return null;
         }
+    }
+
+    public List<ExerciseResponse> searchExercises(String query, String muscle, String equipment, String difficulty) {
+        return searchExercises(query, muscle, equipment, difficulty, false);
+    }
+
+    public List<ExerciseResponse> searchExercises(String query, String muscle, String equipment, String difficulty, boolean includeSecondary) {
+        MuscleGroup muscleGroup = normalizeMuscleGroup(muscle);
+        String muscleStr = muscleGroup != null ? muscleGroup.name() : (muscle != null ? muscle.trim() : "");
 
         Equipment eq = null;
         if (equipment != null && !equipment.trim().isEmpty() && !equipment.equalsIgnoreCase("ALL")) {
@@ -59,26 +77,21 @@ public class ExerciseService {
 
         String q = (query != null && !query.trim().isEmpty()) ? query.trim() : null;
 
-        List<Exercise> exercises = exerciseRepository.searchExercisesWithFilters(q, muscleGroup, muscleStr, eq, diff);
+        List<Exercise> exercises = exerciseRepository.searchExercisesWithFilters(q, muscleGroup, muscleStr, includeSecondary, eq, diff);
         return exercises.stream().map(ExerciseResponse::fromEntity).collect(Collectors.toList());
     }
 
     public PageResponse<ExerciseResponse> searchExercisesPaginated(
             String query, String muscle, String equipment, String difficulty, int page, int size
     ) {
-        MuscleGroup muscleGroup = null;
-        String muscleStr = "";
-        if (muscle != null && !muscle.trim().isEmpty() && !muscle.equalsIgnoreCase("ALL")
-                && !muscle.equalsIgnoreCase("FULL_BODY") && !muscle.equalsIgnoreCase("FULL BODY")) {
-            try {
-                String mUpper = muscle.trim().toUpperCase();
-                if (mUpper.equals("QUADS")) mUpper = "QUADRICEPS";
-                muscleGroup = MuscleGroup.valueOf(mUpper);
-                muscleStr = muscleGroup.name();
-            } catch (IllegalArgumentException ignored) {
-                muscleStr = muscle.trim();
-            }
-        }
+        return searchExercisesPaginated(query, muscle, equipment, difficulty, false, page, size);
+    }
+
+    public PageResponse<ExerciseResponse> searchExercisesPaginated(
+            String query, String muscle, String equipment, String difficulty, boolean includeSecondary, int page, int size
+    ) {
+        MuscleGroup muscleGroup = normalizeMuscleGroup(muscle);
+        String muscleStr = muscleGroup != null ? muscleGroup.name() : (muscle != null ? muscle.trim() : "");
 
         Equipment eq = null;
         if (equipment != null && !equipment.trim().isEmpty() && !equipment.equalsIgnoreCase("ALL")) {
@@ -97,7 +110,7 @@ public class ExerciseService {
         String q = (query != null && !query.trim().isEmpty()) ? query.trim() : null;
         Pageable pageable = PageRequest.of(Math.max(0, page), Math.max(1, size));
 
-        Page<Exercise> exercisePage = exerciseRepository.searchExercisesWithFilters(q, muscleGroup, muscleStr, eq, diff, pageable);
+        Page<Exercise> exercisePage = exerciseRepository.searchExercisesWithFilters(q, muscleGroup, muscleStr, includeSecondary, eq, diff, pageable);
         List<ExerciseResponse> content = exercisePage.getContent().stream()
                 .map(ExerciseResponse::fromEntity)
                 .collect(Collectors.toList());
@@ -150,6 +163,14 @@ public class ExerciseService {
         exercise.setMistakes(req.getMistakes() != null ? req.getMistakes() : Collections.emptyList());
         exercise.setDefaultSets(req.getDefaultSets() != null ? req.getDefaultSets() : 3);
         exercise.setDefaultReps(req.getDefaultReps() != null ? req.getDefaultReps() : "8-12");
+        exercise.setMovementType(req.getMovementType() != null ? req.getMovementType() : "COMPOUND");
+        exercise.setChestRegion(req.getChestRegion());
+        exercise.setAnimationPattern(req.getAnimationPattern());
+        exercise.setAnimationParams(req.getAnimationParams());
+        exercise.setCameraView(req.getCameraView());
+        exercise.setMediaProvider(req.getMediaProvider() != null ? req.getMediaProvider() : "builtin");
+        exercise.setMediaType(req.getMediaType() != null ? req.getMediaType() : "animation");
+        exercise.setPosterUrl(req.getPosterUrl());
         exercise.setIsCustom(true);
         exercise.setCreatedBy(user);
         exercise.setAttribution("User Custom Exercise");
@@ -159,29 +180,65 @@ public class ExerciseService {
     }
 
     public List<MuscleGroupSummary> getMuscleGroupSummaries() {
-        // Defined 11 Core Groups + Traps + Cardio
-        Map<MuscleGroup, String[]> metadata = new LinkedHashMap<>();
-        metadata.put(MuscleGroup.CHEST, new String[]{"Chest", "Pectoralis major, minor & sternal head"});
-        metadata.put(MuscleGroup.BACK, new String[]{"Back", "Latissimus dorsi, rhomboids & erectors"});
-        metadata.put(MuscleGroup.SHOULDERS, new String[]{"Shoulders", "Anterior, lateral & posterior deltoids"});
-        metadata.put(MuscleGroup.BICEPS, new String[]{"Biceps", "Biceps brachii & brachialis"});
-        metadata.put(MuscleGroup.TRICEPS, new String[]{"Triceps", "Lateral, long & medial heads"});
-        metadata.put(MuscleGroup.FOREARMS, new String[]{"Forearms", "Wrist flexors, extensors & brachioradialis"});
-        metadata.put(MuscleGroup.ABS, new String[]{"Abs", "Rectus abdominis & obliques"});
-        metadata.put(MuscleGroup.GLUTES, new String[]{"Glutes", "Gluteus maximus, medius & minimus"});
-        metadata.put(MuscleGroup.QUADRICEPS, new String[]{"Quads", "Rectus femoris & vastus lateralis"});
-        metadata.put(MuscleGroup.HAMSTRINGS, new String[]{"Hamstrings", "Biceps femoris, semitendinosus"});
-        metadata.put(MuscleGroup.CALVES, new String[]{"Calves", "Gastrocnemius & soleus"});
-        metadata.put(MuscleGroup.TRAPS, new String[]{"Traps", "Upper, middle & lower trapezius"});
-        metadata.put(MuscleGroup.CARDIO, new String[]{"Cardio", "Cardiovascular stamina & conditioning"});
+        Map<String, String[]> metadata = new LinkedHashMap<>();
+        metadata.put("CHEST", new String[]{"Chest", "Pectoralis major, minor & sternal head"});
+        metadata.put("BACK", new String[]{"Back", "Latissimus dorsi, rhomboids & erectors"});
+        metadata.put("SHOULDERS", new String[]{"Shoulders", "Anterior, lateral & posterior deltoids"});
+        metadata.put("TRAPS", new String[]{"Traps", "Upper, middle & lower trapezius"});
+        metadata.put("BICEPS", new String[]{"Biceps", "Biceps brachii & brachialis"});
+        metadata.put("TRICEPS", new String[]{"Triceps", "Lateral, long & medial heads"});
+        metadata.put("FOREARMS", new String[]{"Forearms", "Wrist flexors, extensors & brachioradialis"});
+        metadata.put("ABS", new String[]{"Abs", "Rectus abdominis & obliques"});
+        metadata.put("GLUTES", new String[]{"Glutes", "Gluteus maximus, medius & minimus"});
+        metadata.put("QUADS", new String[]{"Quads", "Rectus femoris & vastus lateralis"});
+        metadata.put("HAMSTRINGS", new String[]{"Hamstrings", "Biceps femoris, semitendinosus"});
+        metadata.put("CALVES", new String[]{"Calves", "Gastrocnemius & soleus"});
+        metadata.put("CARDIO", new String[]{"Cardio", "Cardiovascular stamina & conditioning"});
+        metadata.put("FULL_BODY", new String[]{"Full Body", "Compound functional kinetic chain movements"});
 
         List<MuscleGroupSummary> summaries = new ArrayList<>();
-        for (Map.Entry<MuscleGroup, String[]> entry : metadata.entrySet()) {
-            MuscleGroup mg = entry.getKey();
+        for (Map.Entry<String, String[]> entry : metadata.entrySet()) {
+            String mgKey = entry.getKey();
             String[] info = entry.getValue();
-            long count = exerciseRepository.countByPrimaryMuscle(mg);
-            summaries.add(new MuscleGroupSummary(mg.name(), info[0], info[1], count));
+            long count;
+            if ("QUADS".equals(mgKey)) {
+                count = exerciseRepository.countByPrimaryMuscle(MuscleGroup.QUADS)
+                      + exerciseRepository.countByPrimaryMuscle(MuscleGroup.QUADRICEPS);
+            } else {
+                try {
+                    MuscleGroup mg = MuscleGroup.valueOf(mgKey);
+                    count = exerciseRepository.countByPrimaryMuscle(mg);
+                } catch (Exception e) {
+                    count = 0;
+                }
+            }
+            summaries.add(new MuscleGroupSummary(mgKey, info[0], info[1], count));
         }
         return summaries;
+    }
+
+    @Transactional
+    public ExerciseResponse updateExerciseReview(Long id, String status, String mediaUrl, String posterUrl) {
+        Exercise ex = exerciseRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Exercise not found with ID: " + id));
+        if (status != null) {
+            ex.setReviewStatus(status);
+            if ("verified".equalsIgnoreCase(status)) {
+                ex.setMediaProvider("licensed");
+            } else if ("no-media".equalsIgnoreCase(status)) {
+                ex.setMediaProvider("builtin");
+                ex.setMediaUrl(null);
+                ex.setPosterUrl(null);
+            }
+        }
+        if (mediaUrl != null) {
+            ex.setMediaUrl(mediaUrl);
+            ex.setMatchMethod("manual");
+        }
+        if (posterUrl != null) {
+            ex.setPosterUrl(posterUrl);
+        }
+        ex = exerciseRepository.save(ex);
+        return ExerciseResponse.fromEntity(ex);
     }
 }

@@ -1,9 +1,11 @@
 export type Role = 'ROLE_USER' | 'ROLE_TRAINER' | 'ROLE_ADMIN';
 export type FitnessGoal = 'CUT' | 'BULK' | 'MAINTAIN';
 export type ExperienceLevel = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
-export type MuscleGroup = 'CHEST' | 'BACK' | 'BICEPS' | 'TRICEPS' | 'SHOULDERS' | 'QUADRICEPS' | 'HAMSTRINGS' | 'CALVES' | 'ABS' | 'GLUTES' | 'TRAPS' | 'FOREARMS' | 'CARDIO';
-export type Equipment = 'BARBELL' | 'DUMBBELL' | 'CABLE' | 'MACHINE' | 'BODYWEIGHT' | 'SMITH_MACHINE' | 'KETTLEBELL' | 'EZ_BAR';
+export type MuscleGroup = 'CHEST' | 'BACK' | 'BICEPS' | 'TRICEPS' | 'SHOULDERS' | 'QUADS' | 'QUADRICEPS' | 'HAMSTRINGS' | 'CALVES' | 'ABS' | 'GLUTES' | 'TRAPS' | 'FOREARMS' | 'CARDIO' | 'FULL_BODY';
+export type Equipment = 'BARBELL' | 'DUMBBELL' | 'KETTLEBELL' | 'MACHINE' | 'CABLE' | 'SMITH_MACHINE' | 'BODYWEIGHT' | 'BAND' | 'OTHER' | 'EZ_BAR';
 export type Difficulty = 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
+export type MovementType = 'COMPOUND' | 'ISOLATION';
+export type ChestRegion = 'Upper' | 'Mid' | 'Lower' | 'Inner';
 export type SessionStatus = 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
 export type RecordType = 'MAX_WEIGHT' | 'MAX_REPS' | 'MAX_1RM' | 'MAX_VOLUME_SET';
 
@@ -37,9 +39,14 @@ export interface Exercise {
   secondaryMusclesList?: string[];
   equipment: Equipment;
   difficulty: Difficulty;
+  movementType?: MovementType;
+  chestRegion?: ChestRegion;
   formTips?: string;
   demoImageUrl?: string;
   mediaUrl?: string;
+  mediaProvider?: 'builtin' | 'licensed' | 'none';
+  mediaType?: 'video' | 'image' | 'animation';
+  posterUrl?: string;
   thumbnailUrl?: string;
   steps?: string[];
   mistakes?: string[];
@@ -47,6 +54,16 @@ export interface Exercise {
   defaultReps?: string;
   isCustom?: boolean;
   attribution?: string;
+  animationPattern?: string;
+  animationParams?: string;
+  cameraView?: 'side' | 'front';
+  source?: string;
+  externalId?: string;
+  mediaChecksum?: string;
+  matchMethod?: 'dataset-record' | 'manual';
+  reviewStatus?: 'verified' | 'needs-review' | 'no-media';
+  legacyMediaUrl?: string;
+  legacyPosterUrl?: string;
 }
 
 export interface MuscleGroupSummary {
@@ -62,6 +79,8 @@ export interface CreateCustomExerciseRequest {
   secondaryMuscles?: string[];
   equipment: Equipment;
   difficulty: Difficulty;
+  movementType?: string;
+  chestRegion?: string;
   mediaUrl?: string;
   thumbnailUrl?: string;
   steps?: string[];

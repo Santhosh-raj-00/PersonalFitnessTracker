@@ -34,3 +34,7 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .DS_Store
 Thumbs.db
+
+# Vendor source assets
+VitalAnimations/
+

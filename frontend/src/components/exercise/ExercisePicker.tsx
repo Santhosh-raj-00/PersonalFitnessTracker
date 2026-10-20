@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { Exercise } from '../../types';
 import { exerciseService } from '../../services/exerciseService';
-import { MuscleActivationMap } from '../muscle/MuscleActivationMap';
+import { MuscleDiagram } from '../muscle/MuscleDiagram';
 import { CreateCustomExerciseModal } from './CreateCustomExerciseModal';
+import { ExerciseMedia } from './ExerciseMedia';
 import {
   getRecentExerciseIds,
   addRecentExerciseId,
@@ -22,7 +23,6 @@ import {
   Clock,
   Layers,
   Sparkles,
-  Activity,
   AlertCircle,
   SlidersHorizontal,
 } from 'lucide-react';
@@ -56,7 +56,7 @@ const MUSCLE_GRID_ITEMS: MuscleItem[] = [
   { id: 'FOREARMS', name: 'Forearms', subtitle: 'Flexors, extensors & grip', iconName: 'grip', accentColor: 'text-teal-400', bgGradient: 'from-teal-500/20 to-emerald-500/10' },
   { id: 'ABS', name: 'Abs & Core', subtitle: 'Rectus abdominis & obliques', iconName: 'activity', accentColor: 'text-yellow-400', bgGradient: 'from-yellow-500/20 to-amber-500/10' },
   { id: 'GLUTES', name: 'Glutes', subtitle: 'Maximus, medius & minimus', iconName: 'heart', accentColor: 'text-pink-400', bgGradient: 'from-pink-500/20 to-rose-500/10' },
-  { id: 'QUADRICEPS', name: 'Quads', subtitle: 'Rectus femoris & vastus', iconName: 'flame', accentColor: 'text-red-400', bgGradient: 'from-red-500/20 to-orange-500/10' },
+  { id: 'QUADS', name: 'Quads', subtitle: 'Rectus femoris & vastus', iconName: 'flame', accentColor: 'text-red-400', bgGradient: 'from-red-500/20 to-orange-500/10' },
   { id: 'HAMSTRINGS', name: 'Hamstrings', subtitle: 'Biceps femoris & semitend.', iconName: 'repeat', accentColor: 'text-amber-400', bgGradient: 'from-amber-500/20 to-yellow-500/10' },
   { id: 'CALVES', name: 'Calves', subtitle: 'Gastrocnemius & soleus', iconName: 'arrow-up', accentColor: 'text-lime-400', bgGradient: 'from-lime-500/20 to-green-500/10' },
   { id: 'CARDIO', name: 'Cardio', subtitle: 'Conditioning & stamina', iconName: 'heart-pulse', accentColor: 'text-red-500', bgGradient: 'from-red-600/20 to-pink-500/10' },
@@ -67,9 +67,13 @@ const EQUIPMENT_FILTERS: { label: string; value: string }[] = [
   { label: 'All Equipment', value: 'ALL' },
   { label: 'Barbell', value: 'BARBELL' },
   { label: 'Dumbbell', value: 'DUMBBELL' },
+  { label: 'Kettlebell', value: 'KETTLEBELL' },
   { label: 'Machine', value: 'MACHINE' },
   { label: 'Cable', value: 'CABLE' },
+  { label: 'Smith Machine', value: 'SMITH_MACHINE' },
   { label: 'Bodyweight', value: 'BODYWEIGHT' },
+  { label: 'Band', value: 'BAND' },
+  { label: 'Other', value: 'OTHER' },
 ];
 
 const DIFFICULTY_FILTERS: { label: string; value: string }[] = [
@@ -96,6 +100,7 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedEquipment, setSelectedEquipment] = useState<string>('ALL');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('ALL');
+  const [includeSecondary, setIncludeSecondary] = useState<boolean>(false);
 
   // Multi-selection Store
   const [selectedExercisesMap, setSelectedExercisesMap] = useState<Map<number, Exercise>>(new Map());
@@ -121,6 +126,7 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
       setSearchQuery('');
       setSelectedEquipment('ALL');
       setSelectedDifficulty('ALL');
+      setIncludeSecondary(false);
       setSelectedExercisesMap(new Map());
       setPreviewExercise(null);
     }
@@ -172,6 +178,7 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
         shortcut: activeShortcut,
         equipment: selectedEquipment,
         difficulty: selectedDifficulty,
+        includeSecondary,
         q: searchQuery,
       },
     ],
@@ -181,7 +188,8 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
         searchQuery,
         queryMuscleParam,
         selectedEquipment,
-        selectedDifficulty
+        selectedDifficulty,
+        includeSecondary
       );
       return list;
     },
@@ -471,6 +479,28 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
                   </button>
                 ))}
               </div>
+
+              {/* Include Secondary Muscles Toggle */}
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-[11px] text-slate-400 font-semibold">
+                  Include secondary muscle matches
+                </span>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={includeSecondary}
+                  onClick={() => setIncludeSecondary((prev) => !prev)}
+                  className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                    includeSecondary ? 'bg-emerald-500' : 'bg-slate-700'
+                  }`}
+                >
+                  <span
+                    className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${
+                      includeSecondary ? 'translate-x-4' : 'translate-x-0'
+                    }`}
+                  />
+                </button>
+              </div>
             </div>
 
             {/* List Results Container */}
@@ -535,21 +565,14 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
                     >
                       {/* Left: Thumbnail & Info */}
                       <div className="flex items-center gap-3 min-w-0 flex-1">
-                        {/* Lazy Loaded Thumbnail */}
+                        {/* Media Thumbnail */}
                         <div className="relative w-14 h-14 rounded-xl bg-slate-900 border border-slate-800 overflow-hidden shrink-0 flex items-center justify-center">
-                          {exercise.thumbnailUrl || exercise.demoImageUrl ? (
-                            <img
-                              src={exercise.thumbnailUrl || exercise.demoImageUrl}
-                              alt={exercise.name}
-                              loading="lazy"
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                (e.currentTarget as HTMLImageElement).style.display = 'none';
-                              }}
-                            />
-                          ) : (
-                            <Activity className="w-6 h-6 text-slate-600" />
-                          )}
+                          <ExerciseMedia
+                            key={exercise.id}
+                            exercise={exercise}
+                            showControls={false}
+                            className="w-full h-full"
+                          />
                         </div>
 
                         {/* Title & Badges */}
@@ -569,6 +592,11 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">
                               {exercise.primaryMuscle}
                             </span>
+                            {includeSecondary && selectedMuscle && exercise.primaryMuscle !== selectedMuscle && (
+                              <span className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                                Secondary
+                              </span>
+                            )}
                             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-900 text-slate-400 border border-slate-800">
                               {exercise.equipment}
                             </span>
@@ -725,25 +753,13 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
 
             {/* Preview Body */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {/* Looping Media Video/GIF Container */}
-              <div className="relative rounded-2xl bg-black border border-slate-800 overflow-hidden aspect-video flex items-center justify-center">
-                {previewExercise.mediaUrl || previewExercise.demoImageUrl ? (
-                  <img
-                    src={previewExercise.mediaUrl || previewExercise.demoImageUrl}
-                    alt={previewExercise.name}
-                    className="w-full h-full object-contain"
-                  />
-                ) : (
-                  <div className="text-center p-6 text-slate-500">
-                    <Activity className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                    <span>Media preview coming soon</span>
-                  </div>
-                )}
-
-                <div className="absolute bottom-2 right-2 px-2 py-1 rounded-lg bg-black/70 backdrop-blur-sm text-[10px] text-white flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  <span>Looping Motion</span>
-                </div>
+              {/* Universal Exercise Media (4:3 Dark Container with Builtin Muscular Fallback) */}
+              <div className="w-full">
+                <ExerciseMedia
+                  key={previewExercise.id}
+                  exercise={previewExercise}
+                  showControls={true}
+                />
               </div>
 
               {/* Tabs: Muscle Activation Diagram vs Steps */}
@@ -773,11 +789,16 @@ export const ExercisePicker: React.FC<ExercisePickerProps> = ({
               </div>
 
               {previewActiveTab === 'diagram' ? (
-                <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800/80">
-                  <MuscleActivationMap
-                    primaryMuscles={[previewExercise.primaryMuscle]}
-                    secondaryMuscles={previewExercise.secondaryMusclesList || []}
-                    className="max-w-[280px] mx-auto"
+                <div className="p-3 bg-slate-950 rounded-2xl border border-slate-850">
+                  <MuscleDiagram
+                    primary={previewExercise.primaryMuscles && previewExercise.primaryMuscles.length > 0 ? previewExercise.primaryMuscles : [previewExercise.primaryMuscle]}
+                    secondary={
+                      previewExercise.secondaryMusclesList && previewExercise.secondaryMusclesList.length > 0
+                        ? previewExercise.secondaryMusclesList
+                        : (previewExercise.secondaryMuscles ? previewExercise.secondaryMuscles.split(',') : [])
+                    }
+                    chestRegion={previewExercise.chestRegion}
+                    className="max-w-[340px] mx-auto"
                   />
                 </div>
               ) : (

@@ -27,13 +27,14 @@ public class ExerciseController {
     }
 
     @GetMapping
-    @Operation(summary = "Search and filter exercises across 11+ muscle groups, equipment and difficulty with optional pagination")
+    @Operation(summary = "Search and filter exercises across muscle groups, equipment and difficulty with optional secondary muscle inclusion and pagination")
     public ResponseEntity<?> searchExercises(
             @RequestParam(name = "q", required = false) String q,
             @RequestParam(name = "query", required = false) String query,
             @RequestParam(required = false) String muscle,
             @RequestParam(required = false) String equipment,
             @RequestParam(required = false) String difficulty,
+            @RequestParam(name = "includeSecondary", defaultValue = "false") boolean includeSecondary,
             @RequestParam(required = false) Integer page,
             @RequestParam(required = false) Integer size
     ) {
@@ -41,9 +42,9 @@ public class ExerciseController {
         if (page != null) {
             int p = Math.max(0, page);
             int s = size != null ? Math.max(1, size) : 20;
-            return ResponseEntity.ok(exerciseService.searchExercisesPaginated(effectiveQuery, muscle, equipment, difficulty, p, s));
+            return ResponseEntity.ok(exerciseService.searchExercisesPaginated(effectiveQuery, muscle, equipment, difficulty, includeSecondary, p, s));
         }
-        return ResponseEntity.ok(exerciseService.searchExercises(effectiveQuery, muscle, equipment, difficulty));
+        return ResponseEntity.ok(exerciseService.searchExercises(effectiveQuery, muscle, equipment, difficulty, includeSecondary));
     }
 
 
@@ -73,5 +74,16 @@ public class ExerciseController {
             }
         }
         return ResponseEntity.ok(exerciseService.createCustomExercise(userId, request));
+    }
+
+    @PutMapping("/{id}/review")
+    @Operation(summary = "Update review status or swap media for an exercise (Admin review tool)")
+    public ResponseEntity<ExerciseResponse> updateReview(
+            @PathVariable Long id,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String mediaUrl,
+            @RequestParam(required = false) String posterUrl
+    ) {
+        return ResponseEntity.ok(exerciseService.updateExerciseReview(id, status, mediaUrl, posterUrl));
     }
 }
