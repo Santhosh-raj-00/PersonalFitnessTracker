@@ -349,6 +349,26 @@ public class DataSeederService implements CommandLineRunner {
         profile.setDailyProteinTargetGrams(170);
         userProfileRepository.save(profile);
 
+        User santhosh = new User(
+                "21519santhoshraj.g@gmail.com",
+                passwordEncoder.encode("password123"),
+                "Santhosh Raj G",
+                Role.ROLE_USER
+        );
+        santhosh = userRepository.save(santhosh);
+
+        UserProfile santhoshProfile = new UserProfile();
+        santhoshProfile.setUser(santhosh);
+        santhoshProfile.setAge(24);
+        santhoshProfile.setHeightCm(175.0);
+        santhoshProfile.setWeightKg(75.0);
+        santhoshProfile.setFitnessGoal(FitnessGoal.BULK);
+        santhoshProfile.setExperienceLevel(ExperienceLevel.INTERMEDIATE);
+        santhoshProfile.setAvailableEquipment("BARBELL,DUMBBELL,CABLE,MACHINE,BODYWEIGHT");
+        santhoshProfile.setDailyCalorieTarget(2700);
+        santhoshProfile.setDailyProteinTargetGrams(160);
+        userProfileRepository.save(santhoshProfile);
+
         // Seed Body Metrics History over last 4 weeks
         List<BodyMetric> metrics = new ArrayList<>();
         metrics.add(new BodyMetric(demoUser, LocalDate.now().minusDays(21), 74.8, 15.5, 102.0, 81.0, 37.0, 56.0, "Started bulk campaign"));

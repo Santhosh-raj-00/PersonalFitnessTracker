@@ -46,6 +46,7 @@ const ProtectedLayout: React.FC = () => {
         <Route path="/routines" element={<Routines />} />
         <Route path="/routines/new" element={<CreateRoutine />} />
         <Route path="/routines/:id" element={<RoutineDetail />} />
+        <Route path="/routines/:id/edit" element={<CreateRoutine />} />
         <Route path="/workout/active" element={<ActiveWorkout />} />
         <Route path="/workout/history" element={<WorkoutHistory />} />
         <Route path="/workouts/history" element={<WorkoutHistory />} />

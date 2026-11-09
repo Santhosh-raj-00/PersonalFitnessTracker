@@ -17,6 +17,12 @@ public class WorkoutDTOs {
         public void setSessionName(String sessionName) { this.sessionName = sessionName; }
     }
 
+    public static class FinishWorkoutRequest {
+        private String notes;
+        public String getNotes() { return notes; }
+        public void setNotes(String notes) { this.notes = notes; }
+    }
+
     public static class LogSetRequest {
         @NotNull(message = "Exercise ID is required")
         private Long exerciseId;

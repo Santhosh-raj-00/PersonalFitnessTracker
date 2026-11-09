@@ -3,7 +3,7 @@ import { routineService } from '../services/routineService';
 import { workoutService } from '../services/workoutService';
 import type { Routine } from '../types';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Play, Dumbbell, Clock, Layers } from 'lucide-react';
+import { ArrowLeft, Play, Dumbbell, Clock, Layers, Edit3, Trash2, Sparkles } from 'lucide-react';
 
 export const RoutineDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -23,6 +23,18 @@ export const RoutineDetail: React.FC = () => {
       navigate('/workout/active');
     } catch (err) {
       navigate('/workout/active');
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!routine) return;
+    if (confirm(`Are you sure you want to delete the routine "${routine.name}"?`)) {
+      try {
+        await routineService.deleteRoutine(routine.id);
+        navigate('/routines');
+      } catch (err: any) {
+        alert(err.message || 'Failed to delete routine');
+      }
     }
   };
 
@@ -46,14 +58,48 @@ export const RoutineDetail: React.FC = () => {
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Routines</span>
         </button>
-        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800">
-          {routine.splitType}
-        </span>
       </div>
 
-      <div className="bg-gray-900 border border-gray-800 rounded-3xl p-6 shadow-xl space-y-3">
-        <h1 className="text-2xl font-black text-white">{routine.name}</h1>
-        <p className="text-xs text-gray-400 leading-relaxed">{routine.description}</p>
+      <div className="bg-gray-900 border border-gray-800 rounded-3xl p-6 shadow-xl space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800">
+                {routine.splitType}
+              </span>
+              {routine.isTemplate ? (
+                <span className="text-[10px] font-semibold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-800 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> Template
+                </span>
+              ) : (
+                <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800">
+                  Custom Split
+                </span>
+              )}
+            </div>
+            <h1 className="text-2xl font-black text-white">{routine.name}</h1>
+            <p className="text-xs text-gray-400 leading-relaxed">{routine.description}</p>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => navigate(`/routines/${routine.id}/edit`)}
+              className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 hover:from-emerald-500/30 hover:to-teal-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-bold rounded-xl transition-all btn-press shadow-sm"
+            >
+              <Edit3 className="w-3.5 h-3.5" />
+              <span>{routine.isTemplate ? 'Customize Routine' : 'Edit Routine Details'}</span>
+            </button>
+            {!routine.isTemplate && (
+              <button
+                onClick={handleDelete}
+                className="p-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl transition-all btn-press"
+                title="Delete Routine"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="space-y-4">

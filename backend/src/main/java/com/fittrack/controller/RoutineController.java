@@ -34,6 +34,12 @@ public class RoutineController {
         return ResponseEntity.ok(routineService.getRoutineById(id));
     }
 
+    @GetMapping("/days/{dayId}")
+    @Operation(summary = "Get routine day details by ID with exercises")
+    public ResponseEntity<RoutineDTOs.RoutineDayDto> getRoutineDayById(@PathVariable Long dayId) {
+        return ResponseEntity.ok(routineService.getRoutineDayById(dayId));
+    }
+
     @PostMapping
     @Operation(summary = "Create custom routine split")
     public ResponseEntity<RoutineDTOs.RoutineDto> createCustomRoutine(
@@ -41,5 +47,25 @@ public class RoutineController {
             @Valid @RequestBody RoutineDTOs.CreateRoutineRequest request
     ) {
         return ResponseEntity.ok(routineService.createCustomRoutine(authentication.getName(), request));
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update routine details by ID")
+    public ResponseEntity<RoutineDTOs.RoutineDto> updateRoutine(
+            Authentication authentication,
+            @PathVariable Long id,
+            @Valid @RequestBody RoutineDTOs.CreateRoutineRequest request
+    ) {
+        return ResponseEntity.ok(routineService.updateRoutine(authentication.getName(), id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete routine by ID")
+    public ResponseEntity<Void> deleteRoutine(
+            Authentication authentication,
+            @PathVariable Long id
+    ) {
+        routineService.deleteRoutine(authentication.getName(), id);
+        return ResponseEntity.noContent().build();
     }
 }

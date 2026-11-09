@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { progressService } from '../services/progressService';
-import { workoutService } from '../services/workoutService';
 import type { DashboardSummary } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { StartWorkoutModal } from '../components/workout/StartWorkoutModal';
 import {
   Flame,
   Play,
@@ -20,6 +20,8 @@ import { BarChart as ReBarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer
 export const Dashboard: React.FC = () => {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isStartWorkoutModalOpen, setIsStartWorkoutModalOpen] = useState<boolean>(false);
+  const [selectedRoutineDay, setSelectedRoutineDay] = useState<{ routineId?: number; dayId?: number }>({});
   const { user, profile } = useAuth();
   const navigate = useNavigate();
 
@@ -36,15 +38,6 @@ export const Dashboard: React.FC = () => {
       console.error(err);
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const handleStartQuickWorkout = async (routineDayId?: number, name?: string) => {
-    try {
-      await workoutService.startWorkout(routineDayId, name || 'Quick Workout');
-      navigate('/workout/active');
-    } catch (err) {
-      navigate('/workout/active');
     }
   };
 
@@ -97,7 +90,10 @@ export const Dashboard: React.FC = () => {
           <div className="shrink-0 flex items-center gap-2.5 flex-wrap">
             <button
               type="button"
-              onClick={() => handleStartQuickWorkout()}
+              onClick={() => {
+                setSelectedRoutineDay({});
+                setIsStartWorkoutModalOpen(true);
+              }}
               className="flex items-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-black text-sm rounded-2xl shadow-xl shadow-orange-500/25 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 active:scale-95"
             >
               <Play className="w-4 h-4 fill-current" aria-hidden="true" />
@@ -130,7 +126,14 @@ export const Dashboard: React.FC = () => {
           </div>
           <button
             type="button"
-            onClick={() => handleStartQuickWorkout(recommendedRoutines[0]?.days?.[0]?.id, recommendedRoutines[0]?.days?.[0]?.dayName)}
+            onClick={() => {
+              const rec = recommendedRoutines[0];
+              setSelectedRoutineDay({
+                routineId: rec?.id,
+                dayId: rec?.days?.[0]?.id,
+              });
+              setIsStartWorkoutModalOpen(true);
+            }}
             className="text-xs font-bold text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1 pt-1"
           >
             Start Day 1 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -269,6 +272,14 @@ export const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Start Workout Routine & Day Selector Modal */}
+      <StartWorkoutModal
+        isOpen={isStartWorkoutModalOpen}
+        onClose={() => setIsStartWorkoutModalOpen(false)}
+        preselectedRoutineId={selectedRoutineDay.routineId}
+        preselectedDayId={selectedRoutineDay.dayId}
+      />
     </div>
   );
 };

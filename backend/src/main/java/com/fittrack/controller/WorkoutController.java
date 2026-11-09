@@ -53,9 +53,24 @@ public class WorkoutController {
     public ResponseEntity<WorkoutDTOs.WorkoutSessionDto> finishWorkout(
             Authentication authentication,
             @PathVariable Long sessionId,
-            @RequestParam(required = false) String notes
+            @RequestParam(required = false) String notes,
+            @RequestBody(required = false) WorkoutDTOs.FinishWorkoutRequest body
     ) {
-        return ResponseEntity.ok(workoutService.finishWorkout(authentication.getName(), sessionId, notes));
+        String finalNotes = notes;
+        if ((finalNotes == null || finalNotes.isBlank()) && body != null && body.getNotes() != null) {
+            finalNotes = body.getNotes();
+        }
+        return ResponseEntity.ok(workoutService.finishWorkout(authentication.getName(), sessionId, finalNotes));
+    }
+
+    @PostMapping("/{sessionId}/cancel")
+    @Operation(summary = "Cancel or discard active workout session")
+    public ResponseEntity<Void> cancelWorkout(
+            Authentication authentication,
+            @PathVariable Long sessionId
+    ) {
+        workoutService.cancelWorkout(authentication.getName(), sessionId);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/history")

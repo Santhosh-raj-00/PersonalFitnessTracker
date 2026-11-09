@@ -36,6 +36,13 @@ export const workoutService = {
     const query = notes ? `?notes=${encodeURIComponent(notes)}` : '';
     return apiFetch<WorkoutSession>(`/workouts/${sessionId}/finish${query}`, {
       method: 'POST',
+      body: JSON.stringify({ notes: notes || '' }),
+    });
+  },
+
+  cancelWorkout: async (sessionId: number): Promise<void> => {
+    return apiFetch<void>(`/workouts/${sessionId}/cancel`, {
+      method: 'POST',
     });
   },
 

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { routineService } from '../services/routineService';
 import type { Exercise } from '../types';
 import { ExercisePicker } from '../components/exercise/ExercisePicker';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Plus,
   Trash2,
@@ -16,6 +16,7 @@ import {
   Layers,
   Sparkles,
   Minus,
+  Edit3,
 } from 'lucide-react';
 
 interface DayExerciseForm {
@@ -35,10 +36,14 @@ interface DayForm {
 }
 
 export const CreateRoutine: React.FC = () => {
+  const { id } = useParams<{ id?: string }>();
+  const isEditMode = Boolean(id);
 
   const [name, setName] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const splitType = 'CUSTOM';
+  const [splitType, setSplitType] = useState<string>('CUSTOM');
+  const [isTemplate, setIsTemplate] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(isEditMode);
   const [days, setDays] = useState<DayForm[]>([
     { dayName: 'Day 1: Push / Upper', exercises: [] },
   ]);
@@ -49,6 +54,41 @@ export const CreateRoutine: React.FC = () => {
   const [draggedExIdx, setDraggedExIdx] = useState<number | null>(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id) {
+      setIsLoading(true);
+      routineService.getRoutineById(Number(id))
+        .then((data) => {
+          setName(data.name || '');
+          setDescription(data.description || '');
+          setSplitType(data.splitType || 'CUSTOM');
+          setIsTemplate(Boolean(data.isTemplate));
+          if (data.days && data.days.length > 0) {
+            setDays(
+              data.days.map((d) => ({
+                dayName: d.dayName,
+                exercises: (d.exercises || []).map((ex) => ({
+                  exerciseId: ex.exerciseId,
+                  exerciseName: ex.exerciseName,
+                  primaryMuscle: ex.primaryMuscle,
+                  equipment: ex.equipment,
+                  thumbnailUrl: ex.demoImageUrl,
+                  targetSets: ex.targetSets || 3,
+                  targetRepRange: ex.targetRepRange || '8-12',
+                  restSeconds: ex.restSeconds || 90,
+                })),
+              }))
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          alert('Failed to load routine details');
+        })
+        .finally(() => setIsLoading(false));
+    }
+  }, [id]);
 
   // Day Management
   const addDay = () => {
@@ -143,7 +183,7 @@ export const CreateRoutine: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      await routineService.createRoutine({
+      const payload = {
         name,
         description,
         splitType,
@@ -158,14 +198,29 @@ export const CreateRoutine: React.FC = () => {
             restSeconds: ex.restSeconds,
           })),
         })),
-      });
-      navigate('/routines');
-    } catch (err) {
-      alert('Failed to save routine');
+      };
+
+      if (isEditMode && id) {
+        await routineService.updateRoutine(Number(id), payload);
+        navigate(`/routines/${id}`);
+      } else {
+        const created = await routineService.createRoutine(payload);
+        navigate(created?.id ? `/routines/${created.id}` : '/routines');
+      }
+    } catch (err: any) {
+      alert(err.message || 'Failed to save routine');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   const currentDay = days[selectedDayIdx] || days[0];
   const alreadySelectedIds = currentDay.exercises.map((e) => e.exerciseId);
@@ -175,15 +230,15 @@ export const CreateRoutine: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <button
-          onClick={() => navigate('/routines')}
+          onClick={() => navigate(isEditMode && id ? `/routines/${id}` : '/routines')}
           className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Routines</span>
+          <span>{isEditMode && id ? 'Back to Routine Details' : 'Back to Routines'}</span>
         </button>
         <h1 className="text-xl font-black text-white flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-emerald-400" />
-          Create Custom Routine
+          {isEditMode ? <Edit3 className="w-5 h-5 text-emerald-400" /> : <Sparkles className="w-5 h-5 text-emerald-400" />}
+          {isEditMode ? (isTemplate ? `Customize Template: ${name}` : `Edit Routine Details`) : 'Create Custom Routine'}
         </h1>
       </div>
 
@@ -202,6 +257,30 @@ export const CreateRoutine: React.FC = () => {
               placeholder="e.g. 4-Day Power Hypertrophy Split"
               className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-white text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
             />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                Split Type
+              </label>
+              <select
+                value={splitType}
+                onChange={(e) => setSplitType(e.target.value)}
+                className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-2xl text-white text-xs font-bold focus:outline-none focus:border-emerald-500"
+              >
+                <option value="CUSTOM">Custom Split</option>
+                <option value="PPL">Push / Pull / Legs (PPL)</option>
+                <option value="UPPER_LOWER">Upper / Lower Split</option>
+                <option value="FULL_BODY">Full Body</option>
+                <option value="SIX_DAY">6-Day Split</option>
+              </select>
+            </div>
+            {isEditMode && isTemplate && (
+              <div className="flex items-center text-[11px] text-amber-400 bg-amber-950/40 border border-amber-800/60 rounded-2xl p-2.5">
+                <span>Saving edits will create a personal copy in your routines without altering the default template.</span>
+              </div>
+            )}
           </div>
 
           <div>
@@ -503,7 +582,7 @@ export const CreateRoutine: React.FC = () => {
           className="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm rounded-2xl shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 btn-press disabled:opacity-50"
         >
           <Save className="w-4 h-4" />
-          <span>Save Routine</span>
+          <span>{isEditMode ? 'Update Routine & Save Changes' : 'Save Routine'}</span>
         </button>
       </form>
 

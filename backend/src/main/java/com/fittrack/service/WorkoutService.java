@@ -22,17 +22,20 @@ public class WorkoutService {
     private final UserRepository userRepository;
     private final ExerciseRepository exerciseRepository;
     private final PersonalRecordRepository personalRecordRepository;
+    private final RoutineDayRepository routineDayRepository;
 
     public WorkoutService(WorkoutSessionRepository workoutSessionRepository,
                           WorkoutSetRepository workoutSetRepository,
                           UserRepository userRepository,
                           ExerciseRepository exerciseRepository,
-                          PersonalRecordRepository personalRecordRepository) {
+                          PersonalRecordRepository personalRecordRepository,
+                          RoutineDayRepository routineDayRepository) {
         this.workoutSessionRepository = workoutSessionRepository;
         this.workoutSetRepository = workoutSetRepository;
         this.userRepository = userRepository;
         this.exerciseRepository = exerciseRepository;
         this.personalRecordRepository = personalRecordRepository;
+        this.routineDayRepository = routineDayRepository;
     }
 
     @Transactional
@@ -43,13 +46,47 @@ public class WorkoutService {
         // Check for any active in-progress workout
         Optional<WorkoutSession> active = workoutSessionRepository.findFirstByUserIdAndStatus(user.getId(), SessionStatus.IN_PROGRESS);
         if (active.isPresent()) {
-            return mapToSessionDto(active.get());
+            WorkoutSession existing = active.get();
+            // If the user explicitly requested a specific routine day, and this session has no sets logged yet,
+            // allow updating the session to the requested routine day and session name
+            if (request.getRoutineDayId() != null && (existing.getSets() == null || existing.getSets().isEmpty())) {
+                existing.setRoutineDayId(request.getRoutineDayId());
+                Optional<RoutineDay> dayOpt = routineDayRepository.findById(request.getRoutineDayId());
+                if (dayOpt.isPresent()) {
+                    RoutineDay day = dayOpt.get();
+                    existing.setSessionName(request.getSessionName() != null && !request.getSessionName().isBlank() ? request.getSessionName() : day.getDayName());
+                    if (day.getRoutine() != null) {
+                        existing.setRoutineName(day.getRoutine().getName());
+                    }
+                } else if (request.getSessionName() != null && !request.getSessionName().isBlank()) {
+                    existing.setSessionName(request.getSessionName());
+                }
+                existing = workoutSessionRepository.save(existing);
+            }
+            return mapToSessionDto(existing);
         }
 
         WorkoutSession session = new WorkoutSession();
         session.setUser(user);
         session.setRoutineDayId(request.getRoutineDayId());
-        session.setSessionName(request.getSessionName() != null ? request.getSessionName() : "Workout");
+        
+        String sessionName = request.getSessionName();
+        String routineName = null;
+        if (request.getRoutineDayId() != null) {
+            Optional<RoutineDay> dayOpt = routineDayRepository.findById(request.getRoutineDayId());
+            if (dayOpt.isPresent()) {
+                RoutineDay day = dayOpt.get();
+                if (sessionName == null || sessionName.isBlank()) {
+                    sessionName = day.getDayName();
+                }
+                if (day.getRoutine() != null) {
+                    routineName = day.getRoutine().getName();
+                }
+            }
+        }
+
+        session.setSessionName(sessionName != null && !sessionName.isBlank() ? sessionName : "Workout");
+        session.setRoutineName(routineName);
         session.setStartTime(LocalDateTime.now());
         session.setStatus(SessionStatus.IN_PROGRESS);
 
@@ -123,18 +160,38 @@ public class WorkoutService {
 
         session.setEndTime(LocalDateTime.now());
         session.setStatus(SessionStatus.COMPLETED);
-        if (notes != null) {
+        if (notes != null && !notes.isBlank()) {
             session.setNotes(notes);
         }
 
-        double totalVolume = session.getSets().stream()
-                .filter(s -> s.getIsWarmup() != null && !s.getIsWarmup())
-                .mapToDouble(s -> (s.getWeightKg() != null ? s.getWeightKg() : 0.0) * (s.getReps() != null ? s.getReps() : 0))
-                .sum();
+        double totalVolume = 0.0;
+        if (session.getSets() != null) {
+            totalVolume = session.getSets().stream()
+                    .filter(s -> s.getIsWarmup() == null || !s.getIsWarmup())
+                    .mapToDouble(s -> (s.getWeightKg() != null ? s.getWeightKg() : 0.0) * (s.getReps() != null ? s.getReps() : 0))
+                    .sum();
+        }
         session.setTotalVolumeKg(totalVolume);
 
         session = workoutSessionRepository.save(session);
         return mapToSessionDto(session);
+    }
+
+    @Transactional
+    public void cancelWorkout(String userEmail, Long sessionId) {
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        WorkoutSession session = workoutSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new IllegalArgumentException("Workout session not found"));
+
+        if (!session.getUser().getId().equals(user.getId())) {
+            throw new IllegalStateException("Unauthorized access to workout session");
+        }
+
+        session.setStatus(SessionStatus.CANCELLED);
+        session.setEndTime(LocalDateTime.now());
+        workoutSessionRepository.save(session);
     }
 
     public List<WorkoutDTOs.WorkoutSessionDto> getWorkoutHistory(String userEmail) {
@@ -169,7 +226,7 @@ public class WorkoutService {
      * Checks if a logged set beats existing Personal Records for weight or 1RM.
      */
     public boolean checkForPersonalRecords(User user, Exercise exercise, WorkoutSet set) {
-        if (set.getIsWarmup()) return false;
+        if (Boolean.TRUE.equals(set.getIsWarmup())) return false;
 
         boolean isNewPR = false;
 
@@ -201,6 +258,13 @@ public class WorkoutService {
         dto.setId(session.getId());
         dto.setRoutineDayId(session.getRoutineDayId());
         dto.setRoutineName(session.getRoutineName());
+        if (dto.getRoutineName() == null && session.getRoutineDayId() != null) {
+            routineDayRepository.findById(session.getRoutineDayId()).ifPresent(day -> {
+                if (day.getRoutine() != null) {
+                    dto.setRoutineName(day.getRoutine().getName());
+                }
+            });
+        }
         dto.setSessionName(session.getSessionName());
         dto.setStartTime(session.getStartTime());
         dto.setEndTime(session.getEndTime());

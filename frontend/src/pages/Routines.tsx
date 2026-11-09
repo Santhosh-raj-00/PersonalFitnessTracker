@@ -3,7 +3,7 @@ import { routineService } from '../services/routineService';
 import { workoutService } from '../services/workoutService';
 import type { Routine } from '../types';
 import { useNavigate } from 'react-router-dom';
-import { Dumbbell, PlusCircle, Play, ChevronRight, Layers, Sparkles, History } from 'lucide-react';
+import { Dumbbell, PlusCircle, Play, ChevronRight, Layers, Sparkles, History, Edit3 } from 'lucide-react';
 
 export const Routines: React.FC = () => {
   const [routines, setRoutines] = useState<Routine[]>([]);
@@ -98,13 +98,24 @@ export const Routines: React.FC = () => {
                   <p className="text-xs text-gray-400 mt-0.5">{routine.description}</p>
                 </div>
 
-                <button
-                  onClick={() => navigate(`/routines/${routine.id}`)}
-                  className="self-start sm:self-center px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs rounded-xl border border-gray-700 flex items-center gap-1 transition-colors"
-                >
-                  <span>Edit / Details</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
+                <div className="flex items-center gap-2 self-start sm:self-center">
+                  <button
+                    onClick={() => navigate(`/routines/${routine.id}/edit`)}
+                    className="px-3 py-1.5 bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 font-semibold text-xs rounded-xl border border-emerald-800/80 flex items-center gap-1.5 transition-colors shadow-sm"
+                    title={routine.isTemplate ? "Customize this template" : "Edit routine details & exercises"}
+                  >
+                    <Edit3 className="w-3.5 h-3.5" />
+                    <span>{routine.isTemplate ? "Customize" : "Edit"}</span>
+                  </button>
+
+                  <button
+                    onClick={() => navigate(`/routines/${routine.id}`)}
+                    className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-xs rounded-xl border border-gray-700 flex items-center gap-1 transition-colors"
+                  >
+                    <span>Details</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
 
               {/* Days List */}
