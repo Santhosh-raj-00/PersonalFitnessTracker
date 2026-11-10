@@ -22,6 +22,7 @@ public class ProgressService {
     private final PersonalRecordRepository personalRecordRepository;
     private final WorkoutSessionRepository workoutSessionRepository;
     private final RoutineService routineService;
+    private final ExerciseRepository exerciseRepository;
 
     public ProgressService(UserRepository userRepository,
                            WorkoutSetRepository workoutSetRepository,
@@ -29,7 +30,8 @@ public class ProgressService {
                            ProgressPhotoRepository progressPhotoRepository,
                            PersonalRecordRepository personalRecordRepository,
                            WorkoutSessionRepository workoutSessionRepository,
-                           RoutineService routineService) {
+                           RoutineService routineService,
+                           ExerciseRepository exerciseRepository) {
         this.userRepository = userRepository;
         this.workoutSetRepository = workoutSetRepository;
         this.bodyMetricRepository = bodyMetricRepository;
@@ -37,6 +39,7 @@ public class ProgressService {
         this.personalRecordRepository = personalRecordRepository;
         this.workoutSessionRepository = workoutSessionRepository;
         this.routineService = routineService;
+        this.exerciseRepository = exerciseRepository;
     }
 
     public ProgressDTOs.ExerciseProgressDto getExerciseProgress(String userEmail, Long exerciseId) {
@@ -47,7 +50,9 @@ public class ProgressService {
 
         ProgressDTOs.ExerciseProgressDto dto = new ProgressDTOs.ExerciseProgressDto();
         dto.setExerciseId(exerciseId);
-        if (!history.isEmpty()) {
+
+        exerciseRepository.findById(exerciseId).ifPresent(ex -> dto.setExerciseName(ex.getName()));
+        if (dto.getExerciseName() == null && !history.isEmpty() && history.get(0).getExercise() != null) {
             dto.setExerciseName(history.get(0).getExercise().getName());
         }
 
@@ -57,11 +62,15 @@ public class ProgressService {
         List<ProgressDTOs.ChartDataPoint> volumeHistory = new ArrayList<>();
 
         for (WorkoutSet set : history) {
-            if (set.getIsWarmup()) continue;
-            String dateStr = set.getLoggedAt().format(fmt);
-            weightHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, set.getWeightKg()));
-            e1rmHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, set.getEstimated1rm()));
-            volumeHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, set.getWeightKg() * set.getReps()));
+            if (Boolean.TRUE.equals(set.getIsWarmup())) continue;
+            String dateStr = set.getLoggedAt() != null ? set.getLoggedAt().format(fmt) : "Recent";
+            double weight = set.getWeightKg() != null ? set.getWeightKg() : 0.0;
+            int reps = set.getReps() != null ? set.getReps() : 0;
+            double e1rm = set.getEstimated1rm() != null ? set.getEstimated1rm() : weight * (1 + reps / 30.0);
+
+            weightHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, weight));
+            e1rmHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, Math.round(e1rm * 10.0) / 10.0));
+            volumeHistory.add(new ProgressDTOs.ChartDataPoint(dateStr, Math.round(weight * reps * 10.0) / 10.0));
         }
 
         dto.setWeightHistory(weightHistory);
@@ -136,7 +145,7 @@ public class ProgressService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         List<WorkoutSession> completed = workoutSessionRepository.findByUserIdOrderByStartTimeDesc(user.getId())
-                .stream().filter(s -> s.getStatus().name().equals("COMPLETED")).collect(Collectors.toList());
+                .stream().filter(s -> s.getStatus() != null && "COMPLETED".equalsIgnoreCase(s.getStatus().name())).collect(Collectors.toList());
 
         ProgressDTOs.DashboardSummaryDto summary = new ProgressDTOs.DashboardSummaryDto();
         summary.setTotalWorkoutsCompleted(completed.size());
@@ -174,7 +183,7 @@ public class ProgressService {
         List<BodyMetric> metrics = bodyMetricRepository.findByUserIdOrderByRecordedDateAsc(user.getId());
         DateTimeFormatter dateFmt = DateTimeFormatter.ofPattern("MMM dd");
         List<ProgressDTOs.ChartDataPoint> bodyWeightChart = metrics.stream()
-                .filter(m -> m.getWeightKg() != null)
+                .filter(m -> m.getWeightKg() != null && m.getRecordedDate() != null)
                 .map(m -> new ProgressDTOs.ChartDataPoint(m.getRecordedDate().format(dateFmt), m.getWeightKg()))
                 .collect(Collectors.toList());
         summary.setBodyWeightChart(bodyWeightChart);
@@ -188,6 +197,7 @@ public class ProgressService {
         if (completedSessions.isEmpty()) return 0;
 
         Set<LocalDate> workoutDates = completedSessions.stream()
+                .filter(s -> s.getStartTime() != null)
                 .map(s -> s.getStartTime().toLocalDate())
                 .collect(Collectors.toSet());
 
@@ -199,7 +209,7 @@ public class ProgressService {
 
         if (current == null) return 0;
 
-        while (workoutDates.contains(current)) {
+        while (current != null && workoutDates.contains(current)) {
             streak++;
             current = current.minusDays(1);
         }
@@ -233,9 +243,13 @@ public class ProgressService {
     private ProgressDTOs.PRDto mapToPRDto(PersonalRecord pr) {
         ProgressDTOs.PRDto dto = new ProgressDTOs.PRDto();
         dto.setId(pr.getId());
-        dto.setExerciseId(pr.getExercise().getId());
-        dto.setExerciseName(pr.getExercise().getName());
-        dto.setRecordType(pr.getRecordType().name());
+        if (pr.getExercise() != null) {
+            dto.setExerciseId(pr.getExercise().getId());
+            dto.setExerciseName(pr.getExercise().getName());
+        }
+        if (pr.getRecordType() != null) {
+            dto.setRecordType(pr.getRecordType().name());
+        }
         dto.setRecordValue(pr.getRecordValue());
         dto.setReps(pr.getReps());
         dto.setAchievedAt(pr.getAchievedAt());

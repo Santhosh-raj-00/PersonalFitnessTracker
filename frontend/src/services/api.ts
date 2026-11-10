@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
 
 export const getAuthToken = (): string | null => {
   return localStorage.getItem('fittrack_jwt_token');
@@ -24,7 +24,8 @@ export const apiFetch = async <T>(endpoint: string, options: RequestInit = {}): 
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const response = await fetch(`${BASE_URL}${cleanEndpoint}`, {
     ...options,
     headers,
   });

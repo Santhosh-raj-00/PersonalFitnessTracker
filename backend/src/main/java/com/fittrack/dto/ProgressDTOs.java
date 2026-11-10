@@ -12,6 +12,8 @@ public class ProgressDTOs {
         private Double secondaryValue;
         private String label;
 
+        public ChartDataPoint() {}
+
         public ChartDataPoint(String date, Double value) {
             this.date = date;
             this.value = value;
